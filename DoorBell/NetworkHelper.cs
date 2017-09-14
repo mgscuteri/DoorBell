@@ -31,7 +31,8 @@ namespace WebApplication10
                 {
                     foreach (GatewayIPAddressInformation d in f.GetIPProperties().GatewayAddresses)
                     {
-                        ip = d.Address.ToString();
+                        if (d.Address.ToString() != "::")
+                            ip = d.Address.ToString();
                     }
                 }
             }
@@ -136,7 +137,7 @@ namespace WebApplication10
         public void Ping_all()
         {
 
-            string gate_ip = NetworkGateway();
+            string gate_ip = NetworkHelper.NetworkGateway();
 
             //Extracting and pinging all other ip's.
             string[] array = gate_ip.Split('.');
@@ -147,7 +148,7 @@ namespace WebApplication10
                 string ping_var = array[0] + "." + array[1] + "." + array[2] + "." + i;
 
                 //time in milliseconds           
-                Ping(ping_var, 4, 4000);
+                Ping(ping_var, 2, 2000);
 
             }
 
