@@ -6,7 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.DirectoryServices;
 using DoorBell.Models;
-using WebApplication10;
+using DoorBell;
 
 namespace DoorBell.Controllers
 {
@@ -14,9 +14,9 @@ namespace DoorBell.Controllers
     {
         private ThemeSong[] themeSongs = new ThemeSong[]
         {
-            new ThemeSong {themeSongId = 1, deviceName = "device1", songUrl = "device2"},
-            new ThemeSong {themeSongId = 1, deviceName = "device2", songUrl = "device2"},
-            new ThemeSong {themeSongId = 1, deviceName = "device3", songUrl = "device2"},
+            new ThemeSong {macAddress = "device1", songYoutubeUrl = "device2"},
+            new ThemeSong {macAddress = "device2", songYoutubeUrl = "device2"},
+            new ThemeSong {macAddress = "device3", songYoutubeUrl = "device2"},
         };
 
       //  public IEnumerable<ThemeSong> GetAllThemeSongs()
@@ -27,18 +27,15 @@ namespace DoorBell.Controllers
         public IHttpActionResult GetThemeSong(string deviceName)
         {
 
-            ThemeSong themeSong = themeSongs.FirstOrDefault((p) => p.deviceName == deviceName);
+            ThemeSong themeSong = themeSongs.FirstOrDefault((p) => p.macAddress == deviceName);
             if (themeSong == null)
             {
                 return NotFound();
             }
 
-            NetworkHelper netHelper = new NetworkHelper();
+           
 
-            netHelper.Ping_all();
-
-
-
+      
             /*
             DirectoryEntry root = new DirectoryEntry("WinNT:");
             foreach (DirectoryEntry computers in root.Children)
@@ -53,7 +50,7 @@ namespace DoorBell.Controllers
             }
             */
 
-            return Ok(netHelper.SuccessfullPings);
+            return Ok(themeSong);
         }
     }
 }

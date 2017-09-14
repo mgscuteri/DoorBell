@@ -7,8 +7,8 @@ namespace DoorBell.Models
 {
     public class ThemeSong
     {
-        public int themeSongId { get; set; }
-        public string deviceName { get; set; }
-        public string songUrl { get; set; }
+        public string macAddress { get; set; }
+        public string songYoutubeUrl { get; set; }
+        public string startMinutesSeconds { get; set; } //?t=11m10s
     }
 }
