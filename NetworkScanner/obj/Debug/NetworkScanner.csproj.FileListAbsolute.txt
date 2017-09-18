@@ -1,0 +1,7 @@
+C:\Users\mgscu\Desktop\Desktop\Code\DoorBell\DoorBell\NetworkScanner\bin\Debug\NetworkScanner.exe.config
+C:\Users\mgscu\Desktop\Desktop\Code\DoorBell\DoorBell\NetworkScanner\bin\Debug\NetworkScanner.exe
+C:\Users\mgscu\Desktop\Desktop\Code\DoorBell\DoorBell\NetworkScanner\bin\Debug\NetworkScanner.pdb
+C:\Users\mgscu\Desktop\Desktop\Code\DoorBell\DoorBell\NetworkScanner\obj\Debug\NetworkScanner.csprojResolveAssemblyReference.cache
+C:\Users\mgscu\Desktop\Desktop\Code\DoorBell\DoorBell\NetworkScanner\obj\Debug\NetworkScanner.csproj.CoreCompileInputs.cache
+C:\Users\mgscu\Desktop\Desktop\Code\DoorBell\DoorBell\NetworkScanner\obj\Debug\NetworkScanner.exe
+C:\Users\mgscu\Desktop\Desktop\Code\DoorBell\DoorBell\NetworkScanner\obj\Debug\NetworkScanner.pdb

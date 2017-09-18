@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<NetworkHelper xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SuccessfullPings>
+    <ConnectedDevice>
+      <ip>192.168.1.153</ip>
+      <hostname>AsusTower.fios-router.home</hostname>
+      <macaddress>OWN Machine</macaddress>
+    </ConnectedDevice>
+    <ConnectedDevice>
+      <ip>192.168.1.153</ip>
+      <hostname>AsusTower.fios-router.home</hostname>
+      <macaddress>OWN Machine</macaddress>
+    </ConnectedDevice>
+    <ConnectedDevice>
+      <ip>192.168.1.151</ip>
+      <hostname>Michaels-iPhone.fios-router.home</hostname>
+      <macaddress>4c-57-ca-6f-2a-91</macaddress>
+    </ConnectedDevice>
+    <ConnectedDevice>
+      <ip>192.168.1.151</ip>
+      <hostname>Michaels-iPhone.fios-router.home</hostname>
+      <macaddress>4c-57-ca-6f-2a-91</macaddress>
+    </ConnectedDevice>
+  </SuccessfullPings>
+</NetworkHelper>
