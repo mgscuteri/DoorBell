@@ -22,12 +22,19 @@ namespace NetworkScanner
             {
 
                 NetworkHelper netHelper = new NetworkHelper();
+                netHelper.pingCounter = 253;
+
 
                 netHelper.Ping_all();
-
+                //Launch all pings
                 System.Xml.Serialization.XmlSerializer writer = new System.Xml.Serialization.XmlSerializer(typeof(NetworkHelper));
-
                 string path = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + "//data//connectedDevices.xml";
+
+                //Wait for pings to finish 
+                while (netHelper.pingCounter > 0)
+                {
+                    //wait
+                }
 
                 System.IO.FileStream file = System.IO.File.Open(path,FileMode.Truncate);
 

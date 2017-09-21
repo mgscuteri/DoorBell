@@ -13,6 +13,7 @@ namespace NetworkScanner.Helpers
     public class NetworkHelper
     {
         public List<ConnectedDevice> SuccessfullPings { get; set; }
+        public int pingCounter { get; set; }
 
         public NetworkHelper()
         {
@@ -89,6 +90,8 @@ namespace NetworkScanner.Helpers
 
         private void PingCompleted(object sender, PingCompletedEventArgs e)
         {
+            pingCounter--;
+
             string ip = (string)e.UserState;
             if (e.Reply != null && e.Reply.Status == IPStatus.Success)
             {
@@ -135,7 +138,6 @@ namespace NetworkScanner.Helpers
 
         public void Ping_all()
         {
-
             string gate_ip = NetworkHelper.NetworkGateway();
 
             //Extracting and pinging all other ip's.
@@ -147,10 +149,8 @@ namespace NetworkScanner.Helpers
                 string ping_var = array[0] + "." + array[1] + "." + array[2] + "." + i;
 
                 //time in milliseconds           
-                Ping(ping_var, 2, 250);
-
+                Ping(ping_var, 2, 500);
             }
-
         }
 
     }
