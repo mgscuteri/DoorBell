@@ -105,7 +105,7 @@ namespace NetworkScanner.Helpers
                 arr[2] = macaddres;
 
                 // Logic for Ping Reply Success
-                ConnectedDevice pingResults = new ConnectedDevice {hostname = hostname, ip = ip, macaddress = macaddres};
+                ConnectedDevice pingResults = new ConnectedDevice {hostname = hostname, ip = ip, macaddress = macaddres, connectDateTime = DateTime.UtcNow};
                 SuccessfullPings.Add(pingResults);
             }
             else
@@ -136,7 +136,7 @@ namespace NetworkScanner.Helpers
             }
         }
 
-        public void Ping_all()
+        public void Ping_all(int pingTimeOutMiliseconds)
         {
             string gate_ip = NetworkHelper.NetworkGateway();
 
@@ -149,7 +149,7 @@ namespace NetworkScanner.Helpers
                 string ping_var = array[0] + "." + array[1] + "." + array[2] + "." + i;
 
                 //time in milliseconds           
-                Ping(ping_var, 2, 500);
+                Ping(ping_var, 2, pingTimeOutMiliseconds);
             }
         }
 
