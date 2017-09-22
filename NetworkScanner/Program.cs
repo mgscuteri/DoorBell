@@ -57,16 +57,15 @@ namespace NetworkScanner
 
                     if (isNewConnection)
                     {
-                        nonTimedOutDevices.Add(cd);
                         //Limit playback to reasobable hours. ie not when you wake up in the morning. 
                         TimeSpan start = new TimeSpan(3, 30, 0); // 3:30 AM
                         TimeSpan end = new TimeSpan(10, 30, 0);  // 10:30 AM
                         TimeSpan now = DateTime.Now.TimeOfDay;
                         if (!((now > start) && (now < end)))
                         {
+                            nonTimedOutDevices.Add(cd);
                             playbackHelper.playListMacs.Add(cd.macaddress); //send macaddress to playlist
                         }
-                        
                     }
                 }
                 
