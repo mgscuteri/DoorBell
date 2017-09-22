@@ -1,30 +1,17 @@
 <?xml version="1.0"?>
-<NetworkHelper xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SuccessfullPings>
-    <ConnectedDevice>
-      <ip>192.168.1.151</ip>
-      <hostname>Michaels-iPhone.fios-router.home</hostname>
-      <macaddress>4c-57-ca-6f-2a-91</macaddress>
-      <connectDateTime>2017-09-21T23:51:09.1921115Z</connectDateTime>
-    </ConnectedDevice>
-    <ConnectedDevice>
-      <ip>192.168.1.151</ip>
-      <hostname>Michaels-iPhone.fios-router.home</hostname>
-      <macaddress>4c-57-ca-6f-2a-91</macaddress>
-      <connectDateTime>2017-09-21T23:51:09.1921115Z</connectDateTime>
-    </ConnectedDevice>
-    <ConnectedDevice>
-      <ip>192.168.1.153</ip>
-      <hostname>AsusTower.fios-router.home</hostname>
-      <macaddress>OWN Machine</macaddress>
-      <connectDateTime>2017-09-21T23:51:09.2317171Z</connectDateTime>
-    </ConnectedDevice>
-    <ConnectedDevice>
-      <ip>192.168.1.153</ip>
-      <hostname>AsusTower.fios-router.home</hostname>
-      <macaddress>OWN Machine</macaddress>
-      <connectDateTime>2017-09-21T23:51:09.2522714Z</connectDateTime>
-    </ConnectedDevice>
-  </SuccessfullPings>
-  <pingCounter>-192</pingCounter>
-</NetworkHelper>
+<ArrayOfConnectedDevice xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ConnectedDevice>
+    <ip>192.168.1.153</ip>
+    <hostname>AsusTower.fios-router.home</hostname>
+    <macaddress>OWN Machine</macaddress>
+    <connectDateTime>2017-09-22T03:18:15.4568228Z</connectDateTime>
+    <isNewConnection>true</isNewConnection>
+  </ConnectedDevice>
+  <ConnectedDevice>
+    <ip>192.168.1.153</ip>
+    <hostname>AsusTower.fios-router.home</hostname>
+    <macaddress>OWN Machine</macaddress>
+    <connectDateTime>2017-09-22T03:18:15.459831Z</connectDateTime>
+    <isNewConnection>true</isNewConnection>
+  </ConnectedDevice>
+</ArrayOfConnectedDevice>

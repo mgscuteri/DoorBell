@@ -11,6 +11,7 @@ namespace NetworkScanner.Models
         public string hostname { get; set; }
         public string macaddress { get; set; }
         public DateTime connectDateTime { get; set; }
+        public bool isNewConnection { get; set; }
 
         public ConnectedDevice()
         {

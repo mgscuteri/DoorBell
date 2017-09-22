@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helpers\PlaybackHelper.cs" />
     <Compile Include="Helpers\NetworkHelper.cs" />
     <Compile Include="Models\ConnectedDevice.cs" />
     <Compile Include="Program.cs" />
@@ -50,8 +51,14 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\DoorBell\DoorBellApi.csproj">
+      <Project>{9953d5e5-9443-49a8-bcc2-f21908bda5a0}</Project>
+      <Name>DoorBellApi</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Data\nonTimedOutDevices.xml" />
     <Content Include="Data\connectedDevices.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

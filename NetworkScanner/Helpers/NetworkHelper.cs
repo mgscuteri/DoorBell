@@ -105,7 +105,13 @@ namespace NetworkScanner.Helpers
                 arr[2] = macaddres;
 
                 // Logic for Ping Reply Success
-                ConnectedDevice pingResults = new ConnectedDevice {hostname = hostname, ip = ip, macaddress = macaddres, connectDateTime = DateTime.UtcNow};
+                ConnectedDevice pingResults = new ConnectedDevice
+                {
+                    hostname = hostname,
+                    ip = ip, macaddress = macaddres,
+                    connectDateTime = DateTime.UtcNow,
+                    isNewConnection = true
+                };
                 SuccessfullPings.Add(pingResults);
             }
             else
