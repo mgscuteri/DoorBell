@@ -10,11 +10,10 @@ using DoorBell.Models;
 
 namespace NetworkScanner.Helpers
 {
-
-
     class PlaybackHelper
     {
         public List<string> playListMacs { get; set; }
+        public bool isPlaying { get; set; }
 
         public PlaybackHelper()
         {
@@ -41,18 +40,25 @@ namespace NetworkScanner.Helpers
             }
         }
 
-        public void playSong(string youTubeUrl)
+        public void playSong(string SongUrl, int videoDurationMiliseconds)
         {
             //This is untrusted data! be careful!
             Process songProcess;
-            songProcess = Process.Start(youTubeUrl);
+            songProcess = Process.Start(SongUrl);
             //wait for duration of song
+            var t2 = Task.Run(async delegate
+            {
+                await Task.Delay(videoDurationMiliseconds);  //video duration - start time 
+                return 1;
+            });
+            t2.Wait();
+            
             songProcess.Close();
         }
 
-        public string getVideoDuration()
+        public int getVideoDurationMiliseconds()
         {
-            string url = @"";
+            string url = @"http://gdata.youtube.com/feeds/api/videos/4TSJhIZmL0A?v=2&alt=jsonc&callback=youtubeFeedCallback&prettyprint=true";
             string duration = "";
 
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
@@ -63,8 +69,10 @@ namespace NetworkScanner.Helpers
             {
                 duration = reader.ReadToEnd();
             }
-
-            return duration;
+            int milisconds;
+            //miliseconds = duration.toMiliseconds
+            milisconds = 6000;
+            return milisconds;
         }
     }
 }
