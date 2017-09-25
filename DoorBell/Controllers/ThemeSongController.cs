@@ -7,6 +7,10 @@ using System.Web.Http;
 using System.DirectoryServices;
 using DoorBell.Models;
 using DoorBell;
+using System.Xml;
+using System.Xml.Serialization;
+using System.IO;
+
 
 namespace DoorBell.Controllers
 {
@@ -26,16 +30,29 @@ namespace DoorBell.Controllers
 
         public IHttpActionResult GetThemeSong(string deviceName)
         {
+            // OLD \/
+            //ThemeSong themeSong = themeSongs.FirstOrDefault((p) => p.macAddress == deviceName);
+            //if (themeSong == null)
+            //{
+            //   return NotFound();
+            //}
 
-            ThemeSong themeSong = themeSongs.FirstOrDefault((p) => p.macAddress == deviceName);
-            if (themeSong == null)
+            //deserialize 
+            XmlSerializer themeSongSerializer = new System.Xml.Serialization.XmlSerializer(typeof(List<ThemeSong>));
+            string themeSongsXmlPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + "//data//ThemeSongs.xml";
+            using (XmlReader reader = XmlReader.Create(themeSongsXmlPath))
             {
-                return NotFound();
+                themeSongs = (List<ThemeSong>)themeSongSerializer.Deserialize(reader);
             }
 
-           
+            
 
-      
+
+            //System.IO.FileStream themeSongsXml = System.IO.File.Open(connectedDevicesXmlPath, FileMode.Truncate);
+            //connectedDeviceListSerializer.Serialize(file, netHelper.SuccessfullPings);
+            //file.Close();
+
+
             /*
             DirectoryEntry root = new DirectoryEntry("WinNT:");
             foreach (DirectoryEntry computers in root.Children)
