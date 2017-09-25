@@ -10,62 +10,43 @@ using DoorBell;
 using System.Xml;
 using System.Xml.Serialization;
 using System.IO;
+using System.Web;
+using System.Web.Hosting;
 
 
 namespace DoorBell.Controllers
 {
     public class ThemeSongsController : ApiController
     {
-        private ThemeSong[] themeSongs = new ThemeSong[]
+        private ThemeSong[] themeSongsTemp = new ThemeSong[]
         {
             new ThemeSong {macAddress = "device1", songYoutubeUrl = "device2"},
             new ThemeSong {macAddress = "device2", songYoutubeUrl = "device2"},
             new ThemeSong {macAddress = "device3", songYoutubeUrl = "device2"},
         };
 
+        
+
       //  public IEnumerable<ThemeSong> GetAllThemeSongs()
 //        {
             //return themeSongs;
         //}
-
-        public IHttpActionResult GetThemeSong(string deviceName)
+        [HttpPost]
+        public IHttpActionResult postThemeSong(ThemeSong themeSong)
         {
-            // OLD \/
-            //ThemeSong themeSong = themeSongs.FirstOrDefault((p) => p.macAddress == deviceName);
-            //if (themeSong == null)
-            //{
-            //   return NotFound();
-            //}
-
-            //deserialize 
+            List<ThemeSong> themeSongs = new List<ThemeSong>() {};
             XmlSerializer themeSongSerializer = new System.Xml.Serialization.XmlSerializer(typeof(List<ThemeSong>));
-            string themeSongsXmlPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + "//data//ThemeSongs.xml";
+            var themeSongsXmlPath = System.Web.Hosting.HostingEnvironment.MapPath(@"~/Data/ThemeSongs.xml");
             using (XmlReader reader = XmlReader.Create(themeSongsXmlPath))
             {
                 themeSongs = (List<ThemeSong>)themeSongSerializer.Deserialize(reader);
             }
 
-            
+            themeSongs.Add(themeSong);
 
-
-            //System.IO.FileStream themeSongsXml = System.IO.File.Open(connectedDevicesXmlPath, FileMode.Truncate);
-            //connectedDeviceListSerializer.Serialize(file, netHelper.SuccessfullPings);
-            //file.Close();
-
-
-            /*
-            DirectoryEntry root = new DirectoryEntry("WinNT:");
-            foreach (DirectoryEntry computers in root.Children)
-            {
-                foreach (DirectoryEntry computer in computers.Children)
-                {
-                    if (computer.Name != "Schema")
-                    {
-                        Console.WriteLine(computer.Name);
-                    }
-                }
-            }
-            */
+            System.IO.FileStream themeSongsXml = System.IO.File.Open(themeSongsXmlPath, FileMode.Truncate);
+            themeSongSerializer.Serialize(themeSongsXml, themeSongs);
+            themeSongsXml.Close();
 
             return Ok(themeSong);
         }

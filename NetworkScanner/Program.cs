@@ -10,6 +10,9 @@ using System.IO;
 using System.Threading;
 using System.Xml;
 using DoorBell.Models;
+using System.Web;
+
+
 
 namespace NetworkScanner
 {
@@ -39,19 +42,15 @@ namespace NetworkScanner
                 //Prepare to serialization helpers
                 XmlSerializer connectedDeviceListSerializer = new System.Xml.Serialization.XmlSerializer(typeof(List<ConnectedDevice>));
                 XmlSerializer themeSongSerializer = new System.Xml.Serialization.XmlSerializer(typeof(List<ThemeSong>));
-                string connectedDevicesXmlPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + "//data//connectedDevices.xml";
-                string nonTimedOutDevicesXmlPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + "//data//nonTimedOutDevices.xml";
-                string themeSongsXmlPath = Directory.GetParent((Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName)) + "//NetworkScanner//Data//ThemeSongs.xml";
-
+                string connectedDevicesXmlPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + @"\data\connectedDevices.xml";
+                string nonTimedOutDevicesXmlPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + @"\data\nonTimedOutDevices.xml";
+                string themeSongsXmlPath = Directory.GetParent((Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName)) + @"\DoorBell\Data\ThemeSongs.xml";
+                
+                //Get list of macAddress song associates from webApi
                 using (XmlReader reader = XmlReader.Create(themeSongsXmlPath))
                 {
                     themeSongs = (List<ThemeSong>) themeSongSerializer.Deserialize(reader);
                 }
-                //put this stuff in api \/
-                //System.IO.FileStream themeSongsXml = System.IO.File.Open(connectedDevicesXmlPath, FileMode.Truncate);
-                //connectedDeviceListSerializer.Serialize(file, netHelper.SuccessfullPings);
-                //file.Close();
-
                 //Remove Timed Out Connections 
                 foreach (ConnectedDevice cd in nonTimedOutDevices)
                 {
@@ -60,18 +59,18 @@ namespace NetworkScanner
                         nonTimedOutDevices.Remove(cd);
                     }
                 }
-                
                 //Wait for pings to finish -- ANY WORK not dependent on ping responses should go ABOVE here!  
                 while (netHelper.pingCounter > 0)
                 {
-                    //wait
+                    //wait for pings to finish 
                 }
-
+                //Create temporary list to avoid multithreaded shared memory issues
+                List<ConnectedDevice> tempThemeSongs = netHelper.SuccessfullPings.ToList();
                 //Add New connections to nonTimedOutDevices, and que up theme songs to be played.
-                foreach (ConnectedDevice cd in netHelper.SuccessfullPings)
+                foreach (ConnectedDevice cd in tempThemeSongs)
                 {
                     bool isNewConnection = !(nonTimedOutDevices.Any(item => item.macaddress == cd.macaddress));
-                    bool existsInThemeSongs = !(themeSongs.Any(item => item.macAddress == cd.macaddress));
+                    bool existsInThemeSongs = !(themeSongs.Any(item => item.macAddress == cd.macaddress));          ////THIS IS RETURNING TRUE WHEN IT SHOULD BE FALSE!!!!
 
                     if (isNewConnection && existsInThemeSongs) // && Matching macAddress exits in Data.ThemeSongs
                     {
