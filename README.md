@@ -26,9 +26,9 @@ The NetworkScanner functions on a 2 hour timout. Meaning, after 2 hours
 without connecting to then network, the device will be dropped from the  
 connected (nonTimedOut) device list, and be eligible to have its theme  
 song played again.  Additionally, theme songs will not be played during a  
-blackout period from 3:30am - 10:30am.
-__---------------------.
-Getting Started      \_____
+blackout period from 3:30am - 10:30am.  
+---------------------.
+__Getting Started__   \
 
 To get started using the DoorBell server, first clone the repository,  
 then:  
