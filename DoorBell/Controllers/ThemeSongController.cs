@@ -34,21 +34,28 @@ namespace DoorBell.Controllers
         [HttpPost]
         public IHttpActionResult postThemeSong(ThemeSong themeSong)
         {
-            List<ThemeSong> themeSongs = new List<ThemeSong>() {};
-            XmlSerializer themeSongSerializer = new System.Xml.Serialization.XmlSerializer(typeof(List<ThemeSong>));
-            var themeSongsXmlPath = System.Web.Hosting.HostingEnvironment.MapPath(@"~/Data/ThemeSongs.xml");
-            using (XmlReader reader = XmlReader.Create(themeSongsXmlPath))
+            try
             {
-                themeSongs = (List<ThemeSong>)themeSongSerializer.Deserialize(reader);
+                List<ThemeSong> themeSongs = new List<ThemeSong>() { };
+                XmlSerializer themeSongSerializer = new System.Xml.Serialization.XmlSerializer(typeof(List<ThemeSong>));
+                var themeSongsXmlPath = System.Web.Hosting.HostingEnvironment.MapPath(@"~/Data/ThemeSongs.xml");
+                using (XmlReader reader = XmlReader.Create(themeSongsXmlPath))
+                {
+                    themeSongs = (List<ThemeSong>)themeSongSerializer.Deserialize(reader);
+                }
+
+                themeSongs.Add(themeSong);
+
+                System.IO.FileStream themeSongsXml = System.IO.File.Open(themeSongsXmlPath, FileMode.Truncate);
+                themeSongSerializer.Serialize(themeSongsXml, themeSongs);
+                themeSongsXml.Close();
+
+                return Ok(themeSong);
             }
-
-            themeSongs.Add(themeSong);
-
-            System.IO.FileStream themeSongsXml = System.IO.File.Open(themeSongsXmlPath, FileMode.Truncate);
-            themeSongSerializer.Serialize(themeSongsXml, themeSongs);
-            themeSongsXml.Close();
-
-            return Ok(themeSong);
+            catch
+            {
+                return InternalServerError();
+            }            
         }
     }
 }

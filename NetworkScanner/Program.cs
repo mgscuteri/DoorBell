@@ -65,12 +65,12 @@ namespace NetworkScanner
                     //wait for pings to finish 
                 }
                 //Create temporary list to avoid multithreaded shared memory issues
-                List<ConnectedDevice> tempThemeSongs = netHelper.SuccessfullPings.ToList();
+                List<ConnectedDevice> tempSuccessfulPings = netHelper.SuccessfullPings.ToList();
                 //Add New connections to nonTimedOutDevices, and que up theme songs to be played.
-                foreach (ConnectedDevice cd in tempThemeSongs)
+                foreach (ConnectedDevice cd in tempSuccessfulPings)
                 {
                     bool isNewConnection = !(nonTimedOutDevices.Any(item => item.macaddress == cd.macaddress));
-                    bool existsInThemeSongs = !(themeSongs.Any(item => item.macAddress == cd.macaddress));          ////THIS IS RETURNING TRUE WHEN IT SHOULD BE FALSE!!!!
+                    bool existsInThemeSongs = (themeSongs.Any(item => item.macAddress == cd.macaddress));          ////THIS IS RETURNING TRUE WHEN IT SHOULD BE FALSE!!!!
 
                     if (isNewConnection && existsInThemeSongs) // && Matching macAddress exits in Data.ThemeSongs
                     {

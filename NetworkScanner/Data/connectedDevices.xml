@@ -4,14 +4,14 @@
     <ip>192.168.1.153</ip>
     <hostname>AsusTower.fios-router.home</hostname>
     <macaddress>OWN Machine</macaddress>
-    <connectDateTime>2017-09-22T03:18:15.4568228Z</connectDateTime>
+    <connectDateTime>2017-09-26T03:57:14.7062114Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
     <ip>192.168.1.153</ip>
     <hostname>AsusTower.fios-router.home</hostname>
     <macaddress>OWN Machine</macaddress>
-    <connectDateTime>2017-09-22T03:18:15.459831Z</connectDateTime>
+    <connectDateTime>2017-09-26T03:57:14.7102224Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
 </ArrayOfConnectedDevice>
