@@ -1,14 +1,13 @@
 # DoorBell
 __888****------THEMESONG SERVER------****888__
 
-__---------.
-Purpose   \_____
+
+__~Purpose__  
 This project enables you to assign themesongs to yourself and your friends.  
 The themesong will automatically play when the person to whom it belongs   
 to enters wifi range.  
 
-__---------------------.
-Technical Overview   \_____
+__~Technical Overview__  
 This project consists of two main components.  The DoorBell web api, and   
 the NetworkScanner.    
 
@@ -27,9 +26,8 @@ without connecting to then network, the device will be dropped from the
 connected (nonTimedOut) device list, and be eligible to have its theme  
 song played again.  Additionally, theme songs will not be played during a  
 blackout period from 3:30am - 10:30am.  
----------------------.
-__Getting Started__   \
 
+__~Getting Started__   
 To get started using the DoorBell server, first clone the repository,  
 then:  
 1) Right click on the solution, click startup properties, select  
