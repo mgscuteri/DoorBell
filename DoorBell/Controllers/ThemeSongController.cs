@@ -31,6 +31,7 @@ namespace DoorBell.Controllers
 //        {
             //return themeSongs;
         //}
+        
         [HttpPost]
         public IHttpActionResult postThemeSong(ThemeSong themeSong)
         {
@@ -56,6 +57,27 @@ namespace DoorBell.Controllers
             {
                 return InternalServerError();
             }            
+        }
+        
+        
+        [HttpGet]
+        public IHttpActionResult getSongDuration(string videoUrl)
+        {
+            string duration = "";
+
+            string tempUrl = "https://www.youtube.com/watch?v=bzjQvsn921k";
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(tempUrl);
+
+            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+            using (Stream stream = response.GetResponseStream())
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                duration = reader.ReadToEnd();
+            }
+            int milisconds;
+            //miliseconds = duration.toMiliseconds
+            milisconds = 10000; //BUG not fully implemented 
+            return Ok(milisconds);
         }
     }
 }

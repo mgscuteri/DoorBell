@@ -78,6 +78,6 @@ C:\Users\mscuteri\Desktop\Docs\Personal\DoorBell\DoorBell\bin\Newtonsoft.Json.xm
 C:\Users\mscuteri\Desktop\Docs\Personal\DoorBell\DoorBell\bin\System.Net.Http.Formatting.xml
 C:\Users\mscuteri\Desktop\Docs\Personal\DoorBell\DoorBell\bin\System.Web.Http.xml
 C:\Users\mscuteri\Desktop\Docs\Personal\DoorBell\DoorBell\bin\System.Web.Http.WebHost.xml
-C:\Users\mscuteri\Desktop\Docs\Personal\DoorBell\DoorBell\obj\Debug\DoorBellApi.csprojResolveAssemblyReference.cache
 C:\Users\mscuteri\Desktop\Docs\Personal\DoorBell\DoorBell\obj\Debug\WebApplication10.dll
 C:\Users\mscuteri\Desktop\Docs\Personal\DoorBell\DoorBell\obj\Debug\WebApplication10.pdb
+C:\Users\mscuteri\Desktop\Docs\Personal\DoorBell\DoorBell\obj\Debug\DoorBellApi.csprojResolveAssemblyReference.cache
