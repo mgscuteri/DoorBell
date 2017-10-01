@@ -1,17 +1,17 @@
 <?xml version="1.0"?>
 <ArrayOfConnectedDevice xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ConnectedDevice>
-    <ip>192.168.1.153</ip>
-    <hostname>AsusTower.fios-router.home</hostname>
-    <macaddress>OWN Machine</macaddress>
-    <connectDateTime>2017-09-26T03:57:14.7062114Z</connectDateTime>
+    <ip>192.168.1.52</ip>
+    <hostname>iPhone.lan</hostname>
+    <macaddress>6c-72-e7-af-7f-50</macaddress>
+    <connectDateTime>2017-10-01T17:59:59.1838873Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
-    <ip>192.168.1.153</ip>
-    <hostname>AsusTower.fios-router.home</hostname>
+    <ip>192.168.1.72</ip>
+    <hostname>DESKTOP-16PIKO2.lan</hostname>
     <macaddress>OWN Machine</macaddress>
-    <connectDateTime>2017-09-26T03:57:14.7102224Z</connectDateTime>
+    <connectDateTime>2017-10-01T18:00:01.7364466Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
 </ArrayOfConnectedDevice>

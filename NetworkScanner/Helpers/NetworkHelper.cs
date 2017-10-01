@@ -112,7 +112,8 @@ namespace NetworkScanner.Helpers
                     connectDateTime = DateTime.UtcNow,
                     isNewConnection = true
                 };
-                SuccessfullPings.Add(pingResults);
+                if(!SuccessfullPings.Any(x => x.ip == pingResults.ip))
+                    SuccessfullPings.Add(pingResults);
             }
             else
             {
@@ -155,7 +156,7 @@ namespace NetworkScanner.Helpers
                 string ping_var = array[0] + "." + array[1] + "." + array[2] + "." + i;
 
                 //time in milliseconds           
-                Ping(ping_var, 2, pingTimeOutMiliseconds);
+                Ping(ping_var, 5, pingTimeOutMiliseconds);
             }
         }
 

@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<ArrayOfConnectedDevice xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ConnectedDevice>
+    <ip>192.168.1.72</ip>
+    <hostname>DESKTOP-16PIKO2.lan</hostname>
+    <macaddress>OWN Machine</macaddress>
+    <connectDateTime>2017-09-29T21:29:18.8266908Z</connectDateTime>
+    <isNewConnection>true</isNewConnection>
+  </ConnectedDevice>
+  <ConnectedDevice>
+    <ip>192.168.1.37</ip>
+    <hostname>Michaels-iPhone.lan</hostname>
+    <macaddress>4c-57-ca-6f-2a-91</macaddress>
+    <connectDateTime>2017-09-29T21:36:57.6486391Z</connectDateTime>
+    <isNewConnection>true</isNewConnection>
+  </ConnectedDevice>
+  <ConnectedDevice>
+    <ip>192.168.1.52</ip>
+    <hostname>iPhone.lan</hostname>
+    <macaddress>6c-72-e7-af-7f-50</macaddress>
+    <connectDateTime>2017-09-29T21:41:10.9137748Z</connectDateTime>
+    <isNewConnection>true</isNewConnection>
+  </ConnectedDevice>
+  <ConnectedDevice>
+    <ip>192.168.1.66</ip>
+    <hostname>iPhone.lan</hostname>
+    <macaddress>b4-4b-d2-0b-f6-2e</macaddress>
+    <connectDateTime>2017-09-29T22:23:57.291046Z</connectDateTime>
+    <isNewConnection>true</isNewConnection>
+  </ConnectedDevice>
+</ArrayOfConnectedDevice>

@@ -23,9 +23,7 @@ namespace DoorBell.Controllers
             new ThemeSong {macAddress = "device1", songYoutubeUrl = "device2"},
             new ThemeSong {macAddress = "device2", songYoutubeUrl = "device2"},
             new ThemeSong {macAddress = "device3", songYoutubeUrl = "device2"},
-        };
-
-        
+        };        
 
       //  public IEnumerable<ThemeSong> GetAllThemeSongs()
 //        {

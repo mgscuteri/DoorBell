@@ -58,6 +58,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Data\masterDeviceList.xml" />
     <Content Include="Data\nonTimedOutDevices.xml" />
     <Content Include="Data\connectedDevices.xml" />
   </ItemGroup>
