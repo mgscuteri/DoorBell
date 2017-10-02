@@ -18,6 +18,12 @@
     <minutesToPlay>1</minutesToPlay>
     <startMinutesSeconds />
   </ThemeSong>
+    <ThemeSong>
+    <macAddress>ac-cf-85-12-42-e6</macAddress>
+    <songYoutubeUrl>https://www.youtube.com/watch?v=M11SvDtPBhA</songYoutubeUrl>
+    <minutesToPlay>1</minutesToPlay>
+    <startMinutesSeconds />
+  </ThemeSong>
 </ArrayOfThemeSong>
 
 
