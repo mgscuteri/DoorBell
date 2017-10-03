@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\ProgramState.cs" />
     <Compile Include="Helpers\PlaybackHelper.cs" />
     <Compile Include="Helpers\NetworkHelper.cs" />
     <Compile Include="Models\ConnectedDevice.cs" />

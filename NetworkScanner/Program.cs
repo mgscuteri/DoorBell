@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +12,7 @@ using System.Threading;
 using System.Xml;
 using DoorBell.Models;
 using System.Web;
-
+using NetworkScanner.Data;
 
 
 namespace NetworkScanner
@@ -31,6 +32,7 @@ namespace NetworkScanner
             PlaybackHelper playbackHelper = new PlaybackHelper();
             playbackHelper.isPlaying = false;
             bool testMode = true;
+            
 
             while (1 == 1)
             {
@@ -38,10 +40,23 @@ namespace NetworkScanner
                 {
                     //Initialize network helper
                     NetworkHelper netHelper = new NetworkHelper();
+                    netHelper.programState = ProgramState.DoneProcessingPingResponses;
 
                     netHelper.pingCounter = 253;  //Unless you've configured your router to assign limited ip's, Don't even mess with this. 
                                                   //Ping all availble ip addresses to see which are active (Async + Threaded)
+                    netHelper.pollingIntervalMiliseconds = pollingIntervalMiliseconds;
+
+                    //Don't start next round of pings until we've finished acting on the previous round 
+                    while(netHelper.programState != ProgramState.DoneProcessingPingResponses)
+                    {
+                        //Wait
+                    }
+                    Stopwatch timer = new Stopwatch();
+                    timer.Start();
+                    netHelper.programState = ProgramState.PingAllStarted;
+                    Console.WriteLine("1) Beggining Pings");
                     netHelper.Ping_all(pingTimeOutMiliseconds);
+                    
                     //Prepare to serialization helpers
                     XmlSerializer connectedDeviceListSerializer = new System.Xml.Serialization.XmlSerializer(typeof(List<ConnectedDevice>));
                     XmlSerializer themeSongSerializer = new System.Xml.Serialization.XmlSerializer(typeof(List<ThemeSong>));
@@ -76,27 +91,19 @@ namespace NetworkScanner
                             nonTimedOutDevices.Remove(cd);
                         }
                     }
-                    //Wait for pings to finish -- ANY WORK not dependent on ping responses should go ABOVE here!
-                    int x = 0;
-                    while (netHelper.pingCounter >= 1 && x < 3)
+                   
+                    //wait for pings to finish
+                    while (netHelper.programState != ProgramState.PingAllCompleted)
                     {
-                        var t = Task.Run(async delegate
-                        {
-                            await Task.Delay(pollingIntervalMiliseconds);
-                            return 1;
-                        });
-                        x++;
-                        t.Wait();
-                        //wait for pings to finish 
+                        //wait
                     }
-                    //polling interval
-
-                    //Create temporary list to avoid multithreaded shared memory issues
-                    //List<ConnectedDevice> tempSuccessfulPings = netHelper.SuccessfullPings.ToList();
-                    //Add New connections to nonTimedOutDevices, and que up theme songs to be played.
-                    
+                    netHelper.programState = ProgramState.ProcessingPingResponses;
+                    Console.WriteLine("3) Entering loop with [" + netHelper.SuccessfullPings.Count.ToString() + "] responses. Locking Pings");
+                    lock(netHelper.SuccessfullPings)
+                    { 
                         foreach (ConnectedDevice cd in netHelper.SuccessfullPings)
                         {
+                            
                             bool ipAddressExistsInMasterList = (masterDeviceList.Any(item => item.ip == cd.ip));
                             bool isNewNonTimedOutConnection = !(nonTimedOutDevices.Any(item => item.macaddress == cd.macaddress));
                             bool existsInThemeSongs = (themeSongs.Any(item => item.macAddress == cd.macaddress));
@@ -139,7 +146,9 @@ namespace NetworkScanner
                                 }
                             }
                         }
-                    
+                        netHelper.programState = ProgramState.DoneProcessingPingResponses;
+                        Console.WriteLine("4) Done proccessing pings. Ready to launch new round of pings.");
+                    }
 
                     System.IO.FileStream connectedDevicesFile = System.IO.File.Open(connectedDevicesXmlPath, FileMode.Truncate);
                     connectedDeviceListSerializer.Serialize(connectedDevicesFile, netHelper.SuccessfullPings);
@@ -150,8 +159,7 @@ namespace NetworkScanner
                     System.IO.FileStream masterDeviceListFile = System.IO.File.Open(masterDeviceListXmlPath, FileMode.Truncate);
                     connectedDeviceListSerializer.Serialize(masterDeviceListFile, masterDeviceList);
                     masterDeviceListFile.Close();
-
-                    
+                    Console.WriteLine("~Miliseconds elapsed this iteration: [" + timer.ElapsedMilliseconds.ToString() + "]");
                 }
                 catch
                 {

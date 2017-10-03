@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Net;
 using System.Web;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Threading;
+using System.Threading.Tasks;
+using NetworkScanner.Data;
 using NetworkScanner.Models;
 
 namespace NetworkScanner.Helpers
@@ -14,7 +17,8 @@ namespace NetworkScanner.Helpers
     {
         public List<ConnectedDevice> SuccessfullPings { get; set; }
         public int pingCounter { get; set; }
-
+        public int pollingIntervalMiliseconds { get; set; }
+        public ProgramState programState { get; set; }
 
         public NetworkHelper()
         {
@@ -92,33 +96,55 @@ namespace NetworkScanner.Helpers
         private void PingCompleted(object sender, PingCompletedEventArgs e)
         {
             pingCounter--;
-
-            string ip = (string)e.UserState;
-            if (e.Reply != null && e.Reply.Status == IPStatus.Success)
+            try
             {
-                string hostname = GetHostName(ip);
-                string macaddres = GetMacAddress(ip);
-                string[] arr = new string[3];
 
-                //store all three parameters to be shown on ListView
-                arr[0] = ip;
-                arr[1] = hostname;
-                arr[2] = macaddres;
 
-                // Logic for Ping Reply Success
-                ConnectedDevice pingResults = new ConnectedDevice
+                string ip = (string) e.UserState;
+                if (e.Reply != null && e.Reply.Status == IPStatus.Success)
                 {
-                    hostname = hostname,
-                    ip = ip, macaddress = macaddres,
-                    connectDateTime = DateTime.UtcNow,
-                    isNewConnection = true
-                };
-                if(!SuccessfullPings.Any(x => x.macaddress == pingResults.macaddress))
-                    SuccessfullPings.Add(pingResults);
+                    string hostname = GetHostName(ip);
+                    string macaddres = GetMacAddress(ip);
+                    string[] arr = new string[3];
+
+                    //store all three parameters to be shown on ListView
+                    arr[0] = ip;
+                    arr[1] = hostname;
+                    arr[2] = macaddres;
+
+                    // Logic for Ping Reply Success
+                    ConnectedDevice pingResults = new ConnectedDevice
+                    {
+                        hostname = hostname,
+                        ip = ip,
+                        macaddress = macaddres,
+                        connectDateTime = DateTime.UtcNow,
+                        isNewConnection = true
+                    };
+                    if (!SuccessfullPings.Any(x => x.macaddress == pingResults.macaddress))
+                    {
+                        try
+                        {
+                            Console.WriteLine("------Adding Host: " + pingResults.hostname + "  macAddress: " + pingResults.macaddress);
+                            SuccessfullPings.Add(pingResults);
+                        }
+                        catch (Exception)
+                        {
+                            Console.WriteLine("------This ping responded too late!");
+                            //This ping responded too late!
+                        }
+                    }
+                }
+           
+                else
+                {
+                    Console.WriteLine("------Something weird happened!");
+                    //Something weird happened 
+                }
             }
-            else
+            catch (Exception)
             {
-                // MessageBox.Show(e.Reply.Status.ToString());
+                //
             }
         }
 
@@ -133,6 +159,7 @@ namespace NetworkScanner.Helpers
                         System.Net.NetworkInformation.Ping ping = new System.Net.NetworkInformation.Ping();
                         ping.PingCompleted += new PingCompletedEventHandler(PingCompleted);
                         ping.SendAsync(host, timeout, host);
+                        //ping.Send(host);
                     }
                     catch
                     {
@@ -147,13 +174,12 @@ namespace NetworkScanner.Helpers
         public void Ping_all(int pingTimeOutMiliseconds)
         {
             string gate_ip = NetworkHelper.NetworkGateway();
-            lock(SuccessfullPings)
-            {
-
-            
-            //Extracting and pinging all other ip's.
+            //lock(SuccessfullPings)
+            //{
+                //Extracting and pinging all other ip's.
                 string[] array = gate_ip.Split('.');
 
+                //parallel for  response collection
                 for (int i = 2; i <= 255; i++)
                 {
 
@@ -162,7 +188,25 @@ namespace NetworkScanner.Helpers
                     //time in milliseconds           
                     Ping(ping_var, 1, pingTimeOutMiliseconds);
                 }
-            }
+                Console.WriteLine("1.2) Ping All Complete. Ping threads processessing. Begin waiting.");
+
+                //Wait for pings to finish -- ANY WORK not dependent on ping responses should go ABOVE here!
+                int x = 0;
+                while (pingCounter >= 1 && x < 3)
+                {
+                    var t = Task.Run(async delegate
+                    {
+                        await Task.Delay(pingTimeOutMiliseconds + 200);
+                        return 1;
+                    });
+                    x++;
+                    
+                    t.Wait();
+                    //wait for pings to finish 
+                }
+            Console.WriteLine("2) All pings SHOULD be complete. Host additions not occuring between steps 1 and 2 are errors.");
+            programState =  ProgramState.PingAllCompleted;
+            // }
         }
 
     }
