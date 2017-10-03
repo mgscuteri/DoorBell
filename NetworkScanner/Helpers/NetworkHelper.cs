@@ -10,17 +10,23 @@ using System.Threading;
 using System.Threading.Tasks;
 using NetworkScanner.Data;
 using NetworkScanner.Models;
+using NetworkScanner;
 
 namespace NetworkScanner.Helpers
 {
     public class NetworkHelper
     {
-        public List<ConnectedDevice> SuccessfullPings { get; set; }
+        public List<ConnectedDevice> SuccessfullPings{ get; set; }
         public int pingCounter { get; set; }
         public ProgramState programState { get; set; }
         public NetworkHelper()
         {
             SuccessfullPings = new List<ConnectedDevice> {};
+        }
+
+        public List<ConnectedDevice>GetConnectedDevices()
+        {
+            return SuccessfullPings;
         }
 
         static string NetworkGateway()
@@ -95,8 +101,6 @@ namespace NetworkScanner.Helpers
             pingCounter--;
             try
             {
-
-
                 string ip = (string) e.UserState;
                 if (e.Reply != null && e.Reply.Status == IPStatus.Success)
                 {
@@ -123,6 +127,7 @@ namespace NetworkScanner.Helpers
                         try
                         {
                             Console.WriteLine("------Adding Host: " + pingResults.hostname + "  macAddress: " + pingResults.macaddress);
+                            
                             SuccessfullPings.Add(pingResults);
                         }
                         catch (Exception)
@@ -153,12 +158,50 @@ namespace NetworkScanner.Helpers
                     try
                     {
                         System.Net.NetworkInformation.Ping ping = new System.Net.NetworkInformation.Ping();
-                        ping.PingCompleted += new PingCompletedEventHandler(PingCompleted);
-                        ping.SendAsync(host, timeout, host);
-                        //ping.Send(host);
+                        //ping.PingCompleted += new PingCompletedEventHandler(PingCompleted);
+                        //ping.SendAsync(host, timeout, host);
+                        var pingResult = ping.Send(host);
+                        if(pingResult.Status == IPStatus.Success)
+                        {
+                            string ip = host;
+                            string hostname = GetHostName(ip);
+                            string macaddres = GetMacAddress(ip);
+                            string[] arr = new string[3];
+
+                            //store all three parameters to be shown on ListView
+                            arr[0] = ip;
+                            arr[1] = hostname;
+                            arr[2] = macaddres;
+
+                            // Logic for Ping Reply Success
+                            ConnectedDevice pingResults = new ConnectedDevice
+                            {
+                                hostname = hostname,
+                                ip = ip,
+                                macaddress = macaddres,
+                                connectDateTime = DateTime.UtcNow,
+                                isNewConnection = true
+                            };
+                            if (!SuccessfullPings.Any(x => x.macaddress == pingResults.macaddress))
+                            {
+                                try
+                                {
+                                    Console.WriteLine("------Adding Host: " + pingResults.hostname + "  macAddress: " + pingResults.macaddress);
+
+                                    SuccessfullPings.Add(pingResults);
+                                }
+                                catch (Exception)
+                                {
+                                    Console.WriteLine("------This ping responded too late!");
+                                    //This ping responded too late!
+                                }
+                            }
+                        }
+                        pingCounter--;
                     }
                     catch
                     {
+                        pingCounter--;
                         // Do nothing and let it try again until the attempts are exausted.
                         // Exceptions are thrown for normal ping failurs like address lookup
                         // failed.  For this reason we are supressing errors.
@@ -170,8 +213,8 @@ namespace NetworkScanner.Helpers
         public void Ping_all(int pingTimeOutMiliseconds)
         {
             string gate_ip = NetworkHelper.NetworkGateway();
-            //lock(SuccessfullPings)
-            //{
+            lock (SuccessfullPings)
+            {
                 //Extracting and pinging all other ip's.
                 string[] array = gate_ip.Split('.');
 
@@ -188,13 +231,33 @@ namespace NetworkScanner.Helpers
 
                 //Wait for pings to finish -- ANY WORK not dependent on ping responses should go ABOVE here!
                 int x = 0;
+                int y = 0;
+
                 while (pingCounter >= 1)
                 {
+                    
+                    x = pingCounter;                    
+                    var t = Task.Run(async delegate
+                    {
+                        await Task.Delay(20);
+                        return 1;
+                    });
+                    t.Wait();
+
+                    if (x == pingCounter)
+                    {
+                        y++;
+                        if (y > 100)
+                        {
+                            Console.WriteLine("We've now gone 2 seconds without a new ping response. Network Error. Ping response event did not fire. Break the loop.");
+                            pingCounter = 0;
+                        }
+                    }
                     //wait for pings to finish 
                 }
-            Console.WriteLine("2) All pings SHOULD be complete. Host additions not occuring between steps 1 and 2 are errors.");
-            programState =  ProgramState.PingAllCompleted;
-            // }
+                Console.WriteLine("2) All pings SHOULD be complete. Host additions not occuring between steps 1 and 2 are errors.");
+                programState = ProgramState.PingAllCompleted;
+             }
         }
 
     }

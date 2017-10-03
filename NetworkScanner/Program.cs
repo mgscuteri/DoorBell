@@ -21,6 +21,7 @@ namespace NetworkScanner
     {
         public const int pingTimeOutMiliseconds = 500; //500
         public const int connectionTimeOutMinutes = 90;
+        public List<ConnectedDevice> successfullNetworkPings = new List<ConnectedDevice>() { };
 
 
         static void Main(string[] args)
