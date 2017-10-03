@@ -1153,4 +1153,11 @@
     <connectDateTime>2017-10-03T19:35:21.1862619Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
+  <ConnectedDevice>
+    <ip>172.19.88.23</ip>
+    <hostname>jjankows840g3</hostname>
+    <macaddress>ec-8e-b5-9d-5a-c6</macaddress>
+    <connectDateTime>2017-10-03T19:58:47.5098802Z</connectDateTime>
+    <isNewConnection>true</isNewConnection>
+  </ConnectedDevice>
 </ArrayOfConnectedDevice>

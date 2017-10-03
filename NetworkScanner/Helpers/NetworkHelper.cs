@@ -17,14 +17,11 @@ namespace NetworkScanner.Helpers
     {
         public List<ConnectedDevice> SuccessfullPings { get; set; }
         public int pingCounter { get; set; }
-        public int pollingIntervalMiliseconds { get; set; }
         public ProgramState programState { get; set; }
-
         public NetworkHelper()
         {
             SuccessfullPings = new List<ConnectedDevice> {};
         }
-    
 
         static string NetworkGateway()
         {
@@ -192,16 +189,8 @@ namespace NetworkScanner.Helpers
 
                 //Wait for pings to finish -- ANY WORK not dependent on ping responses should go ABOVE here!
                 int x = 0;
-                while (pingCounter >= 1 && x < 3)
+                while (pingCounter >= 1)
                 {
-                    var t = Task.Run(async delegate
-                    {
-                        await Task.Delay(pingTimeOutMiliseconds + 200);
-                        return 1;
-                    });
-                    x++;
-                    
-                    t.Wait();
                     //wait for pings to finish 
                 }
             Console.WriteLine("2) All pings SHOULD be complete. Host additions not occuring between steps 1 and 2 are errors.");

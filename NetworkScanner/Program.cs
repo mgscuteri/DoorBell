@@ -19,8 +19,7 @@ namespace NetworkScanner
 {
     class Program
     {
-        public const int pollingIntervalMiliseconds = 1000; //750
-        public const int pingTimeOutMiliseconds = 700; //500
+        public const int pingTimeOutMiliseconds = 150; //500
         public const int connectionTimeOutMinutes = 90;
 
 
@@ -32,7 +31,6 @@ namespace NetworkScanner
             PlaybackHelper playbackHelper = new PlaybackHelper();
             playbackHelper.isPlaying = false;
             bool testMode = true;
-            
 
             while (1 == 1)
             {
@@ -44,7 +42,6 @@ namespace NetworkScanner
 
                     netHelper.pingCounter = 253;  //Unless you've configured your router to assign limited ip's, Don't even mess with this. 
                                                   //Ping all availble ip addresses to see which are active (Async + Threaded)
-                    netHelper.pollingIntervalMiliseconds = pollingIntervalMiliseconds;
 
                     //Don't start next round of pings until we've finished acting on the previous round 
                     while(netHelper.programState != ProgramState.DoneProcessingPingResponses)
