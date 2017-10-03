@@ -19,7 +19,7 @@ namespace NetworkScanner
 {
     class Program
     {
-        public const int pingTimeOutMiliseconds = 150; //500
+        public const int pingTimeOutMiliseconds = 500; //500
         public const int connectionTimeOutMinutes = 90;
 
 

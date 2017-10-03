@@ -4,597 +4,632 @@
     <ip>172.19.88.14</ip>
     <hostname>awang9480</hostname>
     <macaddress>38-63-bb-b7-5a-31</macaddress>
-    <connectDateTime>2017-10-03T19:59:01.5552846Z</connectDateTime>
+    <connectDateTime>2017-10-03T20:03:06.8578124Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
     <ip>172.19.88.23</ip>
     <hostname>jjankows840g3</hostname>
     <macaddress>ec-8e-b5-9d-5a-c6</macaddress>
-    <connectDateTime>2017-10-03T19:59:01.5862877Z</connectDateTime>
+    <connectDateTime>2017-10-03T20:03:06.9568223Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
     <ip>172.19.88.24</ip>
     <hostname>beconomy840</hostname>
     <macaddress>dc-4a-3e-05-a8-b8</macaddress>
-    <connectDateTime>2017-10-03T19:59:01.6262917Z</connectDateTime>
+    <connectDateTime>2017-10-03T20:03:07.0498316Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
     <ip>172.19.88.27</ip>
     <hostname>mcanda840g3</hostname>
     <macaddress>c8-d3-ff-6d-1a-c3</macaddress>
-    <connectDateTime>2017-10-03T19:59:01.699299Z</connectDateTime>
+    <connectDateTime>2017-10-03T20:03:07.2088475Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
     <ip>172.19.88.28</ip>
     <hostname>srongner840g3</hostname>
     <macaddress>c8-d3-ff-6d-79-3b</macaddress>
-    <connectDateTime>2017-10-03T19:59:01.7163007Z</connectDateTime>
+    <connectDateTime>2017-10-03T20:03:07.3058572Z</connectDateTime>
+    <isNewConnection>true</isNewConnection>
+  </ConnectedDevice>
+  <ConnectedDevice>
+    <ip>172.19.88.5</ip>
+    <macaddress>28-6f-7f-d0-25-ff</macaddress>
+    <connectDateTime>2017-10-03T20:03:08.3289595Z</connectDateTime>
+    <isNewConnection>true</isNewConnection>
+  </ConnectedDevice>
+  <ConnectedDevice>
+    <ip>172.19.88.3</ip>
+    <macaddress>00-de-fb-83-62-c1</macaddress>
+    <connectDateTime>2017-10-03T20:03:08.3509617Z</connectDateTime>
+    <isNewConnection>true</isNewConnection>
+  </ConnectedDevice>
+  <ConnectedDevice>
+    <ip>172.19.88.4</ip>
+    <macaddress>28-6f-7f-d0-26-7f</macaddress>
+    <connectDateTime>2017-10-03T20:03:08.3529619Z</connectDateTime>
+    <isNewConnection>true</isNewConnection>
+  </ConnectedDevice>
+  <ConnectedDevice>
+    <ip>172.19.88.2</ip>
+    <macaddress>00-de-fb-83-62-41</macaddress>
+    <connectDateTime>2017-10-03T20:03:08.3769643Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
     <ip>172.19.88.31</ip>
     <hostname>dsholly840g3</hostname>
     <macaddress>98-e7-f4-f4-88-ad</macaddress>
-    <connectDateTime>2017-10-03T19:59:01.839313Z</connectDateTime>
-    <isNewConnection>true</isNewConnection>
-  </ConnectedDevice>
-  <ConnectedDevice>
-    <ip>172.19.88.39</ip>
-    <hostname>jhenness840</hostname>
-    <macaddress>dc-4a-3e-5d-10-d1</macaddress>
-    <connectDateTime>2017-10-03T19:59:02.0033294Z</connectDateTime>
+    <connectDateTime>2017-10-03T20:03:08.4189685Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
     <ip>172.19.88.47</ip>
     <hostname>jhumma840g3</hostname>
     <macaddress>98-e7-f4-f6-a3-20</macaddress>
-    <connectDateTime>2017-10-03T19:59:02.0833374Z</connectDateTime>
+    <connectDateTime>2017-10-03T20:03:08.4679734Z</connectDateTime>
+    <isNewConnection>true</isNewConnection>
+  </ConnectedDevice>
+  <ConnectedDevice>
+    <ip>172.19.88.39</ip>
+    <hostname>jhenness840</hostname>
+    <macaddress>dc-4a-3e-5d-10-d1</macaddress>
+    <connectDateTime>2017-10-03T20:03:08.4719738Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
     <ip>172.19.88.48</ip>
     <hostname>gsmith840</hostname>
     <macaddress>48-0f-cf-28-fe-bc</macaddress>
-    <connectDateTime>2017-10-03T19:59:02.1553446Z</connectDateTime>
+    <connectDateTime>2017-10-03T20:03:08.4979764Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
     <ip>172.19.88.49</ip>
     <hostname>ikarnoto840g3</hostname>
     <macaddress>c8-d3-ff-6d-d9-46</macaddress>
-    <connectDateTime>2017-10-03T19:59:02.2243515Z</connectDateTime>
+    <connectDateTime>2017-10-03T20:03:08.5569823Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
     <ip>172.19.88.53</ip>
     <hostname>dmaholic840</hostname>
     <macaddress>30-8d-99-c1-ba-b0</macaddress>
-    <connectDateTime>2017-10-03T19:59:02.30936Z</connectDateTime>
-    <isNewConnection>true</isNewConnection>
-  </ConnectedDevice>
-  <ConnectedDevice>
-    <ip>172.19.88.59</ip>
-    <hostname>rshallow840g3</hostname>
-    <macaddress>c8-d3-ff-6d-e9-74</macaddress>
-    <connectDateTime>2017-10-03T19:59:02.369366Z</connectDateTime>
+    <connectDateTime>2017-10-03T20:03:08.6009867Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
     <ip>172.19.88.58</ip>
     <hostname>jfischet9470a</hostname>
     <macaddress>9c-b6-54-a2-df-47</macaddress>
-    <connectDateTime>2017-10-03T19:59:02.3743665Z</connectDateTime>
+    <connectDateTime>2017-10-03T20:03:08.603987Z</connectDateTime>
+    <isNewConnection>true</isNewConnection>
+  </ConnectedDevice>
+  <ConnectedDevice>
+    <ip>172.19.88.59</ip>
+    <hostname>rshallow840g3</hostname>
+    <macaddress>c8-d3-ff-6d-e9-74</macaddress>
+    <connectDateTime>2017-10-03T20:03:08.6429909Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
     <ip>172.19.88.65</ip>
     <hostname>AJAKUBOW840</hostname>
     <macaddress>dc-4a-3e-06-68-db</macaddress>
-    <connectDateTime>2017-10-03T19:59:02.4273718Z</connectDateTime>
+    <connectDateTime>2017-10-03T20:03:08.6849951Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
     <ip>172.19.88.66</ip>
     <hostname>WYOUNGMA840G3</hostname>
     <macaddress>98-e7-f4-f6-90-ff</macaddress>
-    <connectDateTime>2017-10-03T19:59:02.469376Z</connectDateTime>
+    <connectDateTime>2017-10-03T20:03:08.7079974Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
     <ip>172.19.88.75</ip>
     <hostname>jbasch9470</hostname>
     <macaddress>9c-b6-54-a3-00-d4</macaddress>
-    <connectDateTime>2017-10-03T19:59:02.5273818Z</connectDateTime>
+    <connectDateTime>2017-10-03T20:03:08.7329999Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
     <ip>172.19.88.76</ip>
     <hostname>jprostko840g3</hostname>
     <macaddress>c8-d3-ff-6d-3a-6d</macaddress>
-    <connectDateTime>2017-10-03T19:59:02.6063897Z</connectDateTime>
-    <isNewConnection>true</isNewConnection>
-  </ConnectedDevice>
-  <ConnectedDevice>
-    <ip>172.19.88.72</ip>
-    <hostname>vdavis9470</hostname>
-    <macaddress>28-80-23-d4-d0-02</macaddress>
-    <connectDateTime>2017-10-03T19:59:02.6073898Z</connectDateTime>
+    <connectDateTime>2017-10-03T20:03:08.804007Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
     <ip>172.19.88.77</ip>
     <hostname>eashbaug840</hostname>
     <macaddress>dc-4a-3e-06-68-cc</macaddress>
-    <connectDateTime>2017-10-03T19:59:02.6643955Z</connectDateTime>
-    <isNewConnection>true</isNewConnection>
-  </ConnectedDevice>
-  <ConnectedDevice>
-    <ip>172.19.88.79</ip>
-    <hostname>cstack840g3</hostname>
-    <macaddress>3c-52-82-4b-d8-62</macaddress>
-    <connectDateTime>2017-10-03T19:59:02.7264017Z</connectDateTime>
+    <connectDateTime>2017-10-03T20:03:08.8100076Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
     <ip>172.19.88.78</ip>
     <hostname>kmckenzi840</hostname>
     <macaddress>58-20-b1-72-b0-d8</macaddress>
-    <connectDateTime>2017-10-03T19:59:02.759405Z</connectDateTime>
+    <connectDateTime>2017-10-03T20:03:08.8790145Z</connectDateTime>
+    <isNewConnection>true</isNewConnection>
+  </ConnectedDevice>
+  <ConnectedDevice>
+    <ip>172.19.88.79</ip>
+    <hostname>cstack840g3</hostname>
+    <macaddress>3c-52-82-4b-d8-62</macaddress>
+    <connectDateTime>2017-10-03T20:03:08.9200186Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
     <ip>172.19.88.80</ip>
     <hostname>tdemarti9470</hostname>
     <macaddress>a0-2b-b8-2e-75-4a</macaddress>
-    <connectDateTime>2017-10-03T19:59:02.8824173Z</connectDateTime>
+    <connectDateTime>2017-10-03T20:03:08.9210187Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
     <ip>172.19.88.81</ip>
     <hostname>rproska840g3</hostname>
     <macaddress>c8-d3-ff-6d-3a-64</macaddress>
-    <connectDateTime>2017-10-03T19:59:02.8824173Z</connectDateTime>
+    <connectDateTime>2017-10-03T20:03:08.9770243Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
     <ip>172.19.88.82</ip>
     <hostname>kloomis9470</hostname>
     <macaddress>a0-2b-b8-2e-96-64</macaddress>
-    <connectDateTime>2017-10-03T19:59:02.919421Z</connectDateTime>
+    <connectDateTime>2017-10-03T20:03:09.014028Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
     <ip>172.19.88.84</ip>
     <hostname>PA01WBSLOC01</hostname>
     <macaddress>a0-d3-c1-6f-6d-c8</macaddress>
-    <connectDateTime>2017-10-03T19:59:02.9784269Z</connectDateTime>
-    <isNewConnection>true</isNewConnection>
-  </ConnectedDevice>
-  <ConnectedDevice>
-    <ip>172.19.88.86</ip>
-    <hostname>thughes9470</hostname>
-    <macaddress>a0-d3-c1-9a-36-49</macaddress>
-    <connectDateTime>2017-10-03T19:59:03.0584349Z</connectDateTime>
-    <isNewConnection>true</isNewConnection>
-  </ConnectedDevice>
-  <ConnectedDevice>
-    <ip>172.19.88.90</ip>
-    <hostname>dpelton840</hostname>
-    <macaddress>dc-4a-3e-5d-30-bb</macaddress>
-    <connectDateTime>2017-10-03T19:59:03.0774368Z</connectDateTime>
-    <isNewConnection>true</isNewConnection>
-  </ConnectedDevice>
-  <ConnectedDevice>
-    <ip>172.19.88.88</ip>
-    <hostname>thoopes840g3</hostname>
-    <macaddress>3c-52-82-4b-98-00</macaddress>
-    <connectDateTime>2017-10-03T19:59:03.1074398Z</connectDateTime>
+    <connectDateTime>2017-10-03T20:03:09.0490315Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
     <ip>172.19.88.91</ip>
     <hostname>DCOHEN840A</hostname>
     <macaddress>58-20-b1-71-f6-e1</macaddress>
-    <connectDateTime>2017-10-03T19:59:03.1164407Z</connectDateTime>
+    <connectDateTime>2017-10-03T20:03:09.1320398Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
-    <ip>172.19.88.96</ip>
-    <hostname>apolvino840g3</hostname>
-    <macaddress>c8-d3-ff-6d-3a-75</macaddress>
-    <connectDateTime>2017-10-03T19:59:03.2924583Z</connectDateTime>
+    <ip>172.19.88.90</ip>
+    <hostname>dpelton840</hostname>
+    <macaddress>dc-4a-3e-5d-30-bb</macaddress>
+    <connectDateTime>2017-10-03T20:03:09.1390405Z</connectDateTime>
+    <isNewConnection>true</isNewConnection>
+  </ConnectedDevice>
+  <ConnectedDevice>
+    <ip>172.19.88.88</ip>
+    <hostname>thoopes840g3</hostname>
+    <macaddress>3c-52-82-4b-98-00</macaddress>
+    <connectDateTime>2017-10-03T20:03:09.1550421Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
     <ip>172.19.88.94</ip>
     <hostname>PA01QTRAN02</hostname>
     <macaddress>d0-bf-9c-26-e0-c5</macaddress>
-    <connectDateTime>2017-10-03T19:59:03.3024593Z</connectDateTime>
+    <connectDateTime>2017-10-03T20:03:09.1800446Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
     <ip>172.19.88.106</ip>
     <hostname>Krishna</hostname>
     <macaddress>d0-bf-9c-8f-a4-58</macaddress>
-    <connectDateTime>2017-10-03T19:59:03.3134604Z</connectDateTime>
+    <connectDateTime>2017-10-03T20:03:09.2510517Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
     <ip>172.19.88.109</ip>
     <hostname>lfarrell9470</hostname>
     <macaddress>a0-d3-c1-9a-46-fc</macaddress>
-    <connectDateTime>2017-10-03T19:59:03.3714662Z</connectDateTime>
-    <isNewConnection>true</isNewConnection>
-  </ConnectedDevice>
-  <ConnectedDevice>
-    <ip>172.19.88.108</ip>
-    <hostname>dclemens840</hostname>
-    <macaddress>58-20-b1-72-30-61</macaddress>
-    <connectDateTime>2017-10-03T19:59:03.3744665Z</connectDateTime>
-    <isNewConnection>true</isNewConnection>
-  </ConnectedDevice>
-  <ConnectedDevice>
-    <ip>172.19.88.112</ip>
-    <hostname>mscuteri840g3.vertexinc.com</hostname>
-    <macaddress>OWN Machine</macaddress>
-    <connectDateTime>2017-10-03T19:59:03.4304721Z</connectDateTime>
-    <isNewConnection>true</isNewConnection>
-  </ConnectedDevice>
-  <ConnectedDevice>
-    <ip>172.19.88.114</ip>
-    <hostname>tturner840</hostname>
-    <macaddress>ec-8e-b5-9e-a0-5b</macaddress>
-    <connectDateTime>2017-10-03T19:59:03.4684759Z</connectDateTime>
+    <connectDateTime>2017-10-03T20:03:09.2680534Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
     <ip>172.19.88.111</ip>
     <hostname>ashah840</hostname>
     <macaddress>30-8d-99-c1-7a-d4</macaddress>
-    <connectDateTime>2017-10-03T19:59:03.4744765Z</connectDateTime>
+    <connectDateTime>2017-10-03T20:03:09.3060572Z</connectDateTime>
+    <isNewConnection>true</isNewConnection>
+  </ConnectedDevice>
+  <ConnectedDevice>
+    <ip>172.19.88.96</ip>
+    <hostname>apolvino840g3</hostname>
+    <macaddress>c8-d3-ff-6d-3a-75</macaddress>
+    <connectDateTime>2017-10-03T20:03:09.3390605Z</connectDateTime>
+    <isNewConnection>true</isNewConnection>
+  </ConnectedDevice>
+  <ConnectedDevice>
+    <ip>172.19.88.108</ip>
+    <hostname>dclemens840</hostname>
+    <macaddress>58-20-b1-72-30-61</macaddress>
+    <connectDateTime>2017-10-03T20:03:09.3680634Z</connectDateTime>
+    <isNewConnection>true</isNewConnection>
+  </ConnectedDevice>
+  <ConnectedDevice>
+    <ip>172.19.88.114</ip>
+    <hostname>tturner840</hostname>
+    <macaddress>ec-8e-b5-9e-a0-5b</macaddress>
+    <connectDateTime>2017-10-03T20:03:09.4170683Z</connectDateTime>
+    <isNewConnection>true</isNewConnection>
+  </ConnectedDevice>
+  <ConnectedDevice>
+    <ip>172.19.88.112</ip>
+    <hostname>mscuteri840g3.vertexinc.com</hostname>
+    <macaddress>OWN Machine</macaddress>
+    <connectDateTime>2017-10-03T20:03:09.4370703Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
     <ip>172.19.88.115</ip>
     <hostname>pcollins840</hostname>
     <macaddress>dc-4a-3e-5c-cf-56</macaddress>
-    <connectDateTime>2017-10-03T19:59:03.5314822Z</connectDateTime>
-    <isNewConnection>true</isNewConnection>
-  </ConnectedDevice>
-  <ConnectedDevice>
-    <ip>172.19.88.123</ip>
-    <hostname>sschwart840g3</hostname>
-    <macaddress>c8-d3-ff-6d-a9-ed</macaddress>
-    <connectDateTime>2017-10-03T19:59:03.6204911Z</connectDateTime>
-    <isNewConnection>true</isNewConnection>
-  </ConnectedDevice>
-  <ConnectedDevice>
-    <ip>172.19.88.124</ip>
-    <hostname>dchang9470</hostname>
-    <macaddress>f0-92-1c-5d-73-b2</macaddress>
-    <connectDateTime>2017-10-03T19:59:03.6214912Z</connectDateTime>
+    <connectDateTime>2017-10-03T20:03:09.474074Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
     <ip>172.19.88.122</ip>
     <hostname>apownall840g3</hostname>
     <macaddress>c8-d3-ff-6d-e9-25</macaddress>
-    <connectDateTime>2017-10-03T19:59:03.6234914Z</connectDateTime>
+    <connectDateTime>2017-10-03T20:03:09.5330799Z</connectDateTime>
+    <isNewConnection>true</isNewConnection>
+  </ConnectedDevice>
+  <ConnectedDevice>
+    <ip>172.19.88.124</ip>
+    <hostname>dchang9470</hostname>
+    <macaddress>f0-92-1c-5d-73-b2</macaddress>
+    <connectDateTime>2017-10-03T20:03:09.5760842Z</connectDateTime>
+    <isNewConnection>true</isNewConnection>
+  </ConnectedDevice>
+  <ConnectedDevice>
+    <ip>172.19.88.123</ip>
+    <hostname>sschwart840g3</hostname>
+    <macaddress>c8-d3-ff-6d-a9-ed</macaddress>
+    <connectDateTime>2017-10-03T20:03:09.5850851Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
     <ip>172.19.88.127</ip>
     <hostname>sbabikia840</hostname>
     <macaddress>dc-4a-3e-63-1e-3b</macaddress>
-    <connectDateTime>2017-10-03T19:59:03.6654956Z</connectDateTime>
+    <connectDateTime>2017-10-03T20:03:09.6200886Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
     <ip>172.19.88.131</ip>
     <hostname>ghahn840g3</hostname>
     <macaddress>ec-8e-b5-9d-5a-71</macaddress>
-    <connectDateTime>2017-10-03T19:59:03.7775068Z</connectDateTime>
-    <isNewConnection>true</isNewConnection>
-  </ConnectedDevice>
-  <ConnectedDevice>
-    <ip>172.19.88.132</ip>
-    <hostname>ppoe840a</hostname>
-    <macaddress>48-0f-cf-28-0f-d5</macaddress>
-    <connectDateTime>2017-10-03T19:59:03.7905081Z</connectDateTime>
+    <connectDateTime>2017-10-03T20:03:09.6870953Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
     <ip>172.19.88.128</ip>
     <hostname>dparvens840g3</hostname>
     <macaddress>c8-d3-ff-6d-2a-44</macaddress>
-    <connectDateTime>2017-10-03T19:59:03.7915082Z</connectDateTime>
+    <connectDateTime>2017-10-03T20:03:09.6990965Z</connectDateTime>
+    <isNewConnection>true</isNewConnection>
+  </ConnectedDevice>
+  <ConnectedDevice>
+    <ip>172.19.88.132</ip>
+    <hostname>ppoe840a</hostname>
+    <macaddress>48-0f-cf-28-0f-d5</macaddress>
+    <connectDateTime>2017-10-03T20:03:09.7050971Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
     <ip>172.19.88.135</ip>
     <hostname>hingram9470</hostname>
     <macaddress>14-58-d0-b8-38-41</macaddress>
-    <connectDateTime>2017-10-03T19:59:03.8555146Z</connectDateTime>
+    <connectDateTime>2017-10-03T20:03:09.8491115Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
     <ip>172.19.88.142</ip>
     <hostname>dgorecki840g3</hostname>
     <macaddress>c8-d3-ff-6d-e9-1f</macaddress>
-    <connectDateTime>2017-10-03T19:59:03.8915182Z</connectDateTime>
+    <connectDateTime>2017-10-03T20:03:09.8521118Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
     <ip>172.19.88.143</ip>
     <hostname>dpierson840a</hostname>
     <macaddress>dc-4a-3e-5d-b0-e0</macaddress>
-    <connectDateTime>2017-10-03T19:59:03.9185209Z</connectDateTime>
-    <isNewConnection>true</isNewConnection>
-  </ConnectedDevice>
-  <ConnectedDevice>
-    <ip>172.19.88.146</ip>
-    <hostname>rpatel840g3</hostname>
-    <macaddress>c8-d3-ff-6d-2a-53</macaddress>
-    <connectDateTime>2017-10-03T19:59:03.9215212Z</connectDateTime>
+    <connectDateTime>2017-10-03T20:03:09.8531119Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
     <ip>172.19.88.147</ip>
     <hostname>sramu840g3</hostname>
     <macaddress>40-b0-34-ec-ed-92</macaddress>
-    <connectDateTime>2017-10-03T19:59:03.9705261Z</connectDateTime>
+    <connectDateTime>2017-10-03T20:03:09.9421208Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
-    <ip>172.19.88.152</ip>
-    <hostname>gpowell840</hostname>
-    <macaddress>dc-4a-3e-5d-d0-91</macaddress>
-    <connectDateTime>2017-10-03T19:59:04.1105401Z</connectDateTime>
-    <isNewConnection>true</isNewConnection>
-  </ConnectedDevice>
-  <ConnectedDevice>
-    <ip>172.19.88.155</ip>
-    <hostname>bwang840</hostname>
-    <macaddress>dc-4a-3e-5c-ff-58</macaddress>
-    <connectDateTime>2017-10-03T19:59:04.1115402Z</connectDateTime>
+    <ip>172.19.88.146</ip>
+    <hostname>rpatel840g3</hostname>
+    <macaddress>c8-d3-ff-6d-2a-53</macaddress>
+    <connectDateTime>2017-10-03T20:03:09.9491215Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
     <ip>172.19.88.151</ip>
     <hostname>bstevens9470</hostname>
     <macaddress>28-80-23-d4-32-a1</macaddress>
-    <connectDateTime>2017-10-03T19:59:04.2125503Z</connectDateTime>
+    <connectDateTime>2017-10-03T20:03:10.0501316Z</connectDateTime>
+    <isNewConnection>true</isNewConnection>
+  </ConnectedDevice>
+  <ConnectedDevice>
+    <ip>172.19.88.152</ip>
+    <hostname>gpowell840</hostname>
+    <macaddress>dc-4a-3e-5d-d0-91</macaddress>
+    <connectDateTime>2017-10-03T20:03:10.0511317Z</connectDateTime>
+    <isNewConnection>true</isNewConnection>
+  </ConnectedDevice>
+  <ConnectedDevice>
+    <ip>172.19.88.155</ip>
+    <hostname>bwang840</hostname>
+    <macaddress>dc-4a-3e-5c-ff-58</macaddress>
+    <connectDateTime>2017-10-03T20:03:10.1901456Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
     <ip>172.19.88.162</ip>
     <hostname>sdaugher9470</hostname>
     <macaddress>9c-b6-54-a2-bf-a6</macaddress>
-    <connectDateTime>2017-10-03T19:59:04.2155506Z</connectDateTime>
+    <connectDateTime>2017-10-03T20:03:10.204147Z</connectDateTime>
+    <isNewConnection>true</isNewConnection>
+  </ConnectedDevice>
+  <ConnectedDevice>
+    <ip>172.19.88.6</ip>
+    <macaddress>00-a3-8e-19-b8-7f</macaddress>
+    <connectDateTime>2017-10-03T20:03:10.2621528Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
     <ip>172.19.88.167</ip>
     <hostname>jknoebel840</hostname>
     <macaddress>58-20-b1-73-16-7b</macaddress>
-    <connectDateTime>2017-10-03T19:59:04.2225513Z</connectDateTime>
+    <connectDateTime>2017-10-03T20:03:10.2681534Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
-    <ip>172.19.88.2</ip>
-    <macaddress>00-de-fb-83-62-41</macaddress>
-    <connectDateTime>2017-10-03T19:59:05.0066297Z</connectDateTime>
+    <ip>172.19.88.7</ip>
+    <macaddress>28-6f-7f-49-8f-7f</macaddress>
+    <connectDateTime>2017-10-03T20:03:10.7802046Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
-    <ip>172.19.88.3</ip>
-    <macaddress>00-de-fb-83-62-c1</macaddress>
-    <connectDateTime>2017-10-03T19:59:05.0176308Z</connectDateTime>
-    <isNewConnection>true</isNewConnection>
-  </ConnectedDevice>
-  <ConnectedDevice>
-    <ip>172.19.88.4</ip>
-    <macaddress>28-6f-7f-d0-26-7f</macaddress>
-    <connectDateTime>2017-10-03T19:59:05.0276318Z</connectDateTime>
+    <ip>172.19.88.29</ip>
+    <macaddress>18-65-71-35-5f-06</macaddress>
+    <connectDateTime>2017-10-03T20:03:11.864313Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
     <ip>172.19.88.186</ip>
     <hostname>miburns840</hostname>
     <macaddress>48-0f-cf-28-1f-02</macaddress>
-    <connectDateTime>2017-10-03T19:59:05.0936384Z</connectDateTime>
-    <isNewConnection>true</isNewConnection>
-  </ConnectedDevice>
-  <ConnectedDevice>
-    <ip>172.19.88.5</ip>
-    <macaddress>28-6f-7f-d0-25-ff</macaddress>
-    <connectDateTime>2017-10-03T19:59:05.4646755Z</connectDateTime>
-    <isNewConnection>true</isNewConnection>
-  </ConnectedDevice>
-  <ConnectedDevice>
-    <ip>172.19.88.6</ip>
-    <macaddress>00-a3-8e-19-b8-7f</macaddress>
-    <connectDateTime>2017-10-03T19:59:05.9237214Z</connectDateTime>
-    <isNewConnection>true</isNewConnection>
-  </ConnectedDevice>
-  <ConnectedDevice>
-    <ip>172.19.88.7</ip>
-    <macaddress>28-6f-7f-49-8f-7f</macaddress>
-    <connectDateTime>2017-10-03T19:59:05.9307221Z</connectDateTime>
-    <isNewConnection>true</isNewConnection>
-  </ConnectedDevice>
-  <ConnectedDevice>
-    <ip>172.19.88.29</ip>
-    <macaddress>18-65-71-35-5f-06</macaddress>
-    <connectDateTime>2017-10-03T19:59:06.219751Z</connectDateTime>
+    <connectDateTime>2017-10-03T20:03:11.9203186Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
     <ip>172.19.88.30</ip>
     <macaddress>18-65-71-35-62-39</macaddress>
-    <connectDateTime>2017-10-03T19:59:06.259755Z</connectDateTime>
+    <connectDateTime>2017-10-03T20:03:12.9274193Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
     <ip>172.19.88.35</ip>
     <macaddress>18-65-71-35-5b-46</macaddress>
-    <connectDateTime>2017-10-03T19:59:06.4107701Z</connectDateTime>
+    <connectDateTime>2017-10-03T20:03:12.93442Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
     <ip>172.19.88.113</ip>
     <macaddress>18-65-71-35-5e-a0</macaddress>
-    <connectDateTime>2017-10-03T19:59:07.9479238Z</connectDateTime>
+    <connectDateTime>2017-10-03T20:03:13.8315097Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
     <ip>172.19.88.150</ip>
     <macaddress>18-65-71-35-5e-a3</macaddress>
-    <connectDateTime>2017-10-03T19:59:08.469976Z</connectDateTime>
+    <connectDateTime>2017-10-03T20:03:14.4285694Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
     <ip>172.19.88.170</ip>
     <macaddress>18-65-71-35-62-3f</macaddress>
-    <connectDateTime>2017-10-03T19:59:08.7880078Z</connectDateTime>
+    <connectDateTime>2017-10-03T20:03:14.7876053Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
     <ip>172.19.88.171</ip>
     <macaddress>18-65-71-35-62-0c</macaddress>
-    <connectDateTime>2017-10-03T19:59:08.7980088Z</connectDateTime>
+    <connectDateTime>2017-10-03T20:03:14.8296095Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
     <ip>172.19.88.172</ip>
     <macaddress>18-65-71-35-62-0f</macaddress>
-    <connectDateTime>2017-10-03T19:59:08.8250115Z</connectDateTime>
+    <connectDateTime>2017-10-03T20:03:14.8356101Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
     <ip>172.19.88.179</ip>
     <macaddress>18-65-71-35-5b-40</macaddress>
-    <connectDateTime>2017-10-03T19:59:09.5750865Z</connectDateTime>
+    <connectDateTime>2017-10-03T20:03:15.3806646Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
     <ip>172.19.88.185</ip>
     <macaddress>18-65-71-35-62-36</macaddress>
-    <connectDateTime>2017-10-03T19:59:09.5910881Z</connectDateTime>
+    <connectDateTime>2017-10-03T20:03:16.0337299Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
     <ip>172.19.88.187</ip>
     <macaddress>18-65-71-35-5b-49</macaddress>
-    <connectDateTime>2017-10-03T19:59:09.6320922Z</connectDateTime>
+    <connectDateTime>2017-10-03T20:03:16.5237789Z</connectDateTime>
+    <isNewConnection>true</isNewConnection>
+  </ConnectedDevice>
+  <ConnectedDevice>
+    <ip>172.19.88.189</ip>
+    <macaddress>18-65-71-35-5e-c1</macaddress>
+    <connectDateTime>2017-10-03T20:03:17.0408306Z</connectDateTime>
+    <isNewConnection>true</isNewConnection>
+  </ConnectedDevice>
+  <ConnectedDevice>
+    <ip>172.19.88.191</ip>
+    <macaddress>18-65-71-35-5e-c4</macaddress>
+    <connectDateTime>2017-10-03T20:03:17.5558821Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
     <ip>172.19.88.190</ip>
     <macaddress>18-65-71-35-62-09</macaddress>
-    <connectDateTime>2017-10-03T19:59:09.6510941Z</connectDateTime>
+    <connectDateTime>2017-10-03T20:03:17.5608826Z</connectDateTime>
+    <isNewConnection>true</isNewConnection>
+  </ConnectedDevice>
+  <ConnectedDevice>
+    <ip>172.19.88.192</ip>
+    <macaddress>18-65-71-35-61-61</macaddress>
+    <connectDateTime>2017-10-03T20:03:18.0609326Z</connectDateTime>
+    <isNewConnection>true</isNewConnection>
+  </ConnectedDevice>
+  <ConnectedDevice>
+    <ip>172.19.88.193</ip>
+    <macaddress>18-65-71-35-61-5e</macaddress>
+    <connectDateTime>2017-10-03T20:03:18.4019667Z</connectDateTime>
+    <isNewConnection>true</isNewConnection>
+  </ConnectedDevice>
+  <ConnectedDevice>
+    <ip>172.19.88.194</ip>
+    <macaddress>18-65-71-35-62-93</macaddress>
+    <connectDateTime>2017-10-03T20:03:18.9880253Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
     <ip>172.19.88.213</ip>
     <hostname>mrusso840g3</hostname>
     <macaddress>ec-8e-b5-9d-aa-21</macaddress>
-    <connectDateTime>2017-10-03T19:59:09.7090999Z</connectDateTime>
-    <isNewConnection>true</isNewConnection>
-  </ConnectedDevice>
-  <ConnectedDevice>
-    <ip>172.19.88.214</ip>
-    <hostname>drajaram840g3</hostname>
-    <macaddress>c8-d3-ff-6d-0a-37</macaddress>
-    <connectDateTime>2017-10-03T19:59:09.7381028Z</connectDateTime>
+    <connectDateTime>2017-10-03T20:03:19.0320297Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
     <ip>172.19.88.217</ip>
     <hostname>emetzker9470</hostname>
     <macaddress>a0-d3-c1-99-19-cd</macaddress>
-    <connectDateTime>2017-10-03T19:59:09.780107Z</connectDateTime>
+    <connectDateTime>2017-10-03T20:03:19.0880353Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
     <ip>172.19.88.218</ip>
     <hostname>mknab840</hostname>
     <macaddress>dc-4a-3e-5c-ff-85</macaddress>
-    <connectDateTime>2017-10-03T19:59:09.8041094Z</connectDateTime>
-    <isNewConnection>true</isNewConnection>
-  </ConnectedDevice>
-  <ConnectedDevice>
-    <ip>172.19.88.220</ip>
-    <hostname>rgross840g3</hostname>
-    <macaddress>c8-d3-ff-6d-89-da</macaddress>
-    <connectDateTime>2017-10-03T19:59:09.8481138Z</connectDateTime>
+    <connectDateTime>2017-10-03T20:03:19.1480413Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
     <ip>172.19.88.219</ip>
     <hostname>kdoyle840</hostname>
     <macaddress>dc-4a-3e-06-a8-f1</macaddress>
-    <connectDateTime>2017-10-03T19:59:09.8681158Z</connectDateTime>
+    <connectDateTime>2017-10-03T20:03:19.2060471Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
-    <ip>172.19.88.224</ip>
-    <hostname>skumari840</hostname>
-    <macaddress>dc-4a-3e-05-c9-1a</macaddress>
-    <connectDateTime>2017-10-03T19:59:09.9261216Z</connectDateTime>
+    <ip>172.19.88.220</ip>
+    <hostname>rgross840g3</hostname>
+    <macaddress>c8-d3-ff-6d-89-da</macaddress>
+    <connectDateTime>2017-10-03T20:03:19.2890554Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
-    <ip>172.19.88.229</ip>
-    <hostname>tsapnas840g3</hostname>
-    <macaddress>c8-d3-ff-6d-2a-f9</macaddress>
-    <connectDateTime>2017-10-03T19:59:09.9441234Z</connectDateTime>
+    <ip>172.19.88.221</ip>
+    <hostname>srice840</hostname>
+    <macaddress>dc-4a-3e-5d-10-ba</macaddress>
+    <connectDateTime>2017-10-03T20:03:19.4180683Z</connectDateTime>
+    <isNewConnection>true</isNewConnection>
+  </ConnectedDevice>
+  <ConnectedDevice>
+    <ip>172.19.88.196</ip>
+    <macaddress>18-65-71-35-62-3c</macaddress>
+    <connectDateTime>2017-10-03T20:03:19.425069Z</connectDateTime>
+    <isNewConnection>true</isNewConnection>
+  </ConnectedDevice>
+  <ConnectedDevice>
+    <ip>172.19.88.195</ip>
+    <macaddress>18-65-71-35-5b-2e</macaddress>
+    <connectDateTime>2017-10-03T20:03:19.4410706Z</connectDateTime>
+    <isNewConnection>true</isNewConnection>
+  </ConnectedDevice>
+  <ConnectedDevice>
+    <ip>172.19.88.197</ip>
+    <macaddress>18-65-71-35-62-33</macaddress>
+    <connectDateTime>2017-10-03T20:03:19.4700735Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
     <ip>172.19.88.234</ip>
     <hostname>PA01WTHIRSH01</hostname>
     <macaddress>10-1f-74-58-2a-23</macaddress>
-    <connectDateTime>2017-10-03T19:59:10.0111301Z</connectDateTime>
+    <connectDateTime>2017-10-03T20:03:19.5310796Z</connectDateTime>
+    <isNewConnection>true</isNewConnection>
+  </ConnectedDevice>
+  <ConnectedDevice>
+    <ip>172.19.88.229</ip>
+    <hostname>tsapnas840g3</hostname>
+    <macaddress>c8-d3-ff-6d-2a-f9</macaddress>
+    <connectDateTime>2017-10-03T20:03:19.5340799Z</connectDateTime>
+    <isNewConnection>true</isNewConnection>
+  </ConnectedDevice>
+  <ConnectedDevice>
+    <ip>172.19.88.224</ip>
+    <hostname>skumari840</hostname>
+    <macaddress>dc-4a-3e-05-c9-1a</macaddress>
+    <connectDateTime>2017-10-03T20:03:19.5390804Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
     <ip>172.19.88.240</ip>
     <hostname>pbouvia9470</hostname>
     <macaddress>28-80-23-d4-c0-41</macaddress>
-    <connectDateTime>2017-10-03T19:59:10.0151305Z</connectDateTime>
-    <isNewConnection>true</isNewConnection>
-  </ConnectedDevice>
-  <ConnectedDevice>
-    <ip>172.19.88.189</ip>
-    <macaddress>18-65-71-35-5e-c1</macaddress>
-    <connectDateTime>2017-10-03T19:59:10.0851375Z</connectDateTime>
-    <isNewConnection>true</isNewConnection>
-  </ConnectedDevice>
-  <ConnectedDevice>
-    <ip>172.19.88.242</ip>
-    <hostname>cpappas9470</hostname>
-    <macaddress>28-80-23-d5-22-82</macaddress>
-    <connectDateTime>2017-10-03T19:59:10.130142Z</connectDateTime>
-    <isNewConnection>true</isNewConnection>
-  </ConnectedDevice>
-  <ConnectedDevice>
-    <ip>172.19.88.253</ip>
-    <hostname>vbudnick840g3</hostname>
-    <macaddress>ec-8e-b5-9e-40-4a</macaddress>
-    <connectDateTime>2017-10-03T19:59:10.1331423Z</connectDateTime>
+    <connectDateTime>2017-10-03T20:03:19.5610826Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
     <ip>172.19.88.247</ip>
     <hostname>amanahan9470</hostname>
     <macaddress>a0-2b-b8-2e-46-a4</macaddress>
-    <connectDateTime>2017-10-03T19:59:10.140143Z</connectDateTime>
+    <connectDateTime>2017-10-03T20:03:19.6870952Z</connectDateTime>
+    <isNewConnection>true</isNewConnection>
+  </ConnectedDevice>
+  <ConnectedDevice>
+    <ip>172.19.88.242</ip>
+    <hostname>cpappas9470</hostname>
+    <macaddress>28-80-23-d5-22-82</macaddress>
+    <connectDateTime>2017-10-03T20:03:19.695096Z</connectDateTime>
+    <isNewConnection>true</isNewConnection>
+  </ConnectedDevice>
+  <ConnectedDevice>
+    <ip>172.19.88.254</ip>
+    <hostname>vmorasco840</hostname>
+    <macaddress>dc-4a-3e-06-60-dc</macaddress>
+    <connectDateTime>2017-10-03T20:03:19.6890954Z</connectDateTime>
+    <isNewConnection>true</isNewConnection>
+  </ConnectedDevice>
+  <ConnectedDevice>
+    <ip>172.19.88.253</ip>
+    <hostname>vbudnick840g3</hostname>
+    <macaddress>ec-8e-b5-9e-40-4a</macaddress>
+    <connectDateTime>2017-10-03T20:03:19.6890954Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
 </ArrayOfConnectedDevice>

@@ -135,8 +135,7 @@ namespace NetworkScanner.Helpers
            
                 else
                 {
-                    Console.WriteLine("------Something weird happened!");
-                    //Something weird happened 
+                    //Unsuccesful ping
                 }
             }
             catch (Exception)
