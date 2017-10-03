@@ -28,4 +28,23 @@
     <connectDateTime>2017-09-29T22:23:57.291046Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
+  <ConnectedDevice>
+    <ip>192.168.1.153</ip>
+    <hostname>AsusTower.fios-router.home</hostname>
+    <macaddress>OWN Machine</macaddress>
+    <connectDateTime>2017-10-03T04:32:21.4771775Z</connectDateTime>
+    <isNewConnection>true</isNewConnection>
+  </ConnectedDevice>
+  <ConnectedDevice>
+    <ip>192.168.1.152</ip>
+    <macaddress>1c-1e-e3-f4-bb-f4</macaddress>
+    <connectDateTime>2017-10-03T04:49:59.737985Z</connectDateTime>
+    <isNewConnection>true</isNewConnection>
+  </ConnectedDevice>
+  <ConnectedDevice>
+    <ip>192.168.1.151</ip>
+    <macaddress>4c-57-ca-6f-2a-91</macaddress>
+    <connectDateTime>2017-10-03T05:11:11.5453799Z</connectDateTime>
+    <isNewConnection>true</isNewConnection>
+  </ConnectedDevice>
 </ArrayOfConnectedDevice>

@@ -76,58 +76,70 @@ namespace NetworkScanner
                             nonTimedOutDevices.Remove(cd);
                         }
                     }
-                    //Wait for pings to finish -- ANY WORK not dependent on ping responses should go ABOVE here!  
-                    while (netHelper.pingCounter > 0)
+                    //Wait for pings to finish -- ANY WORK not dependent on ping responses should go ABOVE here!
+                    int x = 0;
+                    while (netHelper.pingCounter >= 1 && x < 3)
                     {
+                        var t = Task.Run(async delegate
+                        {
+                            await Task.Delay(pollingIntervalMiliseconds);
+                            return 1;
+                        });
+                        x++;
+                        t.Wait();
                         //wait for pings to finish 
                     }
+                    //polling interval
+
                     //Create temporary list to avoid multithreaded shared memory issues
-                    List<ConnectedDevice> tempSuccessfulPings = netHelper.SuccessfullPings.ToList();
+                    //List<ConnectedDevice> tempSuccessfulPings = netHelper.SuccessfullPings.ToList();
                     //Add New connections to nonTimedOutDevices, and que up theme songs to be played.
-                    foreach (ConnectedDevice cd in tempSuccessfulPings)
-                    {
-                        bool ipAddressExistsInMasterList = (masterDeviceList.Any(item => item.ip == cd.ip));
-                        bool isNewNonTimedOutConnection = !(nonTimedOutDevices.Any(item => item.macaddress == cd.macaddress));
-                        bool existsInThemeSongs = (themeSongs.Any(item => item.macAddress == cd.macaddress));
-
-                        // Add device to master macAddress store
-                        if (ipAddressExistsInMasterList)
+                    
+                        foreach (ConnectedDevice cd in netHelper.SuccessfullPings)
                         {
-                            string macAddressForCurrentIp = masterDeviceList.Where(item => item.ip == cd.ip).FirstOrDefault().macaddress;
+                            bool ipAddressExistsInMasterList = (masterDeviceList.Any(item => item.ip == cd.ip));
+                            bool isNewNonTimedOutConnection = !(nonTimedOutDevices.Any(item => item.macaddress == cd.macaddress));
+                            bool existsInThemeSongs = (themeSongs.Any(item => item.macAddress == cd.macaddress));
 
-                            if (cd.macaddress != macAddressForCurrentIp)
+                            // Add device to master macAddress store
+                            if (ipAddressExistsInMasterList)
                             {
-                                //This ip has already been asigned before!
-                                ConnectedDevice ConnectionToDelete = masterDeviceList.Where(item => item.ip == cd.ip).FirstOrDefault();
-                                masterDeviceList.Remove(ConnectionToDelete);
+                                string macAddressForCurrentIp = masterDeviceList.Where(item => item.ip == cd.ip).FirstOrDefault().macaddress;
+
+                                if (cd.macaddress != macAddressForCurrentIp)
+                                {
+                                    //This ip has already been asigned before!
+                                    ConnectedDevice ConnectionToDelete = masterDeviceList.Where(item => item.ip == cd.ip).FirstOrDefault();
+                                    masterDeviceList.Remove(ConnectionToDelete);
+                                    masterDeviceList.Add(cd);
+                                }
+                            }
+                            else
+                            {
                                 masterDeviceList.Add(cd);
                             }
-                        }
-                        else
-                        {
-                            masterDeviceList.Add(cd);
-                        }
 
-                        if (isNewNonTimedOutConnection && existsInThemeSongs)
-                        {
-                            //Limit playback to reasobable hours. ie not when you wake up in the morning. 
-                            TimeSpan start = new TimeSpan(3, 30, 0); // 3:30 AM
-                            TimeSpan end = new TimeSpan(10, 30, 0);  // 10:30 AM
-                            TimeSpan now = DateTime.Now.TimeOfDay;
-                            if (!((now > start) && (now < end)))
+                            if (isNewNonTimedOutConnection && existsInThemeSongs)
                             {
-                                nonTimedOutDevices.Add(cd);
-                                playbackHelper.playListMacs.Add(cd.macaddress); //send macaddress to playlist
-
-                                if (playbackHelper.isPlaying == false)
+                                //Limit playback to reasobable hours. ie not when you wake up in the morning. 
+                                TimeSpan start = new TimeSpan(3, 30, 0); // 3:30 AM
+                                TimeSpan end = new TimeSpan(10, 30, 0);  // 10:30 AM
+                                TimeSpan now = DateTime.Now.TimeOfDay;
+                                if (!((now > start) && (now < end)))
                                 {
-                                    playbackHelper.isPlaying = true;
-                                    Thread playbackThread = new Thread(playbackHelper.startPlayback);
-                                    playbackThread.Start();
+                                    nonTimedOutDevices.Add(cd);
+                                    playbackHelper.playListMacs.Add(cd.macaddress); //send macaddress to playlist
+
+                                    if (playbackHelper.isPlaying == false)
+                                    {
+                                        playbackHelper.isPlaying = true;
+                                        Thread playbackThread = new Thread(playbackHelper.startPlayback);
+                                        playbackThread.Start();
+                                    }
                                 }
                             }
                         }
-                    }
+                    
 
                     System.IO.FileStream connectedDevicesFile = System.IO.File.Open(connectedDevicesXmlPath, FileMode.Truncate);
                     connectedDeviceListSerializer.Serialize(connectedDevicesFile, netHelper.SuccessfullPings);
@@ -139,12 +151,7 @@ namespace NetworkScanner
                     connectedDeviceListSerializer.Serialize(masterDeviceListFile, masterDeviceList);
                     masterDeviceListFile.Close();
 
-                    var t = Task.Run(async delegate
-                    {
-                        await Task.Delay(pollingIntervalMiliseconds);
-                        return 1;
-                    });
-                    t.Wait();
+                    
                 }
                 catch
                 {

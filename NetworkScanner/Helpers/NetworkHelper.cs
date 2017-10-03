@@ -15,6 +15,7 @@ namespace NetworkScanner.Helpers
         public List<ConnectedDevice> SuccessfullPings { get; set; }
         public int pingCounter { get; set; }
 
+
         public NetworkHelper()
         {
             SuccessfullPings = new List<ConnectedDevice> {};
@@ -112,7 +113,7 @@ namespace NetworkScanner.Helpers
                     connectDateTime = DateTime.UtcNow,
                     isNewConnection = true
                 };
-                if(!SuccessfullPings.Any(x => x.ip == pingResults.ip))
+                if(!SuccessfullPings.Any(x => x.macaddress == pingResults.macaddress))
                     SuccessfullPings.Add(pingResults);
             }
             else
@@ -146,17 +147,21 @@ namespace NetworkScanner.Helpers
         public void Ping_all(int pingTimeOutMiliseconds)
         {
             string gate_ip = NetworkHelper.NetworkGateway();
-
-            //Extracting and pinging all other ip's.
-            string[] array = gate_ip.Split('.');
-
-            for (int i = 2; i <= 255; i++)
+            lock(SuccessfullPings)
             {
 
-                string ping_var = array[0] + "." + array[1] + "." + array[2] + "." + i;
+            
+            //Extracting and pinging all other ip's.
+                string[] array = gate_ip.Split('.');
 
-                //time in milliseconds           
-                Ping(ping_var, 5, pingTimeOutMiliseconds);
+                for (int i = 2; i <= 255; i++)
+                {
+
+                    string ping_var = array[0] + "." + array[1] + "." + array[2] + "." + i;
+
+                    //time in milliseconds           
+                    Ping(ping_var, 1, pingTimeOutMiliseconds);
+                }
             }
         }
 
