@@ -19,7 +19,7 @@ namespace NetworkScanner
 {
     class Program
     {
-        public const int pingTimeOutMiliseconds = 500; //500
+        public const int pingTimeOutMiliseconds = 200; //500
         public const int connectionTimeOutMinutes = 90;
         public List<ConnectedDevice> successfullNetworkPings = new List<ConnectedDevice>() { };
 
@@ -31,7 +31,7 @@ namespace NetworkScanner
             List<ThemeSong> themeSongs = new List<ThemeSong>() { };
             PlaybackHelper playbackHelper = new PlaybackHelper();
             playbackHelper.isPlaying = false;
-            bool testMode = true;
+            bool testMode = false;
 
             while (1 == 1)
             {
@@ -87,6 +87,7 @@ namespace NetworkScanner
                         if (cd.isTimedOut(connectionTimeOutMinutes))
                         {
                             nonTimedOutDevices.Remove(cd);
+                            Console.WriteLine("DEVICE TIMED OUT - REMOVING: " + cd.macaddress + " from connected(non timed out) list");
                         }
                     }
                    
@@ -134,9 +135,11 @@ namespace NetworkScanner
                                 {
                                     nonTimedOutDevices.Add(cd);
                                     playbackHelper.playListMacs.Add(cd.macaddress); //send macaddress to playlist
+                                    Console.WriteLine("*****FOUND A RECOGNIZED CONNECTION: " + cd.macaddress);
 
                                     if (playbackHelper.isPlaying == false)
                                     {
+                                        Console.WriteLine("*****STARTING PLAYBACK");
                                         playbackHelper.isPlaying = true;
                                         Thread playbackThread = new Thread(playbackHelper.startPlayback);
                                         playbackThread.Start();
@@ -159,7 +162,7 @@ namespace NetworkScanner
                     masterDeviceListFile.Close();
                     Console.WriteLine("~Miliseconds elapsed this iteration: [" + timer.ElapsedMilliseconds.ToString() + "]");
                 }
-                catch
+                catch(Exception ex)
                 {
                     //something went wrong
                 }

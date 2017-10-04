@@ -4,13 +4,20 @@
     <ip>192.168.1.153</ip>
     <hostname>AsusTower.fios-router.home</hostname>
     <macaddress>OWN Machine</macaddress>
-    <connectDateTime>2017-10-03T23:01:15.9034643Z</connectDateTime>
+    <connectDateTime>2017-10-04T01:09:24.6233998Z</connectDateTime>
+    <isNewConnection>true</isNewConnection>
+  </ConnectedDevice>
+  <ConnectedDevice>
+    <ip>192.168.1.155</ip>
+    <hostname>DESKTOP-16PIKO2.fios-router.home</hostname>
+    <macaddress>e4-a7-a0-6f-08-74</macaddress>
+    <connectDateTime>2017-10-04T01:09:24.6354325Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
     <ip>192.168.1.152</ip>
     <macaddress>1c-1e-e3-f4-bb-f4</macaddress>
-    <connectDateTime>2017-10-03T23:01:21.9961294Z</connectDateTime>
+    <connectDateTime>2017-10-04T01:09:29.4475189Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
 </ArrayOfConnectedDevice>

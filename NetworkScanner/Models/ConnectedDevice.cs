@@ -20,7 +20,7 @@ namespace NetworkScanner.Models
 
         public bool isTimedOut(double timeOutMinutes)
         {
-            var minutesElapsed = (DateTime.Now - connectDateTime).TotalMinutes;
+            var minutesElapsed = (DateTime.UtcNow - connectDateTime).TotalMinutes;
                     
             return minutesElapsed > timeOutMinutes;
         }

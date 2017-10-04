@@ -65,6 +65,8 @@ namespace NetworkScanner.Helpers
                     //play song, remove from playlist
              //   }
             }
+            Console.WriteLine("*Playback Complete*");
+            isPlaying = false;
         }
 
         public void playSong(string SongUrl, double minutesToPlayVideo)
@@ -102,14 +104,21 @@ namespace NetworkScanner.Helpers
             //wait for duration of song
             var t2 = Task.Run(async delegate
             {
-                await Task.Delay((int)(minutesToPlayVideo * 60000));  //video duration - start time 
+                await Task.Delay((int)(minutesToPlayVideo * 60000 + 2500));  //video duration - start time 
                 return 1;
             });
             t2.Wait();
             //Kill the browser tab
             if (proc != null)
             {
-                proc.Kill();
+                try
+                { 
+                    proc.Kill();
+                }
+                catch
+                {
+                    //You closed the browser manually! Now I have no process to kill.
+                }
             }
             playListMacs.RemoveAt(0);
         }

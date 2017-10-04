@@ -1,9 +1,16 @@
 <?xml version="1.0"?>
 <ArrayOfConnectedDevice xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ConnectedDevice>
+    <ip>192.168.1.155</ip>
+    <hostname>DESKTOP-16PIKO2.fios-router.home</hostname>
+    <macaddress>e4-a7-a0-6f-08-74</macaddress>
+    <connectDateTime>2017-10-04T01:01:22.8807713Z</connectDateTime>
+    <isNewConnection>true</isNewConnection>
+  </ConnectedDevice>
+  <ConnectedDevice>
     <ip>192.168.1.151</ip>
     <macaddress>4c-57-ca-6f-2a-91</macaddress>
-    <connectDateTime>2017-10-03T22:59:16.9934478Z</connectDateTime>
+    <connectDateTime>2017-10-04T01:01:53.1354307Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
 </ArrayOfConnectedDevice>

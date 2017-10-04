@@ -2,8 +2,14 @@
 <ArrayOfThemeSong xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ThemeSong>
     <macAddress>4c-57-ca-6f-2a-91</macAddress>
+    <songYoutubeUrl>https://www.youtube.com/watch?v=Dst9gZkq1a8</songYoutubeUrl>
+    <minutesToPlay>4</minutesToPlay>
+    <startMinutesSeconds />
+  </ThemeSong>
+  <ThemeSong>
+    <macAddress>e4-a7-a0-6f-08-74</macAddress>
     <songYoutubeUrl>https://www.youtube.com/watch?v=XXzJpzxk-M8</songYoutubeUrl>
-    <minutesToPlay>1</minutesToPlay>
+    <minutesToPlay>2</minutesToPlay>
     <startMinutesSeconds />
   </ThemeSong>
   <ThemeSong>

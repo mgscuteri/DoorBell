@@ -233,7 +233,7 @@ namespace NetworkScanner.Helpers
                 int x = 0;
                 int y = 0;
 
-                while (pingCounter >= 1)
+                while (pingCounter > 1)
                 {
                     
                     x = pingCounter;                    
