@@ -22,8 +22,8 @@
   <ConnectedDevice>
     <ip>192.168.1.155</ip>
     <hostname>DESKTOP-16PIKO2.fios-router.home</hostname>
-    <macaddress>e4-a7-a0-6f-08-74</macaddress>
-    <connectDateTime>2017-10-03T23:33:04.2356444Z</connectDateTime>
+    <macaddress>OWN Machine</macaddress>
+    <connectDateTime>2017-10-04T21:23:41.1265068Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
 </ArrayOfConnectedDevice>

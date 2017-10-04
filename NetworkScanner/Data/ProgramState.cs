@@ -33,5 +33,10 @@ namespace NetworkScanner.Data
         /// Done processessing pings. Ready to ping again. 
         /// </summary>
         DoneProcessingPingResponses = 5,
+
+        /// <summary>
+        /// Looping through and removing timed out connections. Lock this array. 
+        /// </summary>
+        removingTimedOutConnections = 6,
     }
 }

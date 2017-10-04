@@ -19,10 +19,12 @@ namespace NetworkScanner
 {
     class Program
     {
+        //program variables
         public const int pingTimeOutMiliseconds = 200; //500
         public const int connectionTimeOutMinutes = 90;
-        public List<ConnectedDevice> successfullNetworkPings = new List<ConnectedDevice>() { };
+        public const bool testMode = false;
 
+        public List<ConnectedDevice> successfullNetworkPings = new List<ConnectedDevice>() { };
 
         static void Main(string[] args)
         {
@@ -31,7 +33,16 @@ namespace NetworkScanner
             List<ThemeSong> themeSongs = new List<ThemeSong>() { };
             PlaybackHelper playbackHelper = new PlaybackHelper();
             playbackHelper.isPlaying = false;
-            bool testMode = false;
+            
+
+            //Prepare serialization helpers
+            XmlSerializer connectedDeviceListSerializer = new System.Xml.Serialization.XmlSerializer(typeof(List<ConnectedDevice>));
+            XmlSerializer themeSongSerializer = new System.Xml.Serialization.XmlSerializer(typeof(List<ThemeSong>));
+            string connectedDevicesXmlPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + @"\data\connectedDevices.xml";
+            string nonTimedOutDevicesXmlPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + @"\data\nonTimedOutDevices.xml";
+            string masterDeviceListXmlPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + @"\data\masterDeviceList.xml";
+            string themeSongsXmlPath = Directory.GetParent((Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName)) + @"\DoorBell\Data\ThemeSongs.xml";
+
 
             while (1 == 1)
             {
@@ -53,16 +64,8 @@ namespace NetworkScanner
                     timer.Start();
                     netHelper.programState = ProgramState.PingAllStarted;
                     Console.WriteLine("1) Beggining Pings");
-                    netHelper.Ping_all(pingTimeOutMiliseconds);
-                    
-                    //Prepare to serialization helpers
-                    XmlSerializer connectedDeviceListSerializer = new System.Xml.Serialization.XmlSerializer(typeof(List<ConnectedDevice>));
-                    XmlSerializer themeSongSerializer = new System.Xml.Serialization.XmlSerializer(typeof(List<ThemeSong>));
-                    string connectedDevicesXmlPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + @"\data\connectedDevices.xml";
-                    string nonTimedOutDevicesXmlPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + @"\data\nonTimedOutDevices.xml";
-                    string masterDeviceListXmlPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + @"\data\masterDeviceList.xml";
-                    string themeSongsXmlPath = Directory.GetParent((Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName)) + @"\DoorBell\Data\ThemeSongs.xml";
-
+                    netHelper.Ping_all(pingTimeOutMiliseconds);                    
+                  
                     //Get list of macAddress song associates from webApi
                     using (XmlReader reader = XmlReader.Create(themeSongsXmlPath))
                     {
@@ -71,6 +74,7 @@ namespace NetworkScanner
                     //Get list of nonTimedOutDevices -- Test mode causes all devices to be seen as new
                     if (!testMode)
                     {
+                        while(netHelper.programState == ProgramState.removingTimedOutConnections)
                         using (XmlReader reader = XmlReader.Create(nonTimedOutDevicesXmlPath))
                         {
                             nonTimedOutDevices = (List<ConnectedDevice>)connectedDeviceListSerializer.Deserialize(reader);
@@ -82,7 +86,9 @@ namespace NetworkScanner
                         masterDeviceList = (List<ConnectedDevice>)connectedDeviceListSerializer.Deserialize(reader);
                     }
                     //Remove Timed Out Connections 
-                    foreach (ConnectedDevice cd in nonTimedOutDevices)
+                    
+
+                    foreach (ConnectedDevice cd in nonTimedOutDevices.Reverse<ConnectedDevice>())
                     {
                         if (cd.isTimedOut(connectionTimeOutMinutes))
                         {
@@ -90,7 +96,7 @@ namespace NetworkScanner
                             Console.WriteLine("DEVICE TIMED OUT - REMOVING: " + cd.macaddress + " from connected(non timed out) list");
                         }
                     }
-                   
+                    
                     //wait for pings to finish
                     while (netHelper.programState != ProgramState.PingAllCompleted)
                     {
@@ -107,6 +113,11 @@ namespace NetworkScanner
                             bool isNewNonTimedOutConnection = !(nonTimedOutDevices.Any(item => item.macaddress == cd.macaddress));
                             bool existsInThemeSongs = (themeSongs.Any(item => item.macAddress == cd.macaddress));
 
+                            //If its not a NON-timed out conection, (device has connected within 90 minutes and is)it is still connected. update the connection time.
+                            if(!isNewNonTimedOutConnection)
+                            {
+                                cd.connectDateTime = DateTime.UtcNow;
+                            }
                             // Add device to master macAddress store
                             if (ipAddressExistsInMasterList)
                             {
