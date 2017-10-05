@@ -4,7 +4,13 @@
     <ip>192.168.1.155</ip>
     <hostname>DESKTOP-16PIKO2.fios-router.home</hostname>
     <macaddress>OWN Machine</macaddress>
-    <connectDateTime>2017-10-04T23:13:28.28609Z</connectDateTime>
+    <connectDateTime>2017-10-05T01:01:15.1203947Z</connectDateTime>
+    <isNewConnection>true</isNewConnection>
+  </ConnectedDevice>
+  <ConnectedDevice>
+    <ip>192.168.1.152</ip>
+    <macaddress>1c-1e-e3-f4-bb-f4</macaddress>
+    <connectDateTime>2017-10-05T01:01:19.9248138Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
 </ArrayOfConnectedDevice>
