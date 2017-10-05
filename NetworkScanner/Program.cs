@@ -143,8 +143,42 @@ namespace NetworkScanner
                                 TimeSpan start = new TimeSpan(3, 30, 0); // 3:30 AM
                                 TimeSpan end = new TimeSpan(10, 30, 0);  // 10:30 AM
                                 TimeSpan now = DateTime.Now.TimeOfDay;
-                                if (!((now > start) && (now < end)))
+                                if (now > start) //its after 3:30 am
                                 {
+                                    if (now > end) //its after 3:30 am and after 10:30 am
+                                    {
+                                        nonTimedOutDevices.Add(cd);
+                                        playbackHelper.playListMacs.Add(cd.macaddress); //send macaddress to playlist
+                                        Console.WriteLine("*****FOUND A RECOGNIZED CONNECTION: " + cd.macaddress);
+
+                                        if (playbackHelper.isPlaying == false)
+                                        {
+                                            Console.WriteLine("*****STARTING PLAYBACK");
+                                            playbackHelper.isPlaying = true;
+                                            Thread playbackThread = new Thread(playbackHelper.startPlayback);
+                                            playbackThread.Start();
+                                        }
+                                        else  //its after 3:30 am and before 10:30 am 
+                                        {
+                                            Console.WriteLine("Time to go to sleep. Gonna cool off the cpu. See you tomorrow. ");
+                                            Thread.Sleep(3600000 * 7);
+                                            Console.WriteLine("Waking Up now!");
+                                        }
+                                    }
+                                    else //its before 3:30 am
+                                    {
+                                        if(now < end) //its before 10:30am but after 3:30
+                                        {
+                                            Console.WriteLine("Time to go to sleep. Gonna cool off the cpu. See you tomorrow. ");
+                                            Thread.Sleep(3600000 * 7);
+                                            Console.WriteLine("Waking Up now!");
+                                        }
+                                        else // its between 3:30am today and 10:30 am yesterday
+                                        {
+
+                                        }
+                                    }
+
                                     nonTimedOutDevices.Add(cd);
                                     playbackHelper.playListMacs.Add(cd.macaddress); //send macaddress to playlist
                                     Console.WriteLine("*****FOUND A RECOGNIZED CONNECTION: " + cd.macaddress);
@@ -156,6 +190,11 @@ namespace NetworkScanner
                                         Thread playbackThread = new Thread(playbackHelper.startPlayback);
                                         playbackThread.Start();
                                     }
+                                }
+                                else if ((int)(end-now).TotalMilliseconds > 3600000) //its before 3:30 am
+                                {
+                                    Console.WriteLine("Time to go to sleep. Gonna cool off the cpu. See you tomorrow. ");
+                                    Thread.Sleep((int)(end - now).TotalMilliseconds - 3600000);
                                 }
                             }
                         }
