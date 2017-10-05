@@ -85,9 +85,15 @@ namespace NetworkScanner
                     {
                         masterDeviceList = (List<ConnectedDevice>)connectedDeviceListSerializer.Deserialize(reader);
                     }
-                    //Remove Timed Out Connections 
-                    
 
+                    
+                    //wait for pings to finish
+                    while (netHelper.programState != ProgramState.PingAllCompleted)
+                    {
+                        //wait
+                    }
+                    netHelper.programState = ProgramState.ProcessingPingResponses;
+                    //Remove Timed Out Connections 
                     foreach (ConnectedDevice cd in nonTimedOutDevices.Reverse<ConnectedDevice>())
                     {
                         if (cd.isTimedOut(connectionTimeOutMinutes))
@@ -96,13 +102,6 @@ namespace NetworkScanner
                             Console.WriteLine("DEVICE TIMED OUT - REMOVING: " + cd.macaddress + " from connected(non timed out) list");
                         }
                     }
-                    
-                    //wait for pings to finish
-                    while (netHelper.programState != ProgramState.PingAllCompleted)
-                    {
-                        //wait
-                    }
-                    netHelper.programState = ProgramState.ProcessingPingResponses;
                     Console.WriteLine("3) Entering loop with [" + netHelper.SuccessfullPings.Count.ToString() + "] responses. Locking Pings");
                     lock(netHelper.SuccessfullPings)
                     { 
@@ -116,7 +115,9 @@ namespace NetworkScanner
                             //If its not a NON-timed out conection, (device has connected within 90 minutes and is)it is still connected. update the connection time.
                             if(!isNewNonTimedOutConnection)
                             {
-                                cd.connectDateTime = DateTime.UtcNow;
+                                Console.WriteLine(cd.macaddress + " Connected. Device is not timed out. Updating connect time:" + DateTime.UtcNow.ToString());
+                                ConnectedDevice nonTimedOutDevice = nonTimedOutDevices.Where(x => x.macaddress == cd.macaddress).FirstOrDefault();
+                                nonTimedOutDevice.connectDateTime = DateTime.UtcNow;
                             }
                             // Add device to master macAddress store
                             if (ipAddressExistsInMasterList)
