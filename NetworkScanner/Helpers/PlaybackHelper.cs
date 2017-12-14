@@ -14,7 +14,7 @@ using Microsoft.Win32;
 
 namespace NetworkScanner.Helpers
 {
-    class PlaybackHelper
+    public class PlaybackHelper
     {
         public List<string> playListMacs { get; set; }
         public bool isPlaying { get; set; }
