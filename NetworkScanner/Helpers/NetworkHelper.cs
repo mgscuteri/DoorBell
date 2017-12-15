@@ -21,7 +21,7 @@ namespace NetworkScanner.Helpers
 {
     public class NetworkHelper
     {
-        //program constants
+        //program constants        
         public const int pingTimeOutMiliseconds = 200; //500
         public const int connectionTimeOutMinutes = 90;
         public const bool testMode = false;
@@ -120,21 +120,24 @@ namespace NetworkScanner.Helpers
                     if (masterDeviceList.Any(x => x.macaddress == pingResults.macaddress))
                     {
                         //This macAddress has connected before. Lets update its IP address in the master ip/mac lookup table 
-                        Console.WriteLine("A known device (" + pingResults.macaddress + ") has connected.");
                         ConnectedDevice knownDevice = masterDeviceList.Where(x => x.macaddress == pingResults.macaddress).FirstOrDefault();
                         if (knownDevice.ip != pingResults.ip)
                         {
-                            Console.WriteLine("A known device (" + pingResults.macaddress + ") has a new ip address. Updating IP:" + knownDevice.ip);
+                            Console.WriteLine("...Known device (" + pingResults.macaddress + ") has a new ip address. Updating IP:" + knownDevice.ip);
                             lock (nonTimedOutDevices)
                             {
                                 knownDevice.ip = pingResults.ip;
                             }
                         }
+                        else
+                        {
+                            Console.WriteLine("...Known device (" + pingResults.macaddress + ") detected.");
+                        }
                     }
                     else
                     {
                         //This macAddress has not connected before. Add it to the masterDeviceList
-                        Console.WriteLine("An unkown device has connected. Adding to master device list.:" + pingResults.macaddress);
+                        Console.WriteLine("2.0) Unkown device detected. Adding to master device list.:" + pingResults.macaddress);
                         lock (nonTimedOutDevices)
                         {
                             masterDeviceList.Add(pingResults);
@@ -145,7 +148,7 @@ namespace NetworkScanner.Helpers
                     if (nonTimedOutDevices.Any(x => x.macaddress == pingResults.macaddress))
                     {
                         //Device is currently "connected" (has not timed out). Need to update its timestamp.
-                        Console.WriteLine("A connected device has reconnected. Updating its timeStamp:" + pingResults.macaddress + ":" + DateTime.UtcNow.ToString());
+                        Console.WriteLine("...A connected device has reconnected. Updating its timeStamp:" + pingResults.macaddress + ":" + DateTime.UtcNow.ToString());
                         ConnectedDevice reconnectedDevice = nonTimedOutDevices.Where(x => x.macaddress == pingResults.macaddress).FirstOrDefault();
                         lock (nonTimedOutDevices)
                         {
@@ -155,7 +158,7 @@ namespace NetworkScanner.Helpers
                     else
                     {
                         //This is a new "connection". Process it. 
-                        Console.WriteLine("A device has connected- Mac:" + pingResults.macaddress + "  - Name: " + pingResults.hostname);
+                        Console.WriteLine("3) *A device has connected- Mac:" + pingResults.macaddress + "  - Name: " + pingResults.hostname);
                         lock (nonTimedOutDevices)
                         {
                             nonTimedOutDevices.Add(pingResults);
@@ -164,7 +167,7 @@ namespace NetworkScanner.Helpers
                         if (themeSongs.Any(x => x.macAddress == pingResults.macaddress))
                         {
                             //Device has an associated theme song
-                            Console.WriteLine("Device has an associated theme song. Queueing for playback.");
+                            Console.WriteLine("+++ Device has an associated theme song. Considering for playback.");
                             ProcessPlayback(pingResults);
                         }
                         else
@@ -206,12 +209,9 @@ namespace NetworkScanner.Helpers
             }
         }
 
-        public void Ping_all(int pingTimeOutMiliseconds)
-        {
-            Stopwatch timer = new Stopwatch();
-            timer.Start();
-
-            Console.WriteLine("1.0) Entering Ping All function - Deserializing data into memory");
+        public void Ping_all()
+        {            
+            Console.WriteLine("    1.0) Entering Ping All function - Deserializing data into memory");
             XmlSerializer connectedDeviceListSerializer = new XmlSerializer(typeof(List<ConnectedDevice>));
             XmlSerializer themeSongSerializer = new XmlSerializer(typeof(List<ThemeSong>));
             
@@ -235,7 +235,7 @@ namespace NetworkScanner.Helpers
             string gate_ip = NetworkHelper.NetworkGateway();
             string[] array = gate_ip.Split('.');
 
-            Console.WriteLine("    1.2) Beggining Pings.");
+            Console.WriteLine("    1.1) Beggining Pings.");
 
             //parallel for  response collection
             for (int i = 2; i <= 255; i++)
@@ -264,8 +264,7 @@ namespace NetworkScanner.Helpers
             nonTimedOoutDevicesFile.Close();
             System.IO.FileStream masterDeviceListFile = System.IO.File.Open(masterDeviceListXmlPath, FileMode.Truncate);
             connectedDeviceListSerializer.Serialize(masterDeviceListFile, masterDeviceList);
-            masterDeviceListFile.Close();
-            Console.WriteLine("~Ping All Took [" + timer.ElapsedMilliseconds.ToString() + "] miliseconds to complete");
+            masterDeviceListFile.Close();            
         }
 
         

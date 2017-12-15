@@ -1,151 +1,29 @@
 <?xml version="1.0"?>
 <ArrayOfConnectedDevice xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ConnectedDevice>
-    <ip>172.19.88.4</ip>
-    <macaddress>28-6f-7f-d0-26-7f</macaddress>
-    <connectDateTime>2017-12-14T21:40:58.6121898Z</connectDateTime>
-    <isNewConnection>true</isNewConnection>
-  </ConnectedDevice>
-  <ConnectedDevice>
-    <ip>172.19.88.3</ip>
-    <macaddress>00-de-fb-83-62-c1</macaddress>
-    <connectDateTime>2017-12-14T21:40:58.6251898Z</connectDateTime>
-    <isNewConnection>true</isNewConnection>
-  </ConnectedDevice>
-  <ConnectedDevice>
-    <ip>172.19.88.23</ip>
-    <hostname>jjankows840g3.vertexinc.com</hostname>
-    <macaddress>ec-8e-b5-9d-5a-c6</macaddress>
-    <connectDateTime>2017-12-14T21:40:59.0061898Z</connectDateTime>
-    <isNewConnection>true</isNewConnection>
-  </ConnectedDevice>
-  <ConnectedDevice>
-    <ip>172.19.88.6</ip>
-    <macaddress>00-a3-8e-19-b8-7f</macaddress>
-    <connectDateTime>2017-12-14T21:40:59.0531898Z</connectDateTime>
-    <isNewConnection>true</isNewConnection>
-  </ConnectedDevice>
-  <ConnectedDevice>
-    <ip>172.19.88.5</ip>
-    <macaddress>28-6f-7f-d0-25-ff</macaddress>
-    <connectDateTime>2017-12-14T21:40:59.0701898Z</connectDateTime>
-    <isNewConnection>true</isNewConnection>
-  </ConnectedDevice>
-  <ConnectedDevice>
-    <ip>172.19.88.28</ip>
-    <hostname>srongner840g3.vertexinc.com</hostname>
-    <macaddress>c8-d3-ff-6d-79-3b</macaddress>
-    <connectDateTime>2017-12-14T21:40:59.0871898Z</connectDateTime>
-    <isNewConnection>true</isNewConnection>
-  </ConnectedDevice>
-  <ConnectedDevice>
-    <ip>172.19.88.31</ip>
-    <hostname>tdemarti9470.vertexinc.com</hostname>
-    <macaddress>a0-2b-b8-2e-75-4a</macaddress>
-    <connectDateTime>2017-12-14T21:40:59.1441898Z</connectDateTime>
-    <isNewConnection>true</isNewConnection>
-  </ConnectedDevice>
-  <ConnectedDevice>
-    <ip>172.19.88.7</ip>
-    <macaddress>28-6f-7f-49-8f-7f</macaddress>
-    <connectDateTime>2017-12-14T21:41:02.6461898Z</connectDateTime>
-    <isNewConnection>true</isNewConnection>
-  </ConnectedDevice>
-  <ConnectedDevice>
-    <ip>172.19.88.39</ip>
-    <hostname>jhenness840.vertexinc.com</hostname>
-    <macaddress>dc-4a-3e-5d-10-d1</macaddress>
-    <connectDateTime>2017-12-14T21:41:02.6591898Z</connectDateTime>
-    <isNewConnection>true</isNewConnection>
-  </ConnectedDevice>
-  <ConnectedDevice>
-    <ip>172.19.88.47</ip>
-    <hostname>ahochstu9470.vertexinc.com</hostname>
-    <macaddress>fc-15-b4-eb-b6-ea</macaddress>
-    <connectDateTime>2017-12-14T21:41:02.7601898Z</connectDateTime>
-    <isNewConnection>true</isNewConnection>
-  </ConnectedDevice>
-  <ConnectedDevice>
-    <ip>172.19.88.52</ip>
-    <hostname>thughes9470.vertexinc.com</hostname>
-    <macaddress>a0-d3-c1-9a-36-49</macaddress>
-    <connectDateTime>2017-12-14T21:41:02.7991898Z</connectDateTime>
-    <isNewConnection>true</isNewConnection>
-  </ConnectedDevice>
-  <ConnectedDevice>
-    <ip>172.19.88.59</ip>
-    <hostname>dpierson840a.vertexinc.com</hostname>
-    <macaddress>dc-4a-3e-5d-b0-e0</macaddress>
-    <connectDateTime>2017-12-14T21:41:02.8701898Z</connectDateTime>
-    <isNewConnection>true</isNewConnection>
-  </ConnectedDevice>
-  <ConnectedDevice>
-    <ip>172.19.88.102</ip>
-    <hostname>ngampa840g3.vertexinc.com</hostname>
-    <macaddress>c8-d3-ff-6d-d9-40</macaddress>
-    <connectDateTime>2017-12-14T21:41:02.8991898Z</connectDateTime>
-    <isNewConnection>true</isNewConnection>
-  </ConnectedDevice>
-  <ConnectedDevice>
     <ip>172.19.88.112</ip>
     <hostname>mscuteri840g3.vertexinc.com</hostname>
     <macaddress>OWN Machine</macaddress>
-    <connectDateTime>2017-12-14T21:41:47.8861898Z</connectDateTime>
+    <connectDateTime>2017-12-15T01:51:45.2011764Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
-    <ip>172.19.88.110</ip>
-    <hostname>ecarlson840.vertexinc.com</hostname>
-    <macaddress>dc-4a-3e-5d-80-6e</macaddress>
-    <connectDateTime>2017-12-14T21:41:47.1221898Z</connectDateTime>
+    <ip>192.168.1.152</ip>
+    <macaddress>1c-1e-e3-f4-bb-f4</macaddress>
+    <connectDateTime>2017-12-15T01:51:45.3656197Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
-    <ip>172.19.88.113</ip>
-    <macaddress>18-65-71-35-5e-a0</macaddress>
-    <connectDateTime>2017-12-14T21:41:52.0481898Z</connectDateTime>
+    <ip>192.168.1.158</ip>
+    <hostname>XboxOne.fios-router.home</hostname>
+    <macaddress>c0-33-5e-a1-2d-ae</macaddress>
+    <connectDateTime>2017-12-15T01:42:59.4732993Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
-    <ip>172.19.88.150</ip>
-    <macaddress>18-65-71-35-5e-a3</macaddress>
-    <connectDateTime>2017-12-14T21:41:52.4371898Z</connectDateTime>
-    <isNewConnection>true</isNewConnection>
-  </ConnectedDevice>
-  <ConnectedDevice>
-    <ip>172.19.88.170</ip>
-    <macaddress>18-65-71-35-62-3f</macaddress>
-    <connectDateTime>2017-12-14T21:41:52.5941898Z</connectDateTime>
-    <isNewConnection>true</isNewConnection>
-  </ConnectedDevice>
-  <ConnectedDevice>
-    <ip>172.19.88.172</ip>
-    <macaddress>18-65-71-35-62-0f</macaddress>
-    <connectDateTime>2017-12-14T21:41:52.6221898Z</connectDateTime>
-    <isNewConnection>true</isNewConnection>
-  </ConnectedDevice>
-  <ConnectedDevice>
-    <ip>172.19.88.179</ip>
-    <macaddress>18-65-71-35-5b-40</macaddress>
-    <connectDateTime>2017-12-14T21:41:52.6691898Z</connectDateTime>
-    <isNewConnection>true</isNewConnection>
-  </ConnectedDevice>
-  <ConnectedDevice>
-    <ip>172.19.88.185</ip>
-    <macaddress>18-65-71-35-62-36</macaddress>
-    <connectDateTime>2017-12-14T21:41:52.7341898Z</connectDateTime>
-    <isNewConnection>true</isNewConnection>
-  </ConnectedDevice>
-  <ConnectedDevice>
-    <ip>172.19.88.187</ip>
-    <macaddress>18-65-71-35-5b-49</macaddress>
-    <connectDateTime>2017-12-14T21:41:52.7921898Z</connectDateTime>
-    <isNewConnection>true</isNewConnection>
-  </ConnectedDevice>
-  <ConnectedDevice>
-    <ip>172.19.88.189</ip>
-    <macaddress>18-65-71-35-5e-c1</macaddress>
-    <connectDateTime>2017-12-14T21:41:54.0161898Z</connectDateTime>
+    <ip>192.168.1.151</ip>
+    <macaddress>4c-57-ca-6f-2a-91</macaddress>
+    <connectDateTime>2017-12-15T01:49:51.717015Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
 </ArrayOfConnectedDevice>

@@ -24,17 +24,14 @@ namespace NetworkScanner
             //Initialize network helper
             NetworkHelper netHelper = new NetworkHelper();
 
-            while (1 == 1)
+            while(true)
             {
-                try
-                {
-                    netHelper.Ping_all(NetworkHelper.pingTimeOutMiliseconds);                    
-                }
-                catch(Exception ex)
-                {
-                    //something went wrong
-                }
-             }
-        }
+                Stopwatch timer = new Stopwatch();
+                timer.Start();
+                Thread.Sleep(3500);
+                netHelper.Ping_all();                
+                Console.WriteLine("~Ping All Took [" + timer.ElapsedMilliseconds.ToString() + "] miliseconds to complete");
+            }                       
+        }        
     }
 }
