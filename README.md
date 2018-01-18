@@ -4,11 +4,11 @@
 __~Purpose__  
 This project enables you to assign themesongs to yourself and your friends.  
 The themesong will automatically play when the person to whom it belongs   
-to enters wifi range.  
+to enters the wifi range of the router that the server is connected to.  
 
 __~Technical Overview__  
 This project consists of three main components. The NetworkScanner, 
-the PlaybackHelper, and the DoorbellWebApi(still under development).    
+the PlaybackHelper, and the DoorbellWebApi.    
 
 The purpuse of the DoorbellWebApi is to popluate ThemeSongs.xml, a 
 key value pair table that associates a device's mac-address (key) with
