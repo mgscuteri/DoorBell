@@ -1,11 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.15
+VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoorBellApi", "DoorBell\DoorBellApi.csproj", "{9953D5E5-9443-49A8-BCC2-F21908BDA5A0}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetworkScanner", "NetworkScanner\NetworkScanner.csproj", "{DCAC2CEA-3B9F-44FE-B131-4A1FAD999A6F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetworkScanner", "ConsoleApp1\NetworkScanner.csproj", "{BEE6D3D4-BB04-429F-A091-17CA146E947E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,19 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{9953D5E5-9443-49A8-BCC2-F21908BDA5A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9953D5E5-9443-49A8-BCC2-F21908BDA5A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9953D5E5-9443-49A8-BCC2-F21908BDA5A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9953D5E5-9443-49A8-BCC2-F21908BDA5A0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DCAC2CEA-3B9F-44FE-B131-4A1FAD999A6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DCAC2CEA-3B9F-44FE-B131-4A1FAD999A6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DCAC2CEA-3B9F-44FE-B131-4A1FAD999A6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DCAC2CEA-3B9F-44FE-B131-4A1FAD999A6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEE6D3D4-BB04-429F-A091-17CA146E947E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEE6D3D4-BB04-429F-A091-17CA146E947E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEE6D3D4-BB04-429F-A091-17CA146E947E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEE6D3D4-BB04-429F-A091-17CA146E947E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {241F78B9-35DD-4B3B-AAFC-69FFC4383EF7}
+		SolutionGuid = {A6190BF8-2D7F-4AAA-AE66-35B817F4E74A}
 	EndGlobalSection
 EndGlobal
