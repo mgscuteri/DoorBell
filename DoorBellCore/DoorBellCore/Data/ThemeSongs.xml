@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<ArrayOfThemeSong xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ThemeSong>
+    <macAddress>4c-57-ca-6f-2a-91</macAddress>
+    <songYoutubeUrl>https://www.youtube.com/watch?v=Dst9gZkq1a8</songYoutubeUrl>
+    <minutesToPlay>4</minutesToPlay>
+    <startMinutesSeconds />
+  </ThemeSong>
+  <ThemeSong>
+    <macAddress>e4-a7-a0-6f-08-74</macAddress>
+    <songYoutubeUrl>https://www.youtube.com/watch?v=XXzJpzxk-M8</songYoutubeUrl>
+    <minutesToPlay>2</minutesToPlay>
+    <startMinutesSeconds />
+  </ThemeSong>
+  <ThemeSong>
+    <macAddress>6c-72-e7-af-7f-50</macAddress>
+    <songYoutubeUrl>https://www.youtube.com/watch?v=O9TunCtR3dQ</songYoutubeUrl>
+    <minutesToPlay>2</minutesToPlay>
+    <startMinutesSeconds />
+  </ThemeSong>
+  <ThemeSong>
+    <macAddress>b4-4b-d2-0b-f6-2e</macAddress>
+    <songYoutubeUrl>https://www.youtube.com/watch?v=K5_EBAzIPJM</songYoutubeUrl>
+    <minutesToPlay>1</minutesToPlay>
+    <startMinutesSeconds />
+  </ThemeSong>
+    <ThemeSong>
+    <macAddress>ac-cf-85-12-42-e6</macAddress>
+    <songYoutubeUrl>https://www.youtube.com/watch?v=M11SvDtPBhA</songYoutubeUrl>
+    <minutesToPlay>1</minutesToPlay>
+    <startMinutesSeconds />
+  </ThemeSong>
+</ArrayOfThemeSong>
+
+
+

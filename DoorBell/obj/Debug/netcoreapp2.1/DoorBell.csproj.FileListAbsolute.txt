@@ -1,0 +1,11 @@
+D:\Users\Michael Scuteri\Documents\Programs\DoorBell\DoorBell\bin\Debug\netcoreapp2.1\DoorBell.deps.json
+D:\Users\Michael Scuteri\Documents\Programs\DoorBell\DoorBell\bin\Debug\netcoreapp2.1\DoorBell.runtimeconfig.json
+D:\Users\Michael Scuteri\Documents\Programs\DoorBell\DoorBell\bin\Debug\netcoreapp2.1\DoorBell.runtimeconfig.dev.json
+D:\Users\Michael Scuteri\Documents\Programs\DoorBell\DoorBell\bin\Debug\netcoreapp2.1\DoorBell.dll
+D:\Users\Michael Scuteri\Documents\Programs\DoorBell\DoorBell\bin\Debug\netcoreapp2.1\DoorBell.pdb
+D:\Users\Michael Scuteri\Documents\Programs\DoorBell\DoorBell\obj\Debug\netcoreapp2.1\DoorBell.csprojAssemblyReference.cache
+D:\Users\Michael Scuteri\Documents\Programs\DoorBell\DoorBell\obj\Debug\netcoreapp2.1\DoorBell.csproj.CoreCompileInputs.cache
+D:\Users\Michael Scuteri\Documents\Programs\DoorBell\DoorBell\obj\Debug\netcoreapp2.1\DoorBell.AssemblyInfoInputs.cache
+D:\Users\Michael Scuteri\Documents\Programs\DoorBell\DoorBell\obj\Debug\netcoreapp2.1\DoorBell.AssemblyInfo.cs
+D:\Users\Michael Scuteri\Documents\Programs\DoorBell\DoorBell\obj\Debug\netcoreapp2.1\DoorBell.dll
+D:\Users\Michael Scuteri\Documents\Programs\DoorBell\DoorBell\obj\Debug\netcoreapp2.1\DoorBell.pdb

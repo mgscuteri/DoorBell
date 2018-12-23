@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<ArrayOfConnectedDevice xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ConnectedDevice>
+    <ip>192.168.1.155</ip>
+    <hostname>DESKTOP-16PIKO2.fios-router.home</hostname>
+    <macaddress>OWN Machine</macaddress>
+    <connectDateTime>2017-10-05T07:39:21.6434787Z</connectDateTime>
+    <isNewConnection>true</isNewConnection>
+  </ConnectedDevice>
+</ArrayOfConnectedDevice>
