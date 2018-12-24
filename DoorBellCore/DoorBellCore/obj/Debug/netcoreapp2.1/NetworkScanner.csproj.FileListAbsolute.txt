@@ -8,3 +8,4 @@ D:\Users\Michael Scuteri\Documents\Programs\DoorBell\DoorBellCore\DoorBellCore\b
 D:\Users\Michael Scuteri\Documents\Programs\DoorBell\DoorBellCore\DoorBellCore\bin\Debug\netcoreapp2.1\NetworkScanner.pdb
 D:\Users\Michael Scuteri\Documents\Programs\DoorBell\DoorBellCore\DoorBellCore\obj\Debug\netcoreapp2.1\NetworkScanner.dll
 D:\Users\Michael Scuteri\Documents\Programs\DoorBell\DoorBellCore\DoorBellCore\obj\Debug\netcoreapp2.1\NetworkScanner.pdb
+D:\Users\Michael Scuteri\Documents\Programs\DoorBell\DoorBellCore\DoorBellCore\obj\Debug\netcoreapp2.1\NetworkScanner.csprojAssemblyReference.cache

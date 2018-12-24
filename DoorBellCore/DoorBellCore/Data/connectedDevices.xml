@@ -1,10 +1,52 @@
 <?xml version="1.0"?>
 <ArrayOfConnectedDevice xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ConnectedDevice>
-    <ip>192.168.1.155</ip>
-    <hostname>DESKTOP-16PIKO2.fios-router.home</hostname>
+    <ip>10.0.0.103</ip>
+    <macaddress>00-1c-c4-c5-10-f8</macaddress>
+    <connectDateTime>2018-12-24T14:24:17.3488358Z</connectDateTime>
+    <isNewConnection>true</isNewConnection>
+  </ConnectedDevice>
+  <ConnectedDevice>
+    <ip>10.0.0.146</ip>
+    <macaddress>98-03-d8-7a-cc-7b</macaddress>
+    <connectDateTime>2018-12-24T14:24:17.3841875Z</connectDateTime>
+    <isNewConnection>true</isNewConnection>
+  </ConnectedDevice>
+  <ConnectedDevice>
+    <ip>10.0.0.165</ip>
+    <macaddress>00-d0-2d-e8-fc-e8</macaddress>
+    <connectDateTime>2018-12-24T14:24:17.3841875Z</connectDateTime>
+    <isNewConnection>true</isNewConnection>
+  </ConnectedDevice>
+  <ConnectedDevice>
+    <ip>10.0.0.71</ip>
+    <macaddress>54-42-49-b4-17-4b</macaddress>
+    <connectDateTime>2018-12-24T14:24:17.3841875Z</connectDateTime>
+    <isNewConnection>true</isNewConnection>
+  </ConnectedDevice>
+  <ConnectedDevice>
+    <ip>10.0.0.254</ip>
+    <macaddress>00-05-04-03-02-01</macaddress>
+    <connectDateTime>2018-12-24T14:24:17.6545488Z</connectDateTime>
+    <isNewConnection>true</isNewConnection>
+  </ConnectedDevice>
+  <ConnectedDevice>
+    <ip>10.0.0.224</ip>
+    <hostname>DESKTOP-LQC8868.hsd1.nj.comcast.net</hostname>
     <macaddress>OWN Machine</macaddress>
-    <connectDateTime>2017-10-05T07:39:21.6434787Z</connectDateTime>
+    <connectDateTime>2018-12-24T14:24:18.0492229Z</connectDateTime>
+    <isNewConnection>true</isNewConnection>
+  </ConnectedDevice>
+  <ConnectedDevice>
+    <ip>10.0.0.200</ip>
+    <macaddress>3c-2e-ff-63-83-eb</macaddress>
+    <connectDateTime>2018-12-24T14:24:38.6231925Z</connectDateTime>
+    <isNewConnection>true</isNewConnection>
+  </ConnectedDevice>
+  <ConnectedDevice>
+    <ip>10.0.0.161</ip>
+    <macaddress>6c-72-e7-af-7f-50</macaddress>
+    <connectDateTime>2018-12-24T14:25:00.7338954Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
 </ArrayOfConnectedDevice>

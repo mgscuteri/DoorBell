@@ -95,7 +95,7 @@ namespace NetworkScanner.Helpers
             //wait for duration of song
             var t2 = Task.Run(async delegate
             {
-                await Task.Delay((int)(minutesToPlayVideo * 60000 + 2500));  //video duration - start time 
+                await Task.Delay((int)(minutesToPlayVideo * 60000));  
                 return 1;
             });
             t2.Wait();
@@ -112,22 +112,6 @@ namespace NetworkScanner.Helpers
                 }
             }
             playListMacs.RemoveAt(0);
-        }
-
-        public static void OpenBrowser(string url)
-        {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                Process.Start(new ProcessStartInfo("cmd", $"/c start {url}")); // Works ok on windows
-            }
-            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-            {
-                Process.Start("xdg-open", url);  // Works ok on linux
-            }
-            else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-            {
-                Process.Start("open", url); // Not tested
-            }
         }
 
         public int getVideoDurationMiliseconds(string url)
