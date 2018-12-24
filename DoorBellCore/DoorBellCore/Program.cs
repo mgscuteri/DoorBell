@@ -13,6 +13,7 @@ namespace NetworkScanner
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("---- Starting DoorBell Server");
             //Initialize network helper
             NetworkHelper netHelper = new NetworkHelper();
 
@@ -32,10 +33,11 @@ namespace NetworkScanner
                 }
                 else
                 {
-                    Console.WriteLine("NEW TASK: Checking for any timed out devices.");
+                    Console.WriteLine("------Checking for any timed out devices.");
                     Console.WriteLine("Waiting for previous pings to complete.");
                     Task.Delay(10000); //Wait 10 seconds for pings to complete
                     netHelper.CheckForTimedOutConnections();
+                    timer.Restart();
                 }
             }
         }

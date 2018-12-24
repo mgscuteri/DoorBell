@@ -115,7 +115,7 @@ namespace NetworkScanner.Helpers
                             ConnectedDevice knownDevice = masterDeviceList.Where(x => x.macaddress == pingResults.macaddress).FirstOrDefault();
                             if (knownDevice != null && knownDevice.ip != pingResults.ip)
                             {
-                                Console.WriteLine("...Known device (" + pingResults.macaddress + ") has a new ip address. Updating IP:" + knownDevice.ip);
+                                Console.WriteLine("- - Known device (" + pingResults.macaddress + ") has a new ip address. Updating IP:" + knownDevice.ip);
                                 lock (ConnectedDevices)
                                 {
                                     knownDevice.ip = pingResults.ip;
@@ -124,9 +124,9 @@ namespace NetworkScanner.Helpers
                         }
                         else
                         {
-                            Console.WriteLine("*New device detected. Adding to master device list:" );
-                            Console.WriteLine($" Mac Address: {pingResults.macaddress}");
-                            Console.WriteLine($" Host Name: {pingResults.hostname}");
+                            Console.WriteLine("- - * * New device detected. Adding to master device list:" );
+                            Console.WriteLine($"- - Mac Address: {pingResults.macaddress}");
+                            Console.WriteLine($"- - Host Name: {pingResults.hostname}");
                             lock (ConnectedDevices)
                             {
                                 masterDeviceList.Add(pingResults);
@@ -137,15 +137,16 @@ namespace NetworkScanner.Helpers
                         {
                             //A connected device has reconnected. Updating its timestamp. 
                             ConnectedDevice reconnectedDevice = ConnectedDevices.Where(x => x.macaddress == pingResults.macaddress).FirstOrDefault();
-                            lock (ConnectedDevices)
-                            {
-                                reconnectedDevice.connectDateTime = DateTime.UtcNow;
-                            }
+                            
+                            reconnectedDevice.connectDateTime = DateTime.UtcNow;
+                            
                         }
                         else
                         {
                             //This is a new "connection". Process it. 
-                            Console.WriteLine("3) *A device has connected- Mac:" + pingResults.macaddress + "  - Name: " + pingResults.hostname);
+                            Console.WriteLine("- - - - * * * * A device has connected- Mac:" + pingResults.macaddress + "  - Name: " + pingResults.hostname);
+                            Console.WriteLine($"- - - - * * * * Mac Address: {pingResults.macaddress}");
+                            Console.WriteLine($"- - - - * * * * Host Name: {pingResults.hostname}");
                             lock (ConnectedDevices)
                             {
                                 ConnectedDevices.Add(pingResults);
