@@ -18,15 +18,15 @@ namespace NetworkScanner.Helpers
     {
         //program constants        
         public const int pingTimeOutMiliseconds = 200;
-        public const int connectionTimeOutMinutes = 90;
+        public const int connectionTimeOutMinutes = 720; //12 hours 
         public const bool testMode = false;
-        public string connectedDevicesOutDevicesXmlPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName + @"\data\ConnectedDevices.xml";
-        public string masterDeviceListXmlPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName + @"\data\masterDeviceList.xml";
+        public string ConnectedDeviceListXmlPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName + @"\data\ConnectedDevices.xml";
+        public string MasterDeviceListXmlPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName + @"\data\masterDeviceList.xml";
         public string themeSongsXmlPath = Directory.GetParent((Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName)) + @"\Data\ThemeSongs.xml";
         public XmlSerializer connectedDeviceSerializer = new XmlSerializer(typeof(List<ConnectedDevice>));
         public XmlSerializer themeSongSerializer = new XmlSerializer(typeof(List<ThemeSong>));
         //program variables
-        public List<ConnectedDevice> ConnectedDevices ;
+        public List<ConnectedDevice> ConnectedDeviceList ;
         public List<ConnectedDevice> masterDeviceList ;
         public List<ThemeSong> themeSongs;
         //program helpers
@@ -34,16 +34,32 @@ namespace NetworkScanner.Helpers
 
         public NetworkHelper()
         {
-            ConnectedDevices = new List<ConnectedDevice> { };
+            ConnectedDeviceList = new List<ConnectedDevice> { };
             masterDeviceList = new List<ConnectedDevice> { };
             themeSongs = new List<ThemeSong> { };
             
             playbackHelper = new PlaybackHelper();
             playbackHelper.isPlaying = false;
 
-            UpdateGlobalVariables();
         }
 
+        public void Ping_all()
+        {
+            Console.WriteLine("Pinging all possible LAN addresses");
+            // Runs every time for Resiliancy.  Need to consider performance trade-off. 
+
+            string gate_ip = NetworkHelper.NetworkGateway();
+            string[] array = gate_ip.Split('.');
+
+            //parallel for response collection
+            Parallel.For(2, 255, i =>
+            {
+                string ping_var = array[0] + "." + array[1] + "." + array[2] + "." + i;
+
+                //time in milliseconds           
+                Ping(ping_var, 1, pingTimeOutMiliseconds);
+            });
+        }
 
         public void Ping(string host, int attempts, int timeout)
         {
@@ -57,29 +73,9 @@ namespace NetworkScanner.Helpers
                 }
                 catch
                 {
-                    // Do nothing and try again until the attempts are exausted.
+                    Console.WriteLine($"! ! - - * * Ping execution failed. Host: {host}");
                 }
             }
-        }
-
-        public void Ping_all()
-        {
-            Console.WriteLine("Pinging all possible LAN addresses");
-            // Runs every time for Resiliancy.  Need to consider performance trade-off. 
-            UpdateGlobalVariables(); 
-                        
-            string gate_ip = NetworkHelper.NetworkGateway();
-            string[] array = gate_ip.Split('.');
-
-            //parallel for response collection
-            Parallel.For(2, 255, i =>
-            {
-
-                string ping_var = array[0] + "." + array[1] + "." + array[2] + "." + i;
-
-                //time in milliseconds           
-                Ping(ping_var, 1, pingTimeOutMiliseconds);
-            });
         }
 
         private void PingCompleted(object sender, PingCompletedEventArgs e)
@@ -93,11 +89,11 @@ namespace NetworkScanner.Helpers
                     string hostname = GetHostName(ip);
                     string macaddres = GetMacAddress(ip);
                     string[] arr = new string[3];
-                    
+
                     arr[0] = ip;
                     arr[1] = hostname;
                     arr[2] = macaddres;
-                    
+
                     ConnectedDevice pingResults = new ConnectedDevice
                     {
                         hostname = hostname,
@@ -107,7 +103,7 @@ namespace NetworkScanner.Helpers
                         isNewConnection = true
                     };
 
-                    lock (masterDeviceList) lock (ConnectedDevices)
+                    lock (masterDeviceList)
                     {
                         if (masterDeviceList.Any(x => x.macaddress == pingResults.macaddress))
                         {
@@ -116,113 +112,80 @@ namespace NetworkScanner.Helpers
                             if (knownDevice != null && knownDevice.ip != pingResults.ip)
                             {
                                 Console.WriteLine("- - Known device (" + pingResults.macaddress + ") has a new ip address. Updating IP:" + knownDevice.ip);
-                                lock (ConnectedDevices)
-                                {
-                                    knownDevice.ip = pingResults.ip;
-                                }
+                                knownDevice.ip = pingResults.ip;
                             }
                         }
                         else
                         {
-                            Console.WriteLine("- - * * New device detected. Adding to master device list:" );
-                            Console.WriteLine($"- - Mac Address: {pingResults.macaddress}");
-                            Console.WriteLine($"- - Host Name: {pingResults.hostname}");
-                            lock (ConnectedDevices)
-                            {
-                                masterDeviceList.Add(pingResults);
-                            }
-                        }
+                            Console.WriteLine($"- - * * New device detected. Adding to master device list - Host Name: {pingResults.hostname} - Mac Address: {pingResults.macaddress}");
 
-                        if (ConnectedDevices.Any(x => x.macaddress == pingResults.macaddress))
+                            masterDeviceList.Add(pingResults);
+                        }
+                    }
+
+                    lock (ConnectedDeviceList)
+                    {
+                        if (ConnectedDeviceList.Any(x => x.macaddress == pingResults.macaddress))
                         {
                             //A connected device has reconnected. Updating its timestamp. 
-                            ConnectedDevice reconnectedDevice = ConnectedDevices.Where(x => x.macaddress == pingResults.macaddress).FirstOrDefault();
-                            
+                            ConnectedDevice reconnectedDevice = ConnectedDeviceList.Where(x => x.macaddress == pingResults.macaddress).FirstOrDefault();
                             reconnectedDevice.connectDateTime = DateTime.UtcNow;
-                            
                         }
-                        else
+                        else if (themeSongs.Any(x => x.macAddress == pingResults.macaddress))
                         {
                             //This is a new "connection". Process it. 
-                            Console.WriteLine("- - - - * * * * A device has connected- Mac:" + pingResults.macaddress + "  - Name: " + pingResults.hostname);
-                            Console.WriteLine($"- - - - * * * * Mac Address: {pingResults.macaddress}");
-                            Console.WriteLine($"- - - - * * * * Host Name: {pingResults.hostname}");
-                            lock (ConnectedDevices)
-                            {
-                                ConnectedDevices.Add(pingResults);
-                            }
-
-                            if (themeSongs.Any(x => x.macAddress == pingResults.macaddress))
-                            {
-                                //Device has an associated theme song
-                                Console.WriteLine("+++ Device has an associated theme song. Considering for playback.");
-                                ProcessPlayback(pingResults);
-                            }
-                            else
-                            {
-                                Console.WriteLine("Device does NOT have an associated theme song.");
-                                // Do nothing
-                            }
+                            Console.WriteLine($"* * * * - -- - * * * * New device detected. Adding to master device list - UserName: {themeSongs.Where(x => x.macAddress == pingResults.macaddress).FirstOrDefault()}");
+                            
+                            ConnectedDeviceList.Add(pingResults);
+                            ProcessPlayback(pingResults);
                         }
                     }
                 }
-
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                //
+                Console.WriteLine($"! ! ! ! - - - - * * * * PingCompleted() has encountered an error: {ex.InnerException}");
             }
         }
 
 
-        public void UpdateGlobalVariables()
+        public void DeserializeDataStores()
         {
-            lock (masterDeviceList) lock (ConnectedDevices)
+            lock (masterDeviceList) lock (ConnectedDeviceList)
             {
-                Console.WriteLine("Updating Globals");
+                Console.WriteLine("- - >< Deserializing Data Stores");
                 using (XmlReader reader = XmlReader.Create(themeSongsXmlPath))
                 {
                     themeSongs = (List<ThemeSong>)themeSongSerializer.Deserialize(reader);
                 }
                 //Get list of nonTimedOutDevices -- Test mode causes all devices to be seen as new
-                using (XmlReader reader = XmlReader.Create(connectedDevicesOutDevicesXmlPath))
+                using (XmlReader reader = XmlReader.Create(ConnectedDeviceListXmlPath))
                 {
-                    ConnectedDevices = (List<ConnectedDevice>)connectedDeviceSerializer.Deserialize(reader);
+                    ConnectedDeviceList = (List<ConnectedDevice>)connectedDeviceSerializer.Deserialize(reader);
                 }
                 //Get master list of devices
-                using (XmlReader reader = XmlReader.Create(masterDeviceListXmlPath))
+                using (XmlReader reader = XmlReader.Create(MasterDeviceListXmlPath))
                 {
                     masterDeviceList = (List<ConnectedDevice>)connectedDeviceSerializer.Deserialize(reader);
                 }
             }
         }
 
-        public void CheckForTimedOutConnections()
+        public void SerializeDataStores()
         {
-            Console.WriteLine($"Looping through nonTimedOutDevices.  Looking for devices that have not been seen on the network in the last [{NetworkHelper.connectionTimeOutMinutes}] minutes");
-
-            lock (masterDeviceList) lock (ConnectedDevices)
-            {
-
-                foreach (ConnectedDevice cd in ConnectedDevices.Reverse<ConnectedDevice>())
+            lock (masterDeviceList) lock (ConnectedDeviceList)
                 {
-                    if (cd.isTimedOut(NetworkHelper.connectionTimeOutMinutes))
-                    {
-                        ConnectedDevices.Remove(cd);
-                        Console.WriteLine("DEVICE TIMED OUT - REMOVING: " + cd.macaddress + " from connected(non timed out) list");
-                    }
+                    Console.WriteLine("- - <> Serializing Data Stores");
+
+                    FileStream connectedDeviceListXmlFile = File.Open(ConnectedDeviceListXmlPath, FileMode.Truncate);
+                    connectedDeviceSerializer.Serialize(connectedDeviceListXmlFile, ConnectedDeviceList);
+                    connectedDeviceListXmlFile.Close();
+
+                    FileStream masterDeviceListXmFile = File.Open(MasterDeviceListXmlPath, FileMode.Truncate);
+                    connectedDeviceSerializer.Serialize(masterDeviceListXmFile, masterDeviceList);
+                    masterDeviceListXmFile.Close();
                 }
-
-                System.IO.FileStream nonTimedOoutDevicesFile = System.IO.File.Open(connectedDevicesOutDevicesXmlPath, FileMode.Truncate);
-                connectedDeviceSerializer.Serialize(nonTimedOoutDevicesFile, ConnectedDevices);
-                nonTimedOoutDevicesFile.Close();
-                System.IO.FileStream masterDeviceListFile = System.IO.File.Open(masterDeviceListXmlPath, FileMode.Truncate);
-                connectedDeviceSerializer.Serialize(masterDeviceListFile, masterDeviceList);
-                masterDeviceListFile.Close();
-            }
         }
-
-
 
         public void ProcessPlayback(ConnectedDevice cd)
         {
@@ -243,9 +206,33 @@ namespace NetworkScanner.Helpers
             }
             
         }
+        
+        public void CheckForTimedOutConnections()
+        {
+            Console.WriteLine($"Looping through nonTimedOutDevices.  Looking for devices that have not been seen on the network in the last [{NetworkHelper.connectionTimeOutMinutes}] minutes");
 
+            lock (masterDeviceList) lock (ConnectedDeviceList)
+                {
 
-        static string NetworkGateway()
+                    foreach (ConnectedDevice cd in ConnectedDeviceList.Reverse<ConnectedDevice>())
+                    {
+                        if (cd.isTimedOut(NetworkHelper.connectionTimeOutMinutes))
+                        {
+                            ConnectedDeviceList.Remove(cd);
+                            Console.WriteLine("DEVICE TIMED OUT - REMOVING: " + cd.macaddress + " from connected(non timed out) list");
+                        }
+                    }
+
+                    System.IO.FileStream nonTimedOoutDevicesFile = System.IO.File.Open(ConnectedDeviceListXmlPath, FileMode.Truncate);
+                    connectedDeviceSerializer.Serialize(nonTimedOoutDevicesFile, ConnectedDeviceList);
+                    nonTimedOoutDevicesFile.Close();
+                    System.IO.FileStream masterDeviceListFile = System.IO.File.Open(MasterDeviceListXmlPath, FileMode.Truncate);
+                    connectedDeviceSerializer.Serialize(masterDeviceListFile, masterDeviceList);
+                    masterDeviceListFile.Close();
+                }
+        }
+
+        private static string NetworkGateway()
         {
             string ip = null;
 
@@ -264,7 +251,7 @@ namespace NetworkScanner.Helpers
             return ip;
         }
 
-        public string GetHostName(string ipAddress)
+        private static string GetHostName(string ipAddress)
         {
             try
             {
@@ -282,9 +269,7 @@ namespace NetworkScanner.Helpers
             return null;
         }
 
-
-        //Get MAC address
-        public string GetMacAddress(string ipAddress)
+        private static string GetMacAddress(string ipAddress)
         {
             string macAddress = String.Empty;
             Process Process = new Process();

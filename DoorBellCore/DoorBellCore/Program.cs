@@ -13,7 +13,7 @@ namespace NetworkScanner
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("---- Starting DoorBell Server");
+            Console.WriteLine("Starting DoorBell Server");
             //Initialize network helper
             NetworkHelper netHelper = new NetworkHelper();
 
@@ -27,15 +27,17 @@ namespace NetworkScanner
             while (true)
             {
                 if(timer.ElapsedMilliseconds < CheckForTimedOutConnectionsInterval)
-                {
-                    Thread.Sleep(PingAllPollInterval);
+                {                    
+                    netHelper.DeserializeDataStores();
                     netHelper.Ping_all();
+                    Task.Delay(PingAllPollInterval);
+                    netHelper.SerializeDataStores();
                 }
                 else
                 {
-                    Console.WriteLine("------Checking for any timed out devices.");
+                    Console.WriteLine("Checking for any timed out devices.");
                     Console.WriteLine("Waiting for previous pings to complete.");
-                    Task.Delay(10000); //Wait 10 seconds for pings to complete
+                    Task.Delay(PingAllPollInterval); //Wait for pings to complete
                     netHelper.CheckForTimedOutConnections();
                     timer.Restart();
                 }
