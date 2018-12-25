@@ -39,19 +39,15 @@ namespace NetworkScanner.Helpers
             themeSongs = new List<ThemeSong> { };
             
             playbackHelper = new PlaybackHelper();
-            playbackHelper.isPlaying = false;
-
         }
 
         public void Ping_all()
         {
             Console.WriteLine("Pinging all possible LAN addresses");
-            // Runs every time for Resiliancy.  Need to consider performance trade-off. 
 
             string gate_ip = NetworkHelper.NetworkGateway();
             string[] array = gate_ip.Split('.');
 
-            //parallel for response collection
             Parallel.For(2, 255, i =>
             {
                 string ping_var = array[0] + "." + array[1] + "." + array[2] + "." + i;
@@ -118,7 +114,6 @@ namespace NetworkScanner.Helpers
                         else
                         {
                             Console.WriteLine($"- - * * New device detected. Adding to master device list - Host Name: {pingResults.hostname} - Mac Address: {pingResults.macaddress}");
-
                             masterDeviceList.Add(pingResults);
                         }
                     }
@@ -147,7 +142,6 @@ namespace NetworkScanner.Helpers
                 Console.WriteLine($"! ! ! ! - - - - * * * * PingCompleted() has encountered an error: {ex.InnerException}");
             }
         }
-
 
         public void DeserializeDataStores()
         {
@@ -195,22 +189,8 @@ namespace NetworkScanner.Helpers
 
         public void ProcessPlayback(ConnectedDevice cd)
         {
-            lock (playbackHelper.playListMacs)
-            {
-                //Queue song for playback
-                playbackHelper.playListMacs.Add(cd.macaddress);
-            }
             Console.WriteLine("**** Added Mac Address to playback list: " + cd.macaddress + " (Name: " + cd.hostname + ")");
-            Console.WriteLine("**** Is the playback helper currently playing? " + playbackHelper.isPlaying.ToString());
-
-            if (playbackHelper.isPlaying == false)
-            {
-                Console.WriteLine("****STARTING PLAYBACK****");
-                playbackHelper.isPlaying = true;
-                Thread playbackThread = new Thread(playbackHelper.startPlayback);
-                playbackThread.Start();
-            }
-            
+            playbackHelper.addMacAddres(cd.macaddress);          
         }
         
         public void CheckForTimedOutConnections()

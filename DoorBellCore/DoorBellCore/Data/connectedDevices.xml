@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <ArrayOfConnectedDevice xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ConnectedDevice>
-    <ip>10.0.0.161</ip>
-    <macaddress>6c-72-e7-af-7f-50</macaddress>
-    <connectDateTime>2018-12-25T00:20:18.4937954Z</connectDateTime>
+    <ip>192.168.1.55</ip>
+    <macaddress>44-5e-cd-b0-4b-33</macaddress>
+    <connectDateTime>2018-12-25T20:52:26.3685082Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
 </ArrayOfConnectedDevice>

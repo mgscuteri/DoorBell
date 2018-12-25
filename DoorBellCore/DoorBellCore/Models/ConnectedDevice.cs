@@ -9,6 +9,7 @@ namespace NetworkScanner.Models
     {
         public string ip { get; set; }
         public string hostname { get; set; }
+        public string userName { get; set; }
         public string macaddress { get; set; }
         public DateTime connectDateTime { get; set; }
         public bool isNewConnection { get; set; }

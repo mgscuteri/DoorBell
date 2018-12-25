@@ -9,69 +9,67 @@ using NetworkScanner.Models;
 using System.Xml;
 using System.Xml.Serialization;
 using System.Runtime.InteropServices;
+using System.Threading;
 
 namespace NetworkScanner.Helpers
 {
     public class PlaybackHelper
     {
-        public List<string> playListMacs { get; set; }
-        public bool isPlaying { get; set; }
+        private List<string> playListMacs;
+        private bool isPlaying;
+        private List<ThemeSong> ThemeSongs;
+        private XmlSerializer themeSongSerializer = new System.Xml.Serialization.XmlSerializer(typeof(List<ThemeSong>));
+        private string themeSongsXmlPath = Directory.GetParent((Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName)) + @"\Data\ThemeSongs.xml";
 
         public PlaybackHelper()
         {
             playListMacs = new List<string> {};
+            isPlaying = false;
         }
 
         public void addMacAddres(string macAddress)
         {
-            playListMacs.Add(macAddress);
+            lock(playListMacs)
+            {
+                Console.WriteLine($"****----** Adding {macAddress} to playlist **----****");
+                playListMacs.Add(macAddress);
+            }
+            
+            if (isPlaying == false)
+            {                
+                isPlaying = true;
+                Thread playbackThread = new Thread(startPlayback);
+                playbackThread.Start();
+            }
         }
 
         public void startPlayback()
         {
-            //while playListMacs.length > 0
+            Console.WriteLine($"****-!!-**** Creating Playback Thread ****-!!-****");
+
             while (playListMacs.Count > 0)
             {
-            // This code will allow the following block to run in a separate thread, instaed of async 
-            //   int playListCount = playListMacs.Count;
-            //    while (playListCount == playListMacs.Count)
-            //    {
-                    //Deserialize the themeSong/macaddress data
-                    List<ThemeSong> themeSongs = new List<ThemeSong>() { };
-                    XmlSerializer themeSongSerializer = new System.Xml.Serialization.XmlSerializer(typeof(List<ThemeSong>));
-                    string themeSongsXmlPath = Directory.GetParent((Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName)) + @"\Data\ThemeSongs.xml";
-                    using (XmlReader reader = XmlReader.Create(themeSongsXmlPath))
-                    {
-                        themeSongs = (List<ThemeSong>)themeSongSerializer.Deserialize(reader);
-                    }
-                    //get associated url of the current mac address
-                    string thisYoutubeUrl = themeSongs.FirstOrDefault(x => x.macAddress == playListMacs[0]).songYoutubeUrl;
-                    double minutesToPlayThisVideo = themeSongs.FirstOrDefault(x => x.macAddress == playListMacs[0]).minutesToPlay;
-                    //get the duration of the song (async)                    
+                using (XmlReader reader = XmlReader.Create(themeSongsXmlPath))
+                {
+                    ThemeSongs = (List<ThemeSong>)themeSongSerializer.Deserialize(reader);
+                }
+                string SongURL = ThemeSongs.FirstOrDefault(x => x.macAddress == playListMacs[0]).songYoutubeUrl;
+                double SongDuration = ThemeSongs.FirstOrDefault(x => x.macAddress == playListMacs[0]).minutesToPlay;
 
-                    /* Making an api call to youtube to get the duration of a video is slightly more difficult than I expected.. uncomment this if you manage to fix the getVideoDuration() method
-                    double videoDurationMinutes;
-                    var t3 = Task.Run(async delegate
-                    {
-                        videoDurationMinutes = getVideoDurationMiliseconds(thisYoutubeUrl);
-                    });    
-                    t3.Wait();
-                    */
-
-                    //Play the song
-                    playSong(thisYoutubeUrl, minutesToPlayThisVideo);
-                    //play song, remove from playlist
-             //   }
+                playListMacs.RemoveAt(0);
+                playSong(SongURL, SongDuration);
             }
-            Console.WriteLine("*Playback Complete*");
+            
             isPlaying = false;
+            Console.WriteLine("****-!!-**** Playback Complete. Terminating Playback Thread ****-!!-****");
         }
 
         public void playSong(string SongUrl, double minutesToPlayVideo)
         {
+            Console.WriteLine("****----**** Luanching Browser ****----****");
 
             ProcessStartInfo procStartInfo;
-            //This is untrusted data! be careful!
+            //ToDo: Treat this as untrusted data... 
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
                 procStartInfo = new ProcessStartInfo("cmd", $"/c start {SongUrl}"); // Works ok on windows
@@ -84,39 +82,31 @@ namespace NetworkScanner.Helpers
             {
                 procStartInfo = new ProcessStartInfo("open", SongUrl); // Not tested
             }
-            else //assume windows for now 
+            else 
             {
-                procStartInfo = new ProcessStartInfo("cmd", $"/c start {SongUrl}"); 
+                throw(new Exception("Unsupported OS"));
             }
 
-            //Launch the default browser
             Process proc = Process.Start(procStartInfo);
          
-            //wait for duration of song
-            var t2 = Task.Run(async delegate
-            {
-                await Task.Delay((int)(minutesToPlayVideo * 60000));  
-                return 1;
-            });
-            t2.Wait();
-            //Kill the browser tab
+            Thread.Sleep((int)(minutesToPlayVideo * 60000));
+            
             if (proc != null)
             {
                 try
-                { 
+                {
+                    Console.WriteLine("Killing Browser Window");
                     proc.Kill();
                 }
-                catch
+                catch(Exception ex)
                 {
-                    //You closed the browser manually! Now I have no process to kill.
+                    Console.WriteLine($"Failed to close browser {ex.InnerException}");
                 }
-            }
-            playListMacs.RemoveAt(0);
+            }            
         }
 
         public int getVideoDurationMiliseconds(string url)
         {
-            
             string duration = "";
 
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);

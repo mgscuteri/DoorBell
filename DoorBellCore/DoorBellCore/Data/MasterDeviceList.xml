@@ -1,52 +1,16 @@
 <?xml version="1.0"?>
 <ArrayOfConnectedDevice xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ConnectedDevice>
-    <ip>10.0.0.224</ip>
-    <hostname>DESKTOP-LQC8868.hsd1.nj.comcast.net</hostname>
+    <ip>192.168.1.90</ip>
+    <hostname>MSCUTERI840g3A.vertexinc.com</hostname>
     <macaddress>OWN Machine</macaddress>
-    <connectDateTime>2018-12-25T00:19:01.0352757Z</connectDateTime>
+    <connectDateTime>2018-12-25T20:44:31.861715Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
-    <ip>10.0.0.103</ip>
-    <macaddress>00-1c-c4-c5-10-f8</macaddress>
-    <connectDateTime>2018-12-25T00:19:05.5399176Z</connectDateTime>
-    <isNewConnection>true</isNewConnection>
-  </ConnectedDevice>
-  <ConnectedDevice>
-    <ip>10.0.0.254</ip>
-    <macaddress>00-05-04-03-02-01</macaddress>
-    <connectDateTime>2018-12-25T00:19:05.5632281Z</connectDateTime>
-    <isNewConnection>true</isNewConnection>
-  </ConnectedDevice>
-  <ConnectedDevice>
-    <ip>10.0.0.146</ip>
-    <macaddress>98-03-d8-7a-cc-7b</macaddress>
-    <connectDateTime>2018-12-25T00:19:05.5809115Z</connectDateTime>
-    <isNewConnection>true</isNewConnection>
-  </ConnectedDevice>
-  <ConnectedDevice>
-    <ip>10.0.0.165</ip>
-    <macaddress>00-d0-2d-e8-fc-e8</macaddress>
-    <connectDateTime>2018-12-25T00:19:05.5809312Z</connectDateTime>
-    <isNewConnection>true</isNewConnection>
-  </ConnectedDevice>
-  <ConnectedDevice>
-    <ip>10.0.0.65</ip>
-    <macaddress>08-e6-89-3b-51-9c</macaddress>
-    <connectDateTime>2018-12-25T00:19:10.2947737Z</connectDateTime>
-    <isNewConnection>true</isNewConnection>
-  </ConnectedDevice>
-  <ConnectedDevice>
-    <ip>10.0.0.161</ip>
-    <macaddress>6c-72-e7-af-7f-50</macaddress>
-    <connectDateTime>2018-12-25T00:19:30.3813961Z</connectDateTime>
-    <isNewConnection>true</isNewConnection>
-  </ConnectedDevice>
-  <ConnectedDevice>
-    <ip>10.0.0.200</ip>
-    <macaddress>3c-2e-ff-63-83-eb</macaddress>
-    <connectDateTime>2018-12-25T00:19:51.8292389Z</connectDateTime>
+    <ip>192.168.1.55</ip>
+    <macaddress>44-5e-cd-b0-4b-33</macaddress>
+    <connectDateTime>2018-12-25T20:47:49.5786302Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
 </ArrayOfConnectedDevice>
