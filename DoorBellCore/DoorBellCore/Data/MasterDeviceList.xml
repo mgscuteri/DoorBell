@@ -4,67 +4,49 @@
     <ip>10.0.0.224</ip>
     <hostname>DESKTOP-LQC8868.hsd1.nj.comcast.net</hostname>
     <macaddress>OWN Machine</macaddress>
-    <connectDateTime>2018-12-24T23:34:12.5449297Z</connectDateTime>
+    <connectDateTime>2018-12-25T00:19:01.0352757Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
     <ip>10.0.0.103</ip>
     <macaddress>00-1c-c4-c5-10-f8</macaddress>
-    <connectDateTime>2018-12-24T23:34:17.07304Z</connectDateTime>
+    <connectDateTime>2018-12-25T00:19:05.5399176Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
     <ip>10.0.0.254</ip>
     <macaddress>00-05-04-03-02-01</macaddress>
-    <connectDateTime>2018-12-24T23:34:17.0945783Z</connectDateTime>
-    <isNewConnection>true</isNewConnection>
-  </ConnectedDevice>
-  <ConnectedDevice>
-    <ip>10.0.0.155</ip>
-    <macaddress>44-5e-cd-b0-4b-33</macaddress>
-    <connectDateTime>2018-12-24T23:34:17.1145076Z</connectDateTime>
-    <isNewConnection>true</isNewConnection>
-  </ConnectedDevice>
-  <ConnectedDevice>
-    <ip>10.0.0.165</ip>
-    <macaddress>00-d0-2d-e8-fc-e8</macaddress>
-    <connectDateTime>2018-12-24T23:34:17.1401433Z</connectDateTime>
-    <isNewConnection>true</isNewConnection>
-  </ConnectedDevice>
-  <ConnectedDevice>
-    <ip>10.0.0.65</ip>
-    <macaddress>08-e6-89-3b-51-9c</macaddress>
-    <connectDateTime>2018-12-24T23:34:17.1403242Z</connectDateTime>
-    <isNewConnection>true</isNewConnection>
-  </ConnectedDevice>
-  <ConnectedDevice>
-    <ip>10.0.0.68</ip>
-    <macaddress>3c-15-c2-de-05-6e</macaddress>
-    <connectDateTime>2018-12-24T23:34:19.8373732Z</connectDateTime>
+    <connectDateTime>2018-12-25T00:19:05.5632281Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
     <ip>10.0.0.146</ip>
     <macaddress>98-03-d8-7a-cc-7b</macaddress>
-    <connectDateTime>2018-12-24T23:34:20.8487813Z</connectDateTime>
+    <connectDateTime>2018-12-25T00:19:05.5809115Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
-    <ip>10.0.0.101</ip>
-    <macaddress>dc-2b-2a-41-82-6f</macaddress>
-    <connectDateTime>2018-12-24T23:34:21.7103041Z</connectDateTime>
+    <ip>10.0.0.165</ip>
+    <macaddress>00-d0-2d-e8-fc-e8</macaddress>
+    <connectDateTime>2018-12-25T00:19:05.5809312Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
-    <ip>10.0.0.200</ip>
-    <macaddress>3c-2e-ff-63-83-eb</macaddress>
-    <connectDateTime>2018-12-24T23:34:43.7939161Z</connectDateTime>
+    <ip>10.0.0.65</ip>
+    <macaddress>08-e6-89-3b-51-9c</macaddress>
+    <connectDateTime>2018-12-25T00:19:10.2947737Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
     <ip>10.0.0.161</ip>
     <macaddress>6c-72-e7-af-7f-50</macaddress>
-    <connectDateTime>2018-12-24T23:35:48.6107621Z</connectDateTime>
+    <connectDateTime>2018-12-25T00:19:30.3813961Z</connectDateTime>
+    <isNewConnection>true</isNewConnection>
+  </ConnectedDevice>
+  <ConnectedDevice>
+    <ip>10.0.0.200</ip>
+    <macaddress>3c-2e-ff-63-83-eb</macaddress>
+    <connectDateTime>2018-12-25T00:19:51.8292389Z</connectDateTime>
     <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
 </ArrayOfConnectedDevice>

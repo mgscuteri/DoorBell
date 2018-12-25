@@ -176,14 +176,20 @@ namespace NetworkScanner.Helpers
             lock (masterDeviceList) lock (ConnectedDeviceList)
                 {
                     Console.WriteLine("- - <> Serializing Data Stores");
+                    try
+                    {
+                        FileStream connectedDeviceListXmlFile = File.Open(ConnectedDeviceListXmlPath, FileMode.Truncate);
+                        connectedDeviceSerializer.Serialize(connectedDeviceListXmlFile, ConnectedDeviceList);
+                        connectedDeviceListXmlFile.Close();
 
-                    FileStream connectedDeviceListXmlFile = File.Open(ConnectedDeviceListXmlPath, FileMode.Truncate);
-                    connectedDeviceSerializer.Serialize(connectedDeviceListXmlFile, ConnectedDeviceList);
-                    connectedDeviceListXmlFile.Close();
-
-                    FileStream masterDeviceListXmFile = File.Open(MasterDeviceListXmlPath, FileMode.Truncate);
-                    connectedDeviceSerializer.Serialize(masterDeviceListXmFile, masterDeviceList);
-                    masterDeviceListXmFile.Close();
+                        FileStream masterDeviceListXmFile = File.Open(MasterDeviceListXmlPath, FileMode.Truncate);
+                        connectedDeviceSerializer.Serialize(masterDeviceListXmFile, masterDeviceList);
+                        masterDeviceListXmFile.Close();
+                    }
+                    catch(Exception ex)
+                    {
+                        Console.WriteLine($"Serialization Failure Occured: {ex.InnerException}");
+                    }
                 }
         }
 
