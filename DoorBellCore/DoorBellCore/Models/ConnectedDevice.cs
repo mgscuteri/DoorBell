@@ -18,11 +18,13 @@ namespace NetworkScanner.Models
 
         }
 
-        public bool isTimedOut(double timeOutMinutes)
+        public bool IsTimedOut(int timeOutMiliseconds)
         {
-            var minutesElapsed = (DateTime.UtcNow - connectDateTime).TotalMinutes;
-                    
-            return minutesElapsed > timeOutMinutes;
+            var milisecondsElapsed = (int)Math.Floor((DateTime.UtcNow - connectDateTime).TotalMilliseconds);
+            Console.WriteLine($"Checking {userName} for timeout. Elapsed Miliseconds: {milisecondsElapsed} ");
+            bool isTimedOut = milisecondsElapsed > timeOutMiliseconds;
+            Console.WriteLine($"IsTimedOut: {isTimedOut} ");
+            return isTimedOut;
         }
     }
 }

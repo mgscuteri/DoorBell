@@ -1,36 +1,85 @@
 <?xml version="1.0"?>
 <ArrayOfConnectedDevice xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ConnectedDevice>
-    <ip>192.168.1.90</ip>
+    <ip>10.0.0.224</ip>
     <hostname>MSCUTERI840g3A.vertexinc.com</hostname>
+    <userName>unknown</userName>
     <macaddress>OWN Machine</macaddress>
     <connectDateTime>2018-12-25T20:44:31.861715Z</connectDateTime>
   </ConnectedDevice>
   <ConnectedDevice>
-    <ip>192.168.1.55</ip>
-    <userName>unknown</userName>
+    <ip>10.0.0.155</ip>
+    <userName>Mike Scuteri</userName>
     <macaddress>44-5e-cd-b0-4b-33</macaddress>
     <connectDateTime>2018-12-26T03:38:07.2521478Z</connectDateTime>
   </ConnectedDevice>
   <ConnectedDevice>
-    <ip>192.168.1.80</ip>
+    <ip>10.0.0.65</ip>
     <hostname>JoannaSisiPhone.lan</hostname>
-    <userName>unknown</userName>
+    <userName>Joanna</userName>
     <macaddress>08-e6-89-3b-51-9c</macaddress>
     <connectDateTime>2018-12-26T17:24:33.7042842Z</connectDateTime>
   </ConnectedDevice>
   <ConnectedDevice>
-    <ip>192.168.1.35</ip>
+    <ip>10.0.0.101</ip>
     <hostname>Sarahs-iPhone.lan</hostname>
-    <userName>unknown</userName>
+    <userName>Sarah</userName>
     <macaddress>dc-2b-2a-41-82-6f</macaddress>
     <connectDateTime>2018-12-26T17:37:12.2644669Z</connectDateTime>
   </ConnectedDevice>
   <ConnectedDevice>
-    <ip>192.168.1.79</ip>
+    <ip>10.0.0.200</ip>
     <hostname>Winnies-iPhone.lan</hostname>
-    <userName>unknown</userName>
+    <userName>Mom</userName>
     <macaddress>3c-2e-ff-63-83-eb</macaddress>
     <connectDateTime>2018-12-26T17:50:08.4973965Z</connectDateTime>
+  </ConnectedDevice>
+  <ConnectedDevice>
+    <ip>10.0.0.103</ip>
+    <userName>unknown</userName>
+    <macaddress>00-1c-c4-c5-10-f8</macaddress>
+    <connectDateTime>2018-12-26T19:12:02.854309Z</connectDateTime>
+  </ConnectedDevice>
+  <ConnectedDevice>
+    <ip>10.0.0.254</ip>
+    <userName>unknown</userName>
+    <macaddress>00-05-04-03-02-01</macaddress>
+    <connectDateTime>2018-12-26T19:12:02.859704Z</connectDateTime>
+  </ConnectedDevice>
+  <ConnectedDevice>
+    <ip>10.0.0.165</ip>
+    <userName>unknown</userName>
+    <macaddress>00-d0-2d-e8-fc-e8</macaddress>
+    <connectDateTime>2018-12-26T19:12:02.8600304Z</connectDateTime>
+  </ConnectedDevice>
+  <ConnectedDevice>
+    <ip>10.0.0.210</ip>
+    <userName>unknown</userName>
+    <macaddress>b0-ce-18-24-09-af</macaddress>
+    <connectDateTime>2018-12-26T19:12:02.8928348Z</connectDateTime>
+  </ConnectedDevice>
+  <ConnectedDevice>
+    <ip>10.0.0.161</ip>
+    <userName>Dad</userName>
+    <macaddress>6c-72-e7-af-7f-50</macaddress>
+    <connectDateTime>2018-12-26T19:12:20.3654827Z</connectDateTime>
+  </ConnectedDevice>
+  <ConnectedDevice>
+    <ip>10.0.0.146</ip>
+    <userName>unknown</userName>
+    <macaddress>98-03-d8-7a-cc-7b</macaddress>
+    <connectDateTime>2018-12-26T19:25:39.2322129Z</connectDateTime>
+  </ConnectedDevice>
+  <ConnectedDevice>
+    <ip>10.0.0.25</ip>
+    <userName>unknown</userName>
+    <macaddress>e0-ac-cb-75-61-86</macaddress>
+    <connectDateTime>2018-12-26T19:55:06.831364Z</connectDateTime>
+  </ConnectedDevice>
+  <ConnectedDevice>
+    <ip>10.0.0.137</ip>
+    <userName>unknown</userName>
+    <macaddress>dc-56-e7-92-5e-94</macaddress>
+    <connectDateTime>2018-12-26T20:13:23.4127563Z</connectDateTime>
   </ConnectedDevice>
 </ArrayOfConnectedDevice>

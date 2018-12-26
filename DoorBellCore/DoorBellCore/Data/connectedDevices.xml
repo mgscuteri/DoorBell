@@ -1,4 +1,39 @@
 <?xml version="1.0"?>
 <ArrayOfConnectedDevice xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-
+  <ConnectedDevice>
+    <ip>10.0.0.101</ip>
+    <userName>Sarah</userName>
+    <macaddress>dc-2b-2a-41-82-6f</macaddress>
+    <connectDateTime>2018-12-26T21:42:23.1206481Z</connectDateTime>
+  </ConnectedDevice>
+  <ConnectedDevice>
+    <ip>10.0.0.200</ip>
+    <userName>Mom</userName>
+    <macaddress>3c-2e-ff-63-83-eb</macaddress>
+    <connectDateTime>2018-12-26T21:42:26.7678852Z</connectDateTime>
+  </ConnectedDevice>
+  <ConnectedDevice>
+    <ip>10.0.0.161</ip>
+    <userName>Dad</userName>
+    <macaddress>6c-72-e7-af-7f-50</macaddress>
+    <connectDateTime>2018-12-26T21:42:26.7150431Z</connectDateTime>
+  </ConnectedDevice>
+  <ConnectedDevice>
+    <ip>10.0.0.161</ip>
+    <userName>Dad</userName>
+    <macaddress>6c-72-e7-af-7f-50</macaddress>
+    <connectDateTime>2018-12-26T21:25:51.6507354Z</connectDateTime>
+  </ConnectedDevice>
+  <ConnectedDevice>
+    <ip>10.0.0.155</ip>
+    <userName>Mike Scuteri</userName>
+    <macaddress>44-5e-cd-b0-4b-33</macaddress>
+    <connectDateTime>2018-12-26T21:42:55.3166557Z</connectDateTime>
+  </ConnectedDevice>
+  <ConnectedDevice>
+    <ip>10.0.0.65</ip>
+    <userName>Joanna</userName>
+    <macaddress>08-e6-89-3b-51-9c</macaddress>
+    <connectDateTime>2018-12-26T21:42:54.6460538Z</connectDateTime>
+  </ConnectedDevice>
 </ArrayOfConnectedDevice>

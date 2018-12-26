@@ -19,12 +19,14 @@ namespace NetworkScanner
         private static void Start()
         {
             int pingAllPollInterval = 3500;
-            int checkForTimedOutConnectionsInterval = 300000;
+            int checkForTimedOutConnectionsInterval = 900000; //15 minutes in miliseconds
+            int connectedDeviceTimeoutTime = 43200000; //12 hours in miliseconds
             bool exitCondition = false;
+            bool verboseLogging = false;
 
             Console.WriteLine("Starting DoorBell Server");
             //Initialize network helper
-            NetworkHelper netHelper = new NetworkHelper(pingAllPollInterval + 2000);
+            NetworkHelper netHelper = new NetworkHelper(pingAllPollInterval + 2000, connectedDeviceTimeoutTime);
 
             Stopwatch timer = new Stopwatch();
             timer.Start();
@@ -36,9 +38,9 @@ namespace NetworkScanner
                     netHelper.DeserializeDataStores();
                     Thread PingThread = new Thread(netHelper.Ping_all);
                     PingThread.Start();
-                    Console.WriteLine($"Program Thread Sleeping");
+                    if (verboseLogging) { Console.WriteLine($"Program Thread Sleeping"); }
                     Thread.Sleep(pingAllPollInterval);
-                    Console.WriteLine($"Program Thread Waking");
+                    if (verboseLogging) { Console.WriteLine($"Program Thread Waking"); }
                     netHelper.SerializeDataStores();
                 }
                 else

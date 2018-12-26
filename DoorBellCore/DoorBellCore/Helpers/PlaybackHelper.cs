@@ -129,7 +129,8 @@ namespace NetworkScanner.Helpers
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Failed to close browser {ex.InnerException}");
+                Console.WriteLine($"Failed to close browser {ex}");
+                throw (ex);
             }
         }
 

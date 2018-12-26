@@ -16,10 +16,10 @@ namespace NetworkScanner.Helpers
 {
     public class NetworkHelper
     {
-        public const int connectionTimeOutMinutes = 720; //12 hours 
-        public const bool verboseLogging = true;
+        public const bool verboseLogging = false;
         public const bool extraVerboseLogging = false;
-        public int pingTimeOutMiliseconds = 4000;
+        public int ConnectedDeviceTimeoutTime; //12 hours 
+        public int pingTimeOutMiliseconds;
         public string ConnectedDeviceListXmlPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName + @"\data\ConnectedDevices.xml";
         public string MasterDeviceListXmlPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName + @"\data\masterDeviceList.xml";
         public string themeSongsXmlPath = Directory.GetParent((Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName)) + @"\Data\ThemeSongs.xml";
@@ -30,18 +30,19 @@ namespace NetworkScanner.Helpers
         public List<ThemeSong> themeSongs;
         private PlaybackHelper playbackHelper;
 
-        public NetworkHelper(int pingAllPollInterval)
+        public NetworkHelper(int pingAllPollInterval, int connectedDeviceTimeoutTime)
         {
             ConnectedDeviceList = new List<ConnectedDevice> { };
             masterDeviceList = new List<ConnectedDevice> { };
             themeSongs = new List<ThemeSong> { };
             pingTimeOutMiliseconds = pingAllPollInterval + 2000;
             playbackHelper = new PlaybackHelper();
+            ConnectedDeviceTimeoutTime = connectedDeviceTimeoutTime;
         }
 
         public void Ping_all()
         {
-            Console.WriteLine("Pinging all possible LAN addresses");
+            if (verboseLogging) { Console.WriteLine("Pinging all possible LAN addresses"); }
 
             string gate_ip = NetworkHelper.NetworkGateway();
             
@@ -100,7 +101,6 @@ namespace NetworkScanner.Helpers
                     ConnectedDevice pingResults = new ConnectedDevice
                     {
                         hostname = hostname,
-                        userName = "unknown",
                         ip = ip,
                         macaddress = macaddres,
                         connectDateTime = DateTime.UtcNow,
@@ -112,15 +112,23 @@ namespace NetworkScanner.Helpers
                     {
                         //This macAddress has connected before. Lets update its IP address in the master ip/mac lookup table 
                         ConnectedDevice knownDevice = masterDeviceList.Where(x => x.macaddress == pingResults.macaddress).FirstOrDefault();
+                        string userName = themeSongs.Where(x => x.macAddress == pingResults.macaddress).FirstOrDefault()?.userName ?? "unknown";
+
                         if (knownDevice != null && knownDevice.ip != pingResults.ip)
                         {
                             Console.WriteLine("- - Known device (" + pingResults.macaddress + ") has a new ip address. Updating IP:" + knownDevice.ip);
                             knownDevice.ip = pingResults.ip;
                         }
+
+                        if (knownDevice.userName != userName) 
+                        {
+                            knownDevice.userName = userName;
+                        }
                     }
                     else
                     {
                         Console.WriteLine($"- - * * New device detected. Adding to master device list - Host Name: {pingResults.hostname} - Mac Address: {pingResults.macaddress}");
+                        pingResults.userName = themeSongs.Where(x => x.macAddress == pingResults.macaddress).FirstOrDefault()?.userName ?? "unknown";
                         masterDeviceList.Add(pingResults);
                     }
 
@@ -134,8 +142,9 @@ namespace NetworkScanner.Helpers
                     else if (themeSongs.Any(x => x.macAddress == pingResults.macaddress))
                     {
                         //This is a new "connection". Process it. 
-                        Console.WriteLine($"* * * * - -- - * * * * New device detected. Adding to master device list - UserName: {themeSongs.Where(x => x.macAddress == pingResults.macaddress).FirstOrDefault()}");
-                            
+                        string userName = themeSongs.Where(x => x.macAddress == pingResults.macaddress).FirstOrDefault()?.userName ?? "unknown";
+                        pingResults.userName = userName;
+                        Console.WriteLine($"* * * * - -- - * * * * New device detected. Adding to master device list - UserName: {userName}  MacAddress: {pingResults.macaddress}");
                         ConnectedDeviceList.Add(pingResults);
                         ProcessPlayback(pingResults);
                     }
@@ -153,7 +162,7 @@ namespace NetworkScanner.Helpers
         {
             lock (masterDeviceList) lock (ConnectedDeviceList)
             {
-                Console.WriteLine("- - >< Deserializing Data Stores");
+                if (verboseLogging) { Console.WriteLine("- - >< Deserializing Data Stores"); }
                 using (XmlReader reader = XmlReader.Create(themeSongsXmlPath))
                 {
                     themeSongs = (List<ThemeSong>)themeSongSerializer.Deserialize(reader);
@@ -175,7 +184,7 @@ namespace NetworkScanner.Helpers
         {
             lock (masterDeviceList) lock (ConnectedDeviceList)
                 {
-                    Console.WriteLine("- - <> Serializing Data Stores");
+                    if (verboseLogging) { Console.WriteLine("- - <> Serializing Data Stores"); }
                     try
                     {
                         FileStream connectedDeviceListXmlFile = File.Open(ConnectedDeviceListXmlPath, FileMode.Truncate);
@@ -195,23 +204,26 @@ namespace NetworkScanner.Helpers
 
         public void ProcessPlayback(ConnectedDevice cd)
         {
-            Console.WriteLine("**** Added Mac Address to playback list: " + cd.macaddress + " (Name: " + cd.hostname + ")");
+            Console.WriteLine("**** Added Mac Address to playback list: " + cd.macaddress + " (UserName: " + cd.userName+ ")");
             playbackHelper.addMacAddres(cd.macaddress);          
         }
         
         public void CheckForTimedOutConnections()
         {
-            Console.WriteLine($"Looping through nonTimedOutDevices.  Looking for devices that have not been seen on the network in the last [{NetworkHelper.connectionTimeOutMinutes}] minutes");
+            Console.WriteLine($"Looping through nonTimedOutDevices.  Looking for devices that have not been seen on the network in the last [{this.ConnectedDeviceTimeoutTime}] seconds");
 
             lock (masterDeviceList) lock (ConnectedDeviceList)
                 {
+                    Console.WriteLine($"Checking for timed out devices. Timeout time = {this.ConnectedDeviceTimeoutTime}");
 
                     foreach (ConnectedDevice cd in ConnectedDeviceList.Reverse<ConnectedDevice>())
                     {
-                        if (cd.isTimedOut(NetworkHelper.connectionTimeOutMinutes))
+                        bool isTimedOut = cd.IsTimedOut(this.ConnectedDeviceTimeoutTime);
+
+                        if (isTimedOut)
                         {
                             ConnectedDeviceList.Remove(cd);
-                            Console.WriteLine("DEVICE TIMED OUT - REMOVING: " + cd.macaddress + " from connected(non timed out) list");
+                            Console.WriteLine("DEVICE TIMED OUT - REMOVING: " + cd.userName + " from connected device list list");
                         }
                     }
 
