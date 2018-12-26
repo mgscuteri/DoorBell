@@ -87,23 +87,32 @@ namespace NetworkScanner.Helpers
                 throw(new Exception("Unsupported OS"));
             }
 
-            //Process proc = Process.Start(procStartInfo);
-            Process proc = new Process();
-            proc.StartInfo = procStartInfo;
-
-            ThreadStart songThreadStart = new ThreadStart(() => proc.Start());
-            Thread th = new Thread(songThreadStart);
-            th.Start();
-
+            Process proc = Process.Start(procStartInfo);
+            int procId = proc.Id;
             Thread.Sleep(duration);
             
             if (proc != null)
             {
                 try
                 {
-                    Console.WriteLine("Killing Browser Window");
-                    proc.Refresh();
-                    proc.Kill();
+                    ProcessStartInfo procCloseInfo;
+                    if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                    {
+                        procCloseInfo = new ProcessStartInfo("cmd", $"Taskkill /IM chrome.exe /F"); // Works ok on windows
+                    }
+                    else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+                    {
+                        procCloseInfo = new ProcessStartInfo("xdg-open", SongUrl);  // Works ok on linux
+                    }
+                    else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+                    {
+                        procCloseInfo = new ProcessStartInfo("open", SongUrl); // Not tested
+                    }
+                    else
+                    {
+                        throw (new Exception("Unsupported OS"));
+                    }
+                    Process procClose = Process.Start(procCloseInfo);
                 }
                 catch(Exception ex)
                 {
@@ -129,5 +138,7 @@ namespace NetworkScanner.Helpers
             milisconds = 10000; //BUG not fully implemented 
             return milisconds;
         }
+
+
     }
 }

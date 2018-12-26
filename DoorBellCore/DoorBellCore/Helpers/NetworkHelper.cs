@@ -16,28 +16,26 @@ namespace NetworkScanner.Helpers
 {
     public class NetworkHelper
     {
-        //program constants        
-        public const int pingTimeOutMiliseconds = 4000;
         public const int connectionTimeOutMinutes = 720; //12 hours 
-        public const bool verboseLogging = true;
+        public const bool verboseLogging = false;
+        public const bool extraVerboseLogging = false;
+        public int pingTimeOutMiliseconds = 4000;
         public string ConnectedDeviceListXmlPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName + @"\data\ConnectedDevices.xml";
         public string MasterDeviceListXmlPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName + @"\data\masterDeviceList.xml";
         public string themeSongsXmlPath = Directory.GetParent((Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName)) + @"\Data\ThemeSongs.xml";
         public XmlSerializer connectedDeviceSerializer = new XmlSerializer(typeof(List<ConnectedDevice>));
         public XmlSerializer themeSongSerializer = new XmlSerializer(typeof(List<ThemeSong>));
-        //program variables
         public List<ConnectedDevice> ConnectedDeviceList ;
         public List<ConnectedDevice> masterDeviceList ;
         public List<ThemeSong> themeSongs;
-        //program helpers
         private PlaybackHelper playbackHelper;
 
-        public NetworkHelper()
+        public NetworkHelper(int pingAllPollInterval)
         {
             ConnectedDeviceList = new List<ConnectedDevice> { };
             masterDeviceList = new List<ConnectedDevice> { };
             themeSongs = new List<ThemeSong> { };
-            
+            pingTimeOutMiliseconds = pingAllPollInterval + 2000;
             playbackHelper = new PlaybackHelper();
         }
 
@@ -63,7 +61,7 @@ namespace NetworkScanner.Helpers
             {
                 try
                 {
-                    if (verboseLogging) { Console.WriteLine($"Pinging {host}"); }
+                    if (extraVerboseLogging) { Console.WriteLine($"Pinging {host}"); }
 
                     Ping ping = new Ping();
                     ping.PingCompleted += new PingCompletedEventHandler(PingCompleted);
