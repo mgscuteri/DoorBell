@@ -12,4 +12,25 @@
     <macaddress>44-5e-cd-b0-4b-33</macaddress>
     <connectDateTime>2018-12-26T03:38:07.2521478Z</connectDateTime>
   </ConnectedDevice>
+  <ConnectedDevice>
+    <ip>192.168.1.80</ip>
+    <hostname>JoannaSisiPhone.lan</hostname>
+    <userName>unknown</userName>
+    <macaddress>08-e6-89-3b-51-9c</macaddress>
+    <connectDateTime>2018-12-26T17:24:33.7042842Z</connectDateTime>
+  </ConnectedDevice>
+  <ConnectedDevice>
+    <ip>192.168.1.35</ip>
+    <hostname>Sarahs-iPhone.lan</hostname>
+    <userName>unknown</userName>
+    <macaddress>dc-2b-2a-41-82-6f</macaddress>
+    <connectDateTime>2018-12-26T17:37:12.2644669Z</connectDateTime>
+  </ConnectedDevice>
+  <ConnectedDevice>
+    <ip>192.168.1.79</ip>
+    <hostname>Winnies-iPhone.lan</hostname>
+    <userName>unknown</userName>
+    <macaddress>3c-2e-ff-63-83-eb</macaddress>
+    <connectDateTime>2018-12-26T17:50:08.4973965Z</connectDateTime>
+  </ConnectedDevice>
 </ArrayOfConnectedDevice>

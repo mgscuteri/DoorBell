@@ -17,7 +17,7 @@ namespace NetworkScanner.Helpers
     public class NetworkHelper
     {
         public const int connectionTimeOutMinutes = 720; //12 hours 
-        public const bool verboseLogging = false;
+        public const bool verboseLogging = true;
         public const bool extraVerboseLogging = false;
         public int pingTimeOutMiliseconds = 4000;
         public string ConnectedDeviceListXmlPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName + @"\data\ConnectedDevices.xml";
@@ -44,6 +44,13 @@ namespace NetworkScanner.Helpers
             Console.WriteLine("Pinging all possible LAN addresses");
 
             string gate_ip = NetworkHelper.NetworkGateway();
+            
+            if(gate_ip == null)
+            {
+                Console.WriteLine("Network Gateway not found!");
+                throw (new Exception("Network Gateway not Found."));
+            }
+
             string[] array = gate_ip.Split('.');
 
             Parallel.For(2, 255, i =>

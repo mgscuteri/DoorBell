@@ -66,59 +66,71 @@ namespace NetworkScanner.Helpers
 
         public void playSong(string SongUrl, int duration)
         {
+            Console.WriteLine("****----**** Playing Song ****----****");
+            OpenBrowserToUrl(SongUrl);
+            Console.WriteLine("****----**** Playback thread sleeping ****----****");
+            Thread.Sleep(duration);
+            Console.WriteLine("****----**** Playback thread waking ****----****");
+            CloseBrowser();
+        }
+
+        public static void OpenBrowserToUrl(string url)
+        {
             Console.WriteLine("****----**** Luanching Browser ****----****");
 
             ProcessStartInfo procStartInfo;
             //ToDo: Treat this as untrusted data... 
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                procStartInfo = new ProcessStartInfo("cmd", $"/c start {SongUrl}"); // Works ok on windows
+                procStartInfo = new ProcessStartInfo("cmd", $"/c start {url}"); // Works ok on windows
             }
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
-                procStartInfo = new ProcessStartInfo("xdg-open", SongUrl);  // Works ok on linux
+                procStartInfo = new ProcessStartInfo("xdg-open", url);  // Works ok on linux
             }
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
-                procStartInfo = new ProcessStartInfo("open", SongUrl); // Not tested
+                procStartInfo = new ProcessStartInfo("open", url); // Not tested
             }
-            else 
+            else
             {
-                throw(new Exception("Unsupported OS"));
+                throw (new Exception("Unsupported OS"));
             }
 
             Process proc = Process.Start(procStartInfo);
-            int procId = proc.Id;
-            Thread.Sleep(duration);
-            
-            if (proc != null)
+        }
+
+        public static void CloseBrowser()
+        {
+            Console.WriteLine("****----**** Closing Browser ****----****");
+            try
             {
-                try
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
                 {
-                    ProcessStartInfo procCloseInfo;
-                    if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                    Process[] chromeInstances = Process.GetProcessesByName("chrome");
+
+                    foreach (Process p in chromeInstances)
                     {
-                        procCloseInfo = new ProcessStartInfo("cmd", $"Taskkill /IM chrome.exe /F"); // Works ok on windows
-                    }
-                    else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-                    {
-                        procCloseInfo = new ProcessStartInfo("xdg-open", SongUrl);  // Works ok on linux
-                    }
-                    else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-                    {
-                        procCloseInfo = new ProcessStartInfo("open", SongUrl); // Not tested
-                    }
-                    else
-                    {
-                        throw (new Exception("Unsupported OS"));
-                    }
-                    Process procClose = Process.Start(procCloseInfo);
+                        p.Kill();
+                    }                        
                 }
-                catch(Exception ex)
+                else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
                 {
-                    Console.WriteLine($"Failed to close browser {ex.InnerException}");
+                    //procCloseInfo = new ProcessStartInfo("xdg-open");  // Need to implement for linux
                 }
-            }            
+                else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+                {
+                    //procCloseInfo = new ProcessStartInfo("open"); // Need to implement for mac
+                }
+                else
+                {
+                    throw (new Exception("Unsupported OS"));
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Failed to close browser {ex.InnerException}");
+            }
         }
 
         public int getVideoDurationMiliseconds(string url)

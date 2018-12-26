@@ -20,6 +20,7 @@ namespace NetworkScanner
         {
             int pingAllPollInterval = 3500;
             int checkForTimedOutConnectionsInterval = 300000;
+            bool exitCondition = false;
 
             Console.WriteLine("Starting DoorBell Server");
             //Initialize network helper
@@ -28,15 +29,16 @@ namespace NetworkScanner
             Stopwatch timer = new Stopwatch();
             timer.Start();
 
-            while (true)
+            while (!exitCondition)
             {
                 if (timer.ElapsedMilliseconds < checkForTimedOutConnectionsInterval)
                 {
                     netHelper.DeserializeDataStores();
                     Thread PingThread = new Thread(netHelper.Ping_all);
                     PingThread.Start();
-                    Console.WriteLine($"Waiting for poll interval: {pingAllPollInterval}");
+                    Console.WriteLine($"Program Thread Sleeping");
                     Thread.Sleep(pingAllPollInterval);
+                    Console.WriteLine($"Program Thread Waking");
                     netHelper.SerializeDataStores();
                 }
                 else

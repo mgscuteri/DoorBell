@@ -4,7 +4,7 @@
     <macAddress>44-5e-cd-b0-4b-33</macAddress>
     <userName>Mike Scuteri</userName>
     <songYoutubeUrl>https://www.youtube.com/watch?v=XXzJpzxk-M8</songYoutubeUrl>
-    <duration>10000</duration>
+    <duration>120000</duration>
     <startMinutesSeconds />
   </ThemeSong>
   <ThemeSong>
@@ -18,6 +18,27 @@
     <macAddress>ac-cf-85-12-42-e6</macAddress>
     <userName>Mike Dinella</userName>
     <songYoutubeUrl>https://www.youtube.com/watch?v=M11SvDtPBhA</songYoutubeUrl>
+    <duration>120000</duration>
+    <startMinutesSeconds />
+  </ThemeSong>
+  <ThemeSong>
+    <macAddress>08-e6-89-3b-51-9c</macAddress>
+    <userName>Joanna</userName>
+    <songYoutubeUrl>https://www.youtube.com/watch?v=mwQjpHeD2OI</songYoutubeUrl>
+    <duration>120000</duration>
+    <startMinutesSeconds />
+  </ThemeSong>
+  <ThemeSong>
+    <macAddress>dc-2b-2a-41-82-6f</macAddress>
+    <userName>Sarah</userName>
+    <songYoutubeUrl>https://www.youtube.com/watch?v=L0MK7qz13bU</songYoutubeUrl>
+    <duration>120000</duration>
+    <startMinutesSeconds />
+  </ThemeSong>
+  <ThemeSong>
+    <macAddress>3c-2e-ff-63-83-eb</macAddress>
+    <userName>Mom</userName>
+    <songYoutubeUrl>https://www.youtube.com/watch?v=GTxIG3nbINw</songYoutubeUrl>
     <duration>120000</duration>
     <startMinutesSeconds />
   </ThemeSong>
