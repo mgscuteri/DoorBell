@@ -35,6 +35,7 @@ namespace NetworkScanner
                     netHelper.DeserializeDataStores();
                     Thread PingThread = new Thread(netHelper.Ping_all);
                     PingThread.Start();
+                    Console.WriteLine($"Waiting for poll interval: {PingAllPollInterval}");
                     Thread.Sleep(PingAllPollInterval);
                     netHelper.SerializeDataStores();
                 }

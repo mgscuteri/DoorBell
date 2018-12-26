@@ -5,12 +5,11 @@
     <hostname>MSCUTERI840g3A.vertexinc.com</hostname>
     <macaddress>OWN Machine</macaddress>
     <connectDateTime>2018-12-25T20:44:31.861715Z</connectDateTime>
-    <isNewConnection>true</isNewConnection>
   </ConnectedDevice>
   <ConnectedDevice>
     <ip>192.168.1.55</ip>
+    <userName>unknown</userName>
     <macaddress>44-5e-cd-b0-4b-33</macaddress>
-    <connectDateTime>2018-12-25T20:47:49.5786302Z</connectDateTime>
-    <isNewConnection>true</isNewConnection>
+    <connectDateTime>2018-12-26T03:38:07.2521478Z</connectDateTime>
   </ConnectedDevice>
 </ArrayOfConnectedDevice>

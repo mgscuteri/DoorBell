@@ -54,7 +54,7 @@ namespace NetworkScanner.Helpers
                     ThemeSongs = (List<ThemeSong>)themeSongSerializer.Deserialize(reader);
                 }
                 string SongURL = ThemeSongs.FirstOrDefault(x => x.macAddress == playListMacs[0]).songYoutubeUrl;
-                double SongDuration = ThemeSongs.FirstOrDefault(x => x.macAddress == playListMacs[0]).minutesToPlay;
+                int SongDuration = ThemeSongs.FirstOrDefault(x => x.macAddress == playListMacs[0]).duration;
 
                 playListMacs.RemoveAt(0);
                 playSong(SongURL, SongDuration);
@@ -64,7 +64,7 @@ namespace NetworkScanner.Helpers
             Console.WriteLine("****-!!-**** Playback Complete. Terminating Playback Thread ****-!!-****");
         }
 
-        public void playSong(string SongUrl, double minutesToPlayVideo)
+        public void playSong(string SongUrl, int duration)
         {
             Console.WriteLine("****----**** Luanching Browser ****----****");
 
@@ -87,15 +87,22 @@ namespace NetworkScanner.Helpers
                 throw(new Exception("Unsupported OS"));
             }
 
-            Process proc = Process.Start(procStartInfo);
-         
-            Thread.Sleep((int)(minutesToPlayVideo * 60000));
+            //Process proc = Process.Start(procStartInfo);
+            Process proc = new Process();
+            proc.StartInfo = procStartInfo;
+
+            ThreadStart songThreadStart = new ThreadStart(() => proc.Start());
+            Thread th = new Thread(songThreadStart);
+            th.Start();
+
+            Thread.Sleep(duration);
             
             if (proc != null)
             {
                 try
                 {
                     Console.WriteLine("Killing Browser Window");
+                    proc.Refresh();
                     proc.Kill();
                 }
                 catch(Exception ex)

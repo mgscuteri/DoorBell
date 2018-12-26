@@ -17,9 +17,9 @@ namespace NetworkScanner.Helpers
     public class NetworkHelper
     {
         //program constants        
-        public const int pingTimeOutMiliseconds = 200;
+        public const int pingTimeOutMiliseconds = 4000;
         public const int connectionTimeOutMinutes = 720; //12 hours 
-        public const bool testMode = false;
+        public const bool verboseLogging = true;
         public string ConnectedDeviceListXmlPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName + @"\data\ConnectedDevices.xml";
         public string MasterDeviceListXmlPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName + @"\data\masterDeviceList.xml";
         public string themeSongsXmlPath = Directory.GetParent((Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName)) + @"\Data\ThemeSongs.xml";
@@ -63,6 +63,8 @@ namespace NetworkScanner.Helpers
             {
                 try
                 {
+                    if (verboseLogging) { Console.WriteLine($"Pinging {host}"); }
+
                     Ping ping = new Ping();
                     ping.PingCompleted += new PingCompletedEventHandler(PingCompleted);
                     ping.SendAsync(host, timeout, host);
@@ -93,48 +95,47 @@ namespace NetworkScanner.Helpers
                     ConnectedDevice pingResults = new ConnectedDevice
                     {
                         hostname = hostname,
+                        userName = "unknown",
                         ip = ip,
                         macaddress = macaddres,
                         connectDateTime = DateTime.UtcNow,
-                        isNewConnection = true
                     };
+                    if (verboseLogging) { Console.WriteLine($"Processing Response From: {pingResults.macaddress}"); }
 
-                    lock (masterDeviceList)
+                    if (verboseLogging) { Console.WriteLine($"Checking: {pingResults.macaddress} against master device list"); }
+                    if (masterDeviceList.Any(x => x.macaddress == pingResults.macaddress))
                     {
-                        if (masterDeviceList.Any(x => x.macaddress == pingResults.macaddress))
+                        //This macAddress has connected before. Lets update its IP address in the master ip/mac lookup table 
+                        ConnectedDevice knownDevice = masterDeviceList.Where(x => x.macaddress == pingResults.macaddress).FirstOrDefault();
+                        if (knownDevice != null && knownDevice.ip != pingResults.ip)
                         {
-                            //This macAddress has connected before. Lets update its IP address in the master ip/mac lookup table 
-                            ConnectedDevice knownDevice = masterDeviceList.Where(x => x.macaddress == pingResults.macaddress).FirstOrDefault();
-                            if (knownDevice != null && knownDevice.ip != pingResults.ip)
-                            {
-                                Console.WriteLine("- - Known device (" + pingResults.macaddress + ") has a new ip address. Updating IP:" + knownDevice.ip);
-                                knownDevice.ip = pingResults.ip;
-                            }
-                        }
-                        else
-                        {
-                            Console.WriteLine($"- - * * New device detected. Adding to master device list - Host Name: {pingResults.hostname} - Mac Address: {pingResults.macaddress}");
-                            masterDeviceList.Add(pingResults);
+                            Console.WriteLine("- - Known device (" + pingResults.macaddress + ") has a new ip address. Updating IP:" + knownDevice.ip);
+                            knownDevice.ip = pingResults.ip;
                         }
                     }
-
-                    lock (ConnectedDeviceList)
+                    else
                     {
-                        if (ConnectedDeviceList.Any(x => x.macaddress == pingResults.macaddress))
-                        {
-                            //A connected device has reconnected. Updating its timestamp. 
-                            ConnectedDevice reconnectedDevice = ConnectedDeviceList.Where(x => x.macaddress == pingResults.macaddress).FirstOrDefault();
-                            reconnectedDevice.connectDateTime = DateTime.UtcNow;
-                        }
-                        else if (themeSongs.Any(x => x.macAddress == pingResults.macaddress))
-                        {
-                            //This is a new "connection". Process it. 
-                            Console.WriteLine($"* * * * - -- - * * * * New device detected. Adding to master device list - UserName: {themeSongs.Where(x => x.macAddress == pingResults.macaddress).FirstOrDefault()}");
+                        Console.WriteLine($"- - * * New device detected. Adding to master device list - Host Name: {pingResults.hostname} - Mac Address: {pingResults.macaddress}");
+                        masterDeviceList.Add(pingResults);
+                    }
+
+                    if (verboseLogging) { Console.WriteLine($"Checking: {pingResults.macaddress} against connected device list"); }
+                    if (ConnectedDeviceList.Any(x => x.macaddress == pingResults.macaddress))
+                    {
+                        //A connected device has reconnected. Updating its timestamp. 
+                        ConnectedDevice reconnectedDevice = ConnectedDeviceList.Where(x => x.macaddress == pingResults.macaddress).FirstOrDefault();
+                        reconnectedDevice.connectDateTime = DateTime.UtcNow;
+                    }
+                    else if (themeSongs.Any(x => x.macAddress == pingResults.macaddress))
+                    {
+                        //This is a new "connection". Process it. 
+                        Console.WriteLine($"* * * * - -- - * * * * New device detected. Adding to master device list - UserName: {themeSongs.Where(x => x.macAddress == pingResults.macaddress).FirstOrDefault()}");
                             
-                            ConnectedDeviceList.Add(pingResults);
-                            ProcessPlayback(pingResults);
-                        }
+                        ConnectedDeviceList.Add(pingResults);
+                        ProcessPlayback(pingResults);
                     }
+
+                    if (verboseLogging) { Console.WriteLine($"Done processing {pingResults.macaddress}"); }
                 }
             }
             catch (Exception ex)

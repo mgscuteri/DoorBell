@@ -4,21 +4,21 @@
     <macAddress>44-5e-cd-b0-4b-33</macAddress>
     <userName>Mike Scuteri</userName>
     <songYoutubeUrl>https://www.youtube.com/watch?v=XXzJpzxk-M8</songYoutubeUrl>
-    <minutesToPlay>2</minutesToPlay>
+    <duration>10000</duration>
     <startMinutesSeconds />
   </ThemeSong>
   <ThemeSong>
     <macAddress>6c-72-e7-af-7f-50</macAddress>
     <userName>Dad</userName>
     <songYoutubeUrl>https://www.youtube.com/watch?v=O9TunCtR3dQ</songYoutubeUrl>
-    <minutesToPlay>2</minutesToPlay>
+    <duration>120000</duration>
     <startMinutesSeconds />
   </ThemeSong>
   <ThemeSong>
     <macAddress>ac-cf-85-12-42-e6</macAddress>
     <userName>Mike Dinella</userName>
     <songYoutubeUrl>https://www.youtube.com/watch?v=M11SvDtPBhA</songYoutubeUrl>
-    <minutesToPlay>1</minutesToPlay>
+    <duration>120000</duration>
     <startMinutesSeconds />
   </ThemeSong>
 </ArrayOfThemeSong>
