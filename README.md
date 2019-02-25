@@ -15,7 +15,8 @@ It works by associating macaddresses with songs.  When a person's phone detects 
 ☑ Add Connect/Disconnect Logic that prevents playback from occuring at unwanted times  
 ☑ Port to .net core  
 ☑ Scrutinize/Improve threading/asyncs for mimimal CPU utilization  
-☐ Host on Raspberry Pi  
+☐ Host on Raspberry Pi (Port playback script to bash) 
+☐ Add ability to determine a phone's mac address based on its ip address
 ☐ Port user-song/macaddress associations from XML file to database  
 ☐ Integrate with https://github.com/mgscuteri/PythonPoweredPi (user-song/macaddress pairs will come from this website)  
 
