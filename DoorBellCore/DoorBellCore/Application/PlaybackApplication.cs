@@ -11,9 +11,9 @@ using System.Xml.Serialization;
 using System.Runtime.InteropServices;
 using System.Threading;
 
-namespace NetworkScanner.Helpers
+namespace NetworkScanner.Application
 {
-    public class PlaybackHelper
+    public class PlaybackApplication
     {
         private List<string> playListMacs;
         private bool isPlaying;
@@ -21,13 +21,13 @@ namespace NetworkScanner.Helpers
         private XmlSerializer themeSongSerializer = new System.Xml.Serialization.XmlSerializer(typeof(List<ThemeSong>));
         private string themeSongsXmlPath = Directory.GetParent((Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName)) + @"\Data\ThemeSongs.xml";
 
-        public PlaybackHelper()
+        public PlaybackApplication()
         {
             playListMacs = new List<string> {};
             isPlaying = false;
         }
 
-        public void addMacAddres(string macAddress)
+        public void AddMacAddress(string macAddress)
         {
             lock(playListMacs)
             {
