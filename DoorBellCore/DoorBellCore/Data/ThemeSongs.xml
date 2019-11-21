@@ -2,7 +2,14 @@
 <ArrayOfThemeSong xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ThemeSong>
     <macAddress>44-5e-cd-b0-4b-33</macAddress>
-    <userName>Mike Scuteri</userName>
+    <userName>Mike Scuteri - Phone</userName>
+    <songYoutubeUrl>https://www.youtube.com/watch?v=XXzJpzxk-M8</songYoutubeUrl>
+    <duration>180000</duration>
+    <startMinutesSeconds />
+  </ThemeSong>
+  <ThemeSong>
+    <macAddress>OWN Machine</macAddress>
+    <userName>Mike Scuteri - Laptop</userName>
     <songYoutubeUrl>https://www.youtube.com/watch?v=XXzJpzxk-M8</songYoutubeUrl>
     <duration>180000</duration>
     <startMinutesSeconds />

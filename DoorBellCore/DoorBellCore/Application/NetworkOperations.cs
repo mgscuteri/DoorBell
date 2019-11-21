@@ -15,15 +15,13 @@ namespace NetworkScanner.Application
         public PlaybackApplication PlaybackAppliaction;
         public NetworkRepository NetworkRepository;
         public int ConnectedDeviceTimeoutTime;
-        public int PingTimeOutMiliseconds;
-        public List<ThemeSong> ThemeSongs;
+        public int PingTimeOutMiliseconds;        
         public int PingRound;
 
         public NetworkOperations(int pingTimeoutMiliseconds, int connectedDeviceTimeoutTime)
         {
             PlaybackAppliaction = new PlaybackApplication();
-            NetworkRepository = new NetworkRepository();            
-            ThemeSongs = new List<ThemeSong> { };
+            NetworkRepository = new NetworkRepository();
             PingTimeOutMiliseconds = pingTimeoutMiliseconds;            
             ConnectedDeviceTimeoutTime = connectedDeviceTimeoutTime;
             PingRound = 0;
@@ -68,18 +66,19 @@ namespace NetworkScanner.Application
                 };
 
                 List<ConnectedDevice> masterDeviceList = NetworkRepository.GetMasterDeviceList();
+                List<ThemeSong> themeSongs = NetworkRepository.GetThemeSongsList();
                 if (masterDeviceList.Any(x => x.macaddress == pingResults.macaddress))
                 {
                     //This macAddress has connected before. Lets make sure its ip address and username are up to date in the ip/mac lookup table. This data can be used by a web client to identify the mac address of a user by their ip address. 
                     ConnectedDevice knownDevice = masterDeviceList.Where(x => x.macaddress == pingResults.macaddress).FirstOrDefault();
-                    string userName = ThemeSongs.Where(x => x.macAddress == knownDevice.macaddress).FirstOrDefault()?.userName ?? "unknown";
+                    string userName = themeSongs.Where(x => x.macAddress == knownDevice.macaddress).FirstOrDefault()?.userName ?? "unknown";
                     knownDevice.ip = pingResults.ip;
                     knownDevice.userName = userName;                    
                 }
                 else
                 {
-                    Console.WriteLine($"- - * * New device detected. Adding to master device list - Host Name: {pingResults.hostname} - Mac Address: {pingResults.macaddress}");
-                    pingResults.userName = ThemeSongs.Where(x => x.macAddress == pingResults.macaddress).FirstOrDefault()?.userName ?? "unknown";
+                    Console.WriteLine($"- New device detected. Adding to master device list - Host Name: {pingResults.hostname} - Mac Address: {pingResults.macaddress}");
+                    pingResults.userName = themeSongs.Where(x => x.macAddress == pingResults.macaddress).FirstOrDefault()?.userName ?? "unknown";
                     masterDeviceList.Add(pingResults);
                     NetworkRepository.UpdateMasterDeviceList(masterDeviceList);
                 }
@@ -88,16 +87,17 @@ namespace NetworkScanner.Application
                 if (connectedDeviceList.Any(x => x.macaddress == pingResults.macaddress))
                 {
                     //A device with an associated themesong has responded to a ping. In order for a themesong to be played, the device must go {connectedDeviceTimeoutTime} without responding to a ping.  Therefore, we will update its connectDateTime timestamp.
+                    Console.WriteLine($"- A recognized connected device has reconnected. - Host Name: {pingResults.hostname} - Mac Address: {pingResults.macaddress}");
                     ConnectedDevice reconnectedDevice = connectedDeviceList.Where(x => x.macaddress == pingResults.macaddress).FirstOrDefault();
                     reconnectedDevice.connectDateTime = DateTime.UtcNow;
                 }
-                else if (ThemeSongs.Any(x => x.macAddress == pingResults.macaddress))
+                else if (themeSongs.Any(x => x.macAddress == pingResults.macaddress))
                 {
                     //A device with an associated themesong has just connected. It has been over {connectedDeviceTimeoutTime} miliseconds since its last connection, so time to play their themesong!
-                    string userName = ThemeSongs.Where(x => x.macAddress == pingResults.macaddress).FirstOrDefault()?.userName ?? "unknown";
-                    pingResults.userName = userName;
-                    Console.WriteLine($"* * * * - -- - * * * * New device detected. Adding to master device list - UserName: {userName}  MacAddress: {pingResults.macaddress}");
+                    string userName = themeSongs.Where(x => x.macAddress == pingResults.macaddress).FirstOrDefault()?.userName ?? "unknown";
+                    pingResults.userName = userName;                    
                     connectedDeviceList.Add(pingResults);
+                    NetworkRepository.UpdateConnectedDeviceList(connectedDeviceList);
                     Console.WriteLine("**** Added Mac Address to playback list: " + pingResults.macaddress + " (UserName: " + pingResults.userName + ")");
                     PlaybackAppliaction.AddMacAddress(pingResults.macaddress);
                 }
