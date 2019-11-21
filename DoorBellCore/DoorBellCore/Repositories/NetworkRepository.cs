@@ -16,9 +16,9 @@ namespace NetworkScanner.Application
 {
     public class NetworkRepository
     {        
-        public string ConnectedDeviceListXmlPath;
-        public string MasterDeviceListXmlPath;
-        public string ThemeSongsXmlPath;                
+        public string ConnectedDeviceListXmlPath;        
+        public string MasterDeviceListXmlPath;        
+        public string ThemeSongsXmlPath;
 
         public NetworkRepository()
         {   
@@ -60,13 +60,13 @@ namespace NetworkScanner.Application
         }
         
         public List<ConnectedDevice> GetConnectedDeviceList()
-        {
-            XmlSerializer connectedDeviceSerializer = new XmlSerializer(typeof(List<ConnectedDevice>));            
+        {            
+            XmlSerializer connectedDeviceSerializer = new XmlSerializer(typeof(List<ConnectedDevice>));
             
             using (XmlReader reader = XmlReader.Create(ConnectedDeviceListXmlPath))
             {
                 return (List<ConnectedDevice>)connectedDeviceSerializer.Deserialize(reader);
-            }
+            }         
         }
 
         public List<ConnectedDevice> GetMasterDeviceList()

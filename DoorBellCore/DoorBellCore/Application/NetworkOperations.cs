@@ -15,64 +15,43 @@ namespace NetworkScanner.Application
         public PlaybackApplication PlaybackAppliaction;
         public NetworkRepository NetworkRepository;
         public int ConnectedDeviceTimeoutTime;
-        public int PingTimeOutMiliseconds;        
-        public List<ConnectedDevice> ConnectedDeviceList ;
-        public List<ConnectedDevice> MasterDeviceList ;
-        public List<ThemeSong> ThemeSongs;        
+        public int PingTimeOutMiliseconds;
+        public List<ThemeSong> ThemeSongs;
+        public int PingRound;
 
         public NetworkOperations(int pingTimeoutMiliseconds, int connectedDeviceTimeoutTime)
         {
             PlaybackAppliaction = new PlaybackApplication();
-            NetworkRepository = new NetworkRepository();
-            ConnectedDeviceList = new List<ConnectedDevice> { };
-            MasterDeviceList = new List<ConnectedDevice> { };
+            NetworkRepository = new NetworkRepository();            
             ThemeSongs = new List<ThemeSong> { };
             PingTimeOutMiliseconds = pingTimeoutMiliseconds;            
-            ConnectedDeviceTimeoutTime = connectedDeviceTimeoutTime;            
+            ConnectedDeviceTimeoutTime = connectedDeviceTimeoutTime;
+            PingRound = 0;
         }
 
         public void Ping_all()
         {
-            Console.WriteLine("-- Pinging All Possible Local Addresses");
-            Stopwatch readTimer = new Stopwatch();
-            readTimer.Start();
-            ConnectedDeviceList = NetworkRepository.GetConnectedDeviceList();
-            MasterDeviceList = NetworkRepository.GetMasterDeviceList();
-            ThemeSongs = NetworkRepository.GetThemeSongsList();
-            Console.WriteLine($"Spent {readTimer.ElapsedMilliseconds} miliseconds reading previous ping data from disc");
-            readTimer.Stop();
+            PingRound++;
+            Console.WriteLine($"-- Pinging All Possible Local Addresses.      Round: {PingRound}");
 
-
-            Stopwatch pingTimer = new Stopwatch();
-            pingTimer.Start();
             string gate_ip = NetworkOperations.NetworkGateway();
             string[] array = gate_ip.Split('.');
             Parallel.For(2, 255, i =>
             {
-                string ping_var = array[0] + "." + array[1] + "." + array[2] + "." + i;
-                Ping(ping_var, 1, PingTimeOutMiliseconds);
+                string host = array[0] + "." + array[1] + "." + array[2] + "." + i;
+                Ping ping = new Ping();
+                ping.PingCompleted += new PingCompletedEventHandler(PingHandler);
+                ping.SendAsync(host, PingTimeOutMiliseconds);                
             });
-            Console.WriteLine($"Spent {pingTimer.ElapsedMilliseconds} miliseconds pinging all possible local ip addresses");
-            pingTimer.Stop();
 
-
-            Console.WriteLine("Writing ");
-            Stopwatch writeTimer = new Stopwatch();
-            writeTimer.Start();
-            NetworkRepository.UpdateConnectedDeviceList(ConnectedDeviceList);
-            NetworkRepository.UpdateMasterDeviceList(MasterDeviceList);
-            Console.WriteLine($"Spent {writeTimer.ElapsedMilliseconds} miliseconds writing ping response data to disc");
-            writeTimer.Stop();            
-
-            Console.WriteLine("-- Done Pinging All Possible Local Addresses");
+            Console.WriteLine($"-- Done Pinging All Possible Local Addresses. Round: {PingRound}");
         }
 
-        public void Ping(string host, int attempts, int timeout)
+        public void PingHandler(object sender, PingCompletedEventArgs e)
         {            
             try
             {
-                Ping ping = new Ping();                
-                PingReply pingResult = ping.Send(host, timeout);
+                PingReply pingResult = e.Reply;
                 if (pingResult == null || pingResult.Status != IPStatus.Success)
                 {
                     return;
@@ -88,10 +67,11 @@ namespace NetworkScanner.Application
                     connectDateTime = DateTime.UtcNow,
                 };
 
-                if (MasterDeviceList.Any(x => x.macaddress == pingResults.macaddress))
+                List<ConnectedDevice> masterDeviceList = NetworkRepository.GetMasterDeviceList();
+                if (masterDeviceList.Any(x => x.macaddress == pingResults.macaddress))
                 {
                     //This macAddress has connected before. Lets make sure its ip address and username are up to date in the ip/mac lookup table. This data can be used by a web client to identify the mac address of a user by their ip address. 
-                    ConnectedDevice knownDevice = MasterDeviceList.Where(x => x.macaddress == pingResults.macaddress).FirstOrDefault();
+                    ConnectedDevice knownDevice = masterDeviceList.Where(x => x.macaddress == pingResults.macaddress).FirstOrDefault();
                     string userName = ThemeSongs.Where(x => x.macAddress == knownDevice.macaddress).FirstOrDefault()?.userName ?? "unknown";
                     knownDevice.ip = pingResults.ip;
                     knownDevice.userName = userName;                    
@@ -100,13 +80,15 @@ namespace NetworkScanner.Application
                 {
                     Console.WriteLine($"- - * * New device detected. Adding to master device list - Host Name: {pingResults.hostname} - Mac Address: {pingResults.macaddress}");
                     pingResults.userName = ThemeSongs.Where(x => x.macAddress == pingResults.macaddress).FirstOrDefault()?.userName ?? "unknown";
-                    MasterDeviceList.Add(pingResults);
+                    masterDeviceList.Add(pingResults);
+                    NetworkRepository.UpdateMasterDeviceList(masterDeviceList);
                 }
 
-                if (ConnectedDeviceList.Any(x => x.macaddress == pingResults.macaddress))
+                List<ConnectedDevice> connectedDeviceList = NetworkRepository.GetConnectedDeviceList();
+                if (connectedDeviceList.Any(x => x.macaddress == pingResults.macaddress))
                 {
                     //A device with an associated themesong has responded to a ping. In order for a themesong to be played, the device must go {connectedDeviceTimeoutTime} without responding to a ping.  Therefore, we will update its connectDateTime timestamp.
-                    ConnectedDevice reconnectedDevice = ConnectedDeviceList.Where(x => x.macaddress == pingResults.macaddress).FirstOrDefault();
+                    ConnectedDevice reconnectedDevice = connectedDeviceList.Where(x => x.macaddress == pingResults.macaddress).FirstOrDefault();
                     reconnectedDevice.connectDateTime = DateTime.UtcNow;
                 }
                 else if (ThemeSongs.Any(x => x.macAddress == pingResults.macaddress))
@@ -115,33 +97,32 @@ namespace NetworkScanner.Application
                     string userName = ThemeSongs.Where(x => x.macAddress == pingResults.macaddress).FirstOrDefault()?.userName ?? "unknown";
                     pingResults.userName = userName;
                     Console.WriteLine($"* * * * - -- - * * * * New device detected. Adding to master device list - UserName: {userName}  MacAddress: {pingResults.macaddress}");
-                    ConnectedDeviceList.Add(pingResults);                    
+                    connectedDeviceList.Add(pingResults);
                     Console.WriteLine("**** Added Mac Address to playback list: " + pingResults.macaddress + " (UserName: " + pingResults.userName + ")");
                     PlaybackAppliaction.AddMacAddress(pingResults.macaddress);
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                Console.WriteLine($"Encountered difficulty while processing the ping of host: {host} ");
+                Console.WriteLine($"Encountered difficulty while processing a ping.");
+                Console.Write(ex);
             }            
         }
 
         public void CheckForTimedOutConnections()
         {
-            ConnectedDeviceList = NetworkRepository.GetConnectedDeviceList();
-            MasterDeviceList = NetworkRepository.GetMasterDeviceList();
+            List<ConnectedDevice> connectedDeviceList = NetworkRepository.GetConnectedDeviceList();            
 
-            foreach (ConnectedDevice cd in ConnectedDeviceList.Reverse<ConnectedDevice>())
+            foreach (ConnectedDevice cd in connectedDeviceList.Reverse<ConnectedDevice>())
             {                
                 if (cd.IsTimedOut(ConnectedDeviceTimeoutTime))
                 {
-                    ConnectedDeviceList.Remove(cd);
+                    connectedDeviceList.Remove(cd);
                     Console.WriteLine($"DEVICE TIMED OUT - REMOVING: {cd.userName} from connected device list list");
                 }
             }            
             
-            NetworkRepository.UpdateConnectedDeviceList(ConnectedDeviceList);
-            NetworkRepository.UpdateMasterDeviceList(MasterDeviceList);
+            NetworkRepository.UpdateConnectedDeviceList(connectedDeviceList);
         }
 
         private static string NetworkGateway()

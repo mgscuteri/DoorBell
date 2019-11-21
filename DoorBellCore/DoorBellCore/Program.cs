@@ -12,7 +12,7 @@ namespace NetworkScanner
     class Program
     {
         public const int PingTimeoutMS = 1000;
-        public const int PingAllPollIntervalMS = 4000;        
+        public const int PingAllPollIntervalMS = 1500;        
         public const int ConnectedDeviceTimeoutMS = 900000;
         public const int CheckForTimedOutConnectionsIntervalMS = 43200000;        
 
@@ -36,6 +36,7 @@ namespace NetworkScanner
 
                 if (timer.ElapsedMilliseconds < checkForTimedOutConnectionsInterval)
                 {
+                    Thread.Sleep(pingAllPollInterval * 2);
                     networkOperations.CheckForTimedOutConnections();
                     timer.Restart();
                 }

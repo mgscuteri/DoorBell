@@ -32,7 +32,14 @@ namespace NetworkScanner.Application
             lock(playListMacs)
             {
                 Console.WriteLine($"****----** Adding {macAddress} to playlist **----****");
-                playListMacs.Add(macAddress);
+                if (!playListMacs.Contains(macAddress))
+                {
+                    playListMacs.Add(macAddress);
+                }
+                else
+                {
+                    return;
+                }                
             }
             
             if (isPlaying == false)
