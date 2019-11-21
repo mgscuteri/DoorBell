@@ -1,4 +1,6 @@
 /.vs
-/DoorBellCore/.vs
 /bin
 /obj
+/DoorBellCore/.vs
+/DoorBellCore/DoorBellCore/bin
+/DoorBellCore/DoorBellCore/obj

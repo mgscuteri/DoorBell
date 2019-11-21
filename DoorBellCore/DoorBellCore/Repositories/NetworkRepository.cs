@@ -22,9 +22,9 @@ namespace NetworkScanner.Application
 
         public NetworkRepository()
         {   
-            ConnectedDeviceListXmlPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName + @"\data\ConnectedDevices.xml";
-            MasterDeviceListXmlPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName + @"\data\masterDeviceList.xml";
-            ThemeSongsXmlPath = Directory.GetParent((Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName)) + @"\Data\ThemeSongs.xml";            
+            ConnectedDeviceListXmlPath = Directory.GetCurrentDirectory() + @"\data\ConnectedDevices.xml";
+            MasterDeviceListXmlPath = Directory.GetCurrentDirectory() + @"\data\masterDeviceList.xml";
+            ThemeSongsXmlPath = Directory.GetCurrentDirectory() + @"\Data\ThemeSongs.xml";            
         }
 
         public void UpdateConnectedDeviceList(List<ConnectedDevice> connectedDeviceList)
