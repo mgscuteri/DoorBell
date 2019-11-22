@@ -39,8 +39,7 @@ namespace NetworkScanner.Application
             catch 
             {
                 Console.WriteLine($"Failed to update ConnectedDeviceList");
-            }
-            
+            }            
         }
 
         public void UpdateMasterDeviceList(List<ConnectedDevice> masterDeviceList)
@@ -62,30 +61,55 @@ namespace NetworkScanner.Application
         public List<ConnectedDevice> GetConnectedDeviceList()
         {            
             XmlSerializer connectedDeviceSerializer = new XmlSerializer(typeof(List<ConnectedDevice>));
-            
-            using (XmlReader reader = XmlReader.Create(ConnectedDeviceListXmlPath))
+
+            try
             {
-                return (List<ConnectedDevice>)connectedDeviceSerializer.Deserialize(reader);
-            }         
+                using (XmlReader reader = XmlReader.Create(ConnectedDeviceListXmlPath))
+                {
+                    return (List<ConnectedDevice>)connectedDeviceSerializer.Deserialize(reader);
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Failed to read connected device list");
+                throw (ex);
+            }
+            
         }
 
         public List<ConnectedDevice> GetMasterDeviceList()
         {
-            XmlSerializer connectedDeviceSerializer = new XmlSerializer(typeof(List<ConnectedDevice>));            
-            
-            using (XmlReader reader = XmlReader.Create(MasterDeviceListXmlPath))
+            XmlSerializer connectedDeviceSerializer = new XmlSerializer(typeof(List<ConnectedDevice>));
+
+            try
             {
-                return (List<ConnectedDevice>)connectedDeviceSerializer.Deserialize(reader);
+                using (XmlReader reader = XmlReader.Create(MasterDeviceListXmlPath))
+                {
+                    return (List<ConnectedDevice>)connectedDeviceSerializer.Deserialize(reader);
+                }
             }
+            catch(Exception ex)
+            {
+                Console.Write("Failed to get master device list");
+                throw (ex);
+            }            
         }
 
         public List<ThemeSong> GetThemeSongsList()
         {            
             XmlSerializer themeSongSerializer = new XmlSerializer(typeof(List<ThemeSong>));
 
-            using (XmlReader reader = XmlReader.Create(ThemeSongsXmlPath))
+            try
             {
-                return (List<ThemeSong>)themeSongSerializer.Deserialize(reader);
+                using (XmlReader reader = XmlReader.Create(ThemeSongsXmlPath))
+                {
+                    return (List<ThemeSong>)themeSongSerializer.Deserialize(reader);
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.Write("Failed to get themesong list");
+                throw ex;
             }            
         }        
     }

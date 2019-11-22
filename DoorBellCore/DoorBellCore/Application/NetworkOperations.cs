@@ -102,10 +102,9 @@ namespace NetworkScanner.Application
                     PlaybackAppliaction.AddMacAddress(pingResults.macaddress);
                 }
             }
-            catch (Exception ex)
+            catch 
             {
-                Console.WriteLine($"Encountered difficulty while processing a ping.");
-                Console.Write(ex);
+                //Lower level catches will log the error and throw.  Ping handler execution will halt, get caught here, then continue on to next ping. 
             }            
         }
 
