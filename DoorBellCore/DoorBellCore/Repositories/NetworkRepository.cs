@@ -36,10 +36,50 @@ namespace NetworkScanner.Application
                 connectedDeviceSerializer.Serialize(connectedDeviceListXmlFile, connectedDeviceList);
                 connectedDeviceListXmlFile.Close();                
             }
-            catch 
+            catch(Exception ex)
             {
                 Console.WriteLine($"Failed to update ConnectedDeviceList");
+                throw ex;
             }            
+        }
+
+        public List<ConnectedDevice> UpdateConnectedDeviceTimeStamp(ConnectedDevice reconnectedDevice)
+        {
+            XmlSerializer connectedDeviceSerializer = new XmlSerializer(typeof(List<ConnectedDevice>));
+            List<ConnectedDevice> connectedDevices = GetConnectedDeviceList();
+
+            try
+            {                
+                connectedDevices.Where(x => x.macaddress == reconnectedDevice.macaddress).FirstOrDefault().connectDateTime = DateTime.UtcNow;
+                FileStream connectedDeviceListXmlFile = File.Open(ConnectedDeviceListXmlPath, FileMode.Truncate);
+                connectedDeviceSerializer.Serialize(connectedDeviceListXmlFile, connectedDevices);
+                connectedDeviceListXmlFile.Close();
+                return connectedDevices;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine($"Failed to update ConnectedDeviceList");
+                throw ex;
+            }
+        }
+
+        public List<ConnectedDevice> AddToConnectedDeviceList(ConnectedDevice newDevice)
+        {
+            XmlSerializer connectedDeviceSerializer = new XmlSerializer(typeof(List<ConnectedDevice>));
+            List<ConnectedDevice> connectedDevices = GetConnectedDeviceList();
+            try
+            {            
+                FileStream connectedDeviceListXmFile = File.Open(ConnectedDeviceListXmlPath, FileMode.Truncate);
+                connectedDevices.Add(newDevice);
+                connectedDeviceSerializer.Serialize(connectedDeviceListXmFile, connectedDevices);
+                connectedDeviceListXmFile.Close();
+                return connectedDevices;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine($"Failed Add to ConnectedDeviceList");
+                throw ex;
+            }
         }
 
         public void UpdateMasterDeviceList(List<ConnectedDevice> masterDeviceList)
@@ -55,9 +95,55 @@ namespace NetworkScanner.Application
             {
                 Console.WriteLine($"Failed to update master device list");
             }
-
         }
-        
+
+        public List<ConnectedDevice> UpdateMasterDeviceListDevice(ConnectedDevice updatedDevice)
+        {
+            XmlSerializer connectedDeviceSerializer = new XmlSerializer(typeof(List<ConnectedDevice>));
+            List<ConnectedDevice> masterDeviceListDevices = GetMasterDeviceList();
+
+            try
+            {
+                ConnectedDevice oldDevice = masterDeviceListDevices.Where(x => x.macaddress == updatedDevice.macaddress).FirstOrDefault();
+                oldDevice = updatedDevice;
+                FileStream masterDeviceListXmlFile = File.Open(MasterDeviceListXmlPath, FileMode.Truncate);
+                connectedDeviceSerializer.Serialize(masterDeviceListXmlFile, masterDeviceListDevices);
+                masterDeviceListXmlFile.Close();
+                return masterDeviceListDevices;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Failed to update ConnectedDeviceList");
+                throw ex;
+            }
+        }
+
+
+        public List<ConnectedDevice> AddToMasterDeviceList(ConnectedDevice newDevice)
+        {
+            XmlSerializer connectedDeviceSerializer = new XmlSerializer(typeof(List<ConnectedDevice>));
+            List<ConnectedDevice> masterDeviceList = GetMasterDeviceList();
+            if(masterDeviceList.Where(x => x.macaddress == newDevice.macaddress).Count() > 0)
+            {
+                Console.WriteLine("Detected attempt to add duplicate record to MasterDeviceList");
+                return masterDeviceList;
+            }
+            try
+            {   
+                FileStream masterDeviceListXmFile = File.Open(MasterDeviceListXmlPath, FileMode.Truncate);
+                masterDeviceList.Add(newDevice);                
+                connectedDeviceSerializer.Serialize(masterDeviceListXmFile, masterDeviceList);
+                masterDeviceListXmFile.Close();
+                return masterDeviceList;
+            }
+            catch
+            {
+                Console.WriteLine($"Failed to add to MasterDeviceList");
+                return masterDeviceList;
+            }
+        }
+
+
         public List<ConnectedDevice> GetConnectedDeviceList()
         {            
             XmlSerializer connectedDeviceSerializer = new XmlSerializer(typeof(List<ConnectedDevice>));
@@ -72,7 +158,7 @@ namespace NetworkScanner.Application
             catch(Exception ex)
             {
                 Console.WriteLine("Failed to read connected device list");
-                throw (ex);
+                throw ex;
             }
             
         }
@@ -91,7 +177,7 @@ namespace NetworkScanner.Application
             catch(Exception ex)
             {
                 Console.Write("Failed to get master device list");
-                throw (ex);
+                throw ex;
             }            
         }
 

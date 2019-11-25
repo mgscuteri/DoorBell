@@ -22,7 +22,7 @@ namespace NetworkScanner.Models
         {
             var milisecondsElapsed = (int)Math.Floor((DateTime.UtcNow - connectDateTime).TotalMilliseconds);
             bool isTimedOut = milisecondsElapsed > timeOutMiliseconds;
-            Console.WriteLine($"Checking {userName} for timeout. Device has been connected for Miliseconds: {milisecondsElapsed}.  IsTimedOut = {isTimedOut} ");            
+            Console.WriteLine($"Checking {userName} for timeout. It has been {milisecondsElapsed} Miliseconds since this devices last connection.  IsTimedOut = {isTimedOut} ");
             return isTimedOut;
         }
     }

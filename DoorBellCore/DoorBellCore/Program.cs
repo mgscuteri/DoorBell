@@ -31,10 +31,10 @@ namespace NetworkScanner
 
             while (true)
             {
-                networkOperations.Ping_all();
+                networkOperations.Ping_all(false); // For the time being, restart the server to update theme song buffer buffer. (Need to write an api call for themesong management site that returns true if we need to update the buffer) 
                 Thread.Sleep(pingAllPollInterval);
 
-                if (timer.ElapsedMilliseconds < checkForTimedOutConnectionsInterval)
+                if (timer.ElapsedMilliseconds > checkForTimedOutConnectionsInterval)
                 {
                     Thread.Sleep(pingAllPollInterval * 2);
                     networkOperations.CheckForTimedOutConnections();
