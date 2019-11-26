@@ -1,0 +1,162 @@
+.App {
+
+}
+
+.appBody {
+  clear: both;
+  width: 100%;
+  margin: auto;
+  text-align: center;
+  margin: 0px;
+  padding-bottom: 15px;
+  min-height: 300px;
+  
+  color: #fff;
+	background: linear-gradient(-45deg, #23A6D5, #23D5AB, #ffc942, #EE7752);
+	background-size: 400% 400%;
+	-webkit-animation: Gradient 15s ease infinite;
+	-moz-animation: Gradient 15s ease infinite;
+	animation: Gradient 15s ease infinite;
+}
+
+@-webkit-keyframes Gradient {
+	0% { background-position: 0% 50%}
+	50% { background-position: 100% 50%	}
+	100% { background-position: 0% 50% }
+}
+
+@-moz-keyframes Gradient {
+	0% { background-position: 0% 50% }
+	50% { background-position: 100% 50% }
+	100% { background-position: 0% 50% }
+}
+
+@keyframes Gradient {
+	0% { background-position: 0% 50%	}
+	50% {	background-position: 100% 50%	}
+	100% { background-position: 0% 50%}
+}
+
+.header {
+  vertical-align: middle;
+  font-family: Helvetica, sans-serif;
+  background-color: #353BCC;
+  margin: auto;
+  line-height: 50px;
+  color: white;
+  font-size: 1.5em;
+  margin: 0;
+}
+
+.App-intro {
+  margin-top: 0px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.right {
+  text-align: right;
+  float: right; 
+}
+
+.button2 {
+  margin: 2px 1px;
+  padding: 5px 10px;
+  width: 70px;
+  border-radius: 4px;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #66E333;
+  color: white;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+}
+
+.button1 {
+  margin: 2px 1px;
+  padding: 5px 10px;
+  width: 70px;
+  border-radius: 4px;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #e04435;
+  color: white;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+}
+
+.button1:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+.button2:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.logo {
+  margin: 0px; 
+  padding-top: 0px;
+  padding-right: 10px;
+  padding-bottom: 0px;
+  line-height:0px;  
+  min-width: 33px;
+  float: left;
+  padding-left: 10px;  
+}
+
+.footer {
+  color: #fff;
+  padding: 10px;
+  font-family: Futura, sans-serif;
+  font-size: 11px;
+}
+
+.navbar {
+  font-family: Futura, sans-serif;
+  font-weight: bold;
+  margin: 0px; 
+  padding-top: 0px;
+  padding-bottom: 0px;
+  width: auto;
+}
+
+@media screen and (max-width: 600px) {
+  .navbar {
+    width: 100%; 
+    height: auto;
+    clear: both;
+  }
+  .navBarContainer {
+    height: auto;
+    overflow: visible;
+  }
+}
+
+.navBarContainer {
+  margin: 0px; 
+  padding-top: 0px;
+  padding-bottom: 0px;
+  width: 100%;
+}
+
+@-webkit-keyframes NavBarGrad {
+  0%{background-position:0% 15%}
+  50%{background-position:100% 86%}
+  100%{background-position:0% 15%}
+}
+@-moz-keyframes NavBarGrad {
+  0%{background-position:0% 15%}
+  50%{background-position:100% 86%}
+  100%{background-position:0% 15%}
+}
+@keyframes NavBarGrad { 
+  0%{background-position:0% 15%}
+  50%{background-position:100% 86%}
+  100%{background-position:0% 15%}
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

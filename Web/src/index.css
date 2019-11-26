@@ -1,0 +1,121 @@
+
+html {
+  padding: 0px;
+  margin: 0px;
+  
+  background: linear-gradient(130deg, #06b5f0, #49e1f6);
+  background-size: 400% 400%;
+  
+  -webkit-animation: NavBarGrad 0s ease infinite;
+  -moz-animation: NavBarGrad 0s ease infinite;
+  animation: NavBarGrad 0s ease infinite;
+  
+}
+
+@-webkit-keyframes NavBarGrad {
+  0%{background-position:0% 15%}
+  50%{background-position:100% 86%}
+  100%{background-position:0% 15%}
+}
+@-moz-keyframes NavBarGrad {
+  0%{background-position:0% 15%}
+  50%{background-position:100% 86%}
+  100%{background-position:0% 15%}
+}
+@keyframes NavBarGrad { 
+  0%{background-position:0% 15%}
+  50%{background-position:100% 86%}
+  100%{background-position:0% 15%}
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 12;
+  font-family: Futura, sans-serif;
+  height: 100%;
+}
+
+
+table {
+  font-family: arial, sans-serif;
+  font-size: 8;
+  border-collapse: collapse;
+  text-align:center;
+  margin: 0 auto;
+  width: 60%;
+  padding-top: 20px;
+}
+
+h2 {
+  margin: 0px;
+  padding-top: 15px;
+	font-weight: 300;
+	text-align: center;
+}
+
+
+td, th {
+  font-size: 8;
+  text-align: left;
+  padding: 2px;
+  padding-left: 8px;
+}
+
+tr:hover {
+  background-color:#f5f5f5;
+}
+
+input[type=text], select {
+  width: 100%;
+  padding: 6px 3px;
+  margin: 0px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+p {
+  text-align: left;
+  text-indent: 20px;
+  padding-Left: 10%;
+  padding-right: 10%;
+}
+
+
+ul.topnav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  color: black;
+}
+
+ul.topnav li {float: left;}
+
+ul.topnav li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding-left: 15px;
+  padding-right: 15px;
+  line-height: 60px;
+  text-decoration: none;
+  height: 60px;
+}
+
+li.topnav a:hover:not(.active) {background-color: #66E333;}
+li.topnav a.active {background-color: #66E333;}
+li.right a:hover:not(.active) {background-color: #66E333;}
+li.right a.active {background-color: #66E333;}
+
+
+ul.topnav li.right {float: right;}
+
+@media screen and (max-width: 600px) {
+  ul.topnav li.right, 
+  ul.topnav li {
+    float: none; 
+  }
+}

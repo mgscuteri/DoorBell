@@ -4,3 +4,6 @@
 /DoorBellCore/.vs
 /DoorBellCore/DoorBellCore/bin
 /DoorBellCore/DoorBellCore/obj
+/Web/node_modules
+/Web/build
+/WebServer/Controllers/__pycache__
